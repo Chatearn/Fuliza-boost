@@ -15,7 +15,10 @@
 
 <div class="page">
 
-    <!-- BRAND -->
+    <!-- =================================
+         BRAND
+    ================================== -->
+
     <header class="brand">
 
         <div class="logo-mark">
@@ -31,7 +34,10 @@
     </header>
 
 
-    <!-- HERO -->
+    <!-- =================================
+         HERO
+    ================================== -->
+
     <section class="hero">
 
         <div class="hero-badge">
@@ -62,74 +68,10 @@
     </section>
 
 
-    <!-- WHAT WE OFFER -->
-    <section class="offers">
+    <!-- =================================
+         SIMULATED ACTIVITY
+    ================================== -->
 
-        <h2>What We Offer</h2>
-
-        <div class="offer-grid">
-
-            <div class="offer-card">
-
-                <div class="offer-icon">✓</div>
-
-                <h3>Balance & Limit Check</h3>
-
-                <p>
-                    View your current available limit
-                    and account information.
-                </p>
-
-            </div>
-
-
-            <div class="offer-card">
-
-                <div class="offer-icon">↑</div>
-
-                <h3>Limit Increase</h3>
-
-                <p>
-                    Request an increase to your
-                    available limit.
-                </p>
-
-            </div>
-
-
-            <div class="offer-card">
-
-                <div class="offer-icon">🔐</div>
-
-                <h3>Fast Verification</h3>
-
-                <p>
-                    Complete the required verification
-                    steps securely.
-                </p>
-
-            </div>
-
-
-            <div class="offer-card">
-
-                <div class="offer-icon">₭</div>
-
-                <h3>M-Pesa Payments</h3>
-
-                <p>
-                    Payment options can be provided
-                    where applicable.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SIMULATED ACTIVITY -->
     <section class="activity">
 
         <div class="section-heading">
@@ -180,7 +122,10 @@
     </section>
 
 
-    <!-- CTA -->
+    <!-- =================================
+         FINAL CTA
+    ================================== -->
+
     <section class="final-cta">
 
         <h2>
@@ -202,7 +147,10 @@
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
     <footer>
 
         <strong>FULIZAA</strong>
@@ -275,6 +223,10 @@ const activities = [
 let activityIndex = 0;
 
 
+/* =========================================
+   ACTIVITY TRANSITION
+========================================= */
+
 function changeActivity() {
 
     const number =
@@ -289,4 +241,45 @@ function changeActivity() {
 
     number.style.opacity = "0";
     amount.style.opacity = "0";
-    time
+    time.style.opacity = "0";
+
+
+    setTimeout(function () {
+
+        activityIndex++;
+
+        if (
+            activityIndex >=
+            activities.length
+        ) {
+            activityIndex = 0;
+        }
+
+
+        number.textContent =
+            activities[activityIndex].number;
+
+        amount.textContent =
+            activities[activityIndex].amount;
+
+        time.textContent =
+            activities[activityIndex].time;
+
+
+        number.style.opacity = "1";
+        amount.style.opacity = "1";
+        time.style.opacity = "1";
+
+    }, 1000);
+
+}
+
+
+/*
+   Change simulated activity
+   every 6 seconds
+*/
+
+setInterval(
+    changeActivity,
+    
