@@ -1,559 +1,296 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-html,
-body {
-    width: 100%;
-    min-height: 100%;
-}
+<head>
 
-body {
-    min-height: 100vh;
-    background: #50C878;
-    color: #000000;
-    font-family: Arial, Helvetica, sans-serif;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>FULIZAA | Limit Management</title>
 
-/* =================================
-   MAIN PAGE
-================================= */
+    <link rel="stylesheet" href="style.css">
 
-.page {
-    position: relative;
+</head>
 
-    width: 100%;
-    min-height: 100vh;
+<body>
 
-    overflow-x: hidden;
+<div class="page">
 
-    padding: 20px 16px 40px;
+    <!-- =================================
+         FULIZAA BRAND
+    ================================== -->
 
-    background:
-        radial-gradient(
-            circle at 50% 15%,
-            rgba(255, 255, 255, 0.08),
-            transparent 55%
-        ),
-        #50C878;
-}
+    <header class="brand">
 
+        <div class="logo-mark">
 
-/* =================================
-   BRAND
-================================= */
+            <img
+                src="fulizaa-logo.png"
+                alt="FULIZAA Logo">
 
-.brand {
-    width: 100%;
+        </div>
 
-    text-align: center;
+        <h1>FULIZAA</h1>
 
-    margin-top: 8px;
-    margin-bottom: 28px;
-}
+        <p>
+            Limit Management Portal
+        </p>
 
-.logo-mark {
-    width: 64px;
-    height: 64px;
+    </header>
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
-    margin: 0 auto 12px;
+    <!-- =================================
+         HERO
+    ================================== -->
 
-    border-radius: 50%;
+    <section class="hero">
 
-    background: #FFFFFF;
+        <div class="hero-badge">
+            FULIZAA LIMIT MANAGEMENT
+        </div>
 
-    border: none;
+        <h2>
+            Increase Your Limit Today
+        </h2>
 
-    color: #50C878;
+        <p>
+            Check your current limit and request a higher
+            available limit through our simple process.
+        </p>
 
-    font-size: 34px;
-    font-weight: 900;
+        <button
+            class="primary-btn"
+            onclick="startIncrease()">
 
-    box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.35);
-}
+            INCREASE MY LIMIT NOW →
 
-.brand h1 {
-    color: #FFFFFF;
+        </button>
 
-    font-size: 35px;
-    line-height: 1.15;
+        <div class="security-line">
+            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; 24/7
+        </div>
 
-    font-weight: 900;
+    </section>
 
-    letter-spacing: 1px;
 
-    -webkit-text-stroke: 0;
+    <!-- =================================
+         SIMULATED ACTIVITY
+    ================================== -->
 
-    text-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.6);
+    <section class="activity">
 
-    margin-bottom: 8px;
-}
+        <div class="section-heading">
 
-.brand p {
-    color: #000000;
+            <h2>
+                Recent Activity
+            </h2>
 
-    font-size: 14px;
-    font-weight: 800;
-}
+            <span>
+                SIMULATED ACTIVITY
+            </span>
 
+        </div>
 
-/* =================================
-   HERO
-================================= */
 
-.hero {
-    width: 100%;
+        <div class="activity-card">
 
-    text-align: center;
+            <div class="activity-status">
+                ✓
+            </div>
 
-    margin-bottom: 30px;
-}
+            <div class="activity-info">
 
-.hero-badge {
-    display: inline-block;
+                <strong id="activityNumber">
+                    075678***12
+                </strong>
 
-    padding: 7px 13px;
+                <div
+                    class="activity-amount"
+                    id="activityAmount">
 
-    margin-bottom: 14px;
+                    +KSh 28,750
 
-    border-radius: 20px;
+                </div>
 
-    background: #000000;
+                <small id="activityTime">
+                    9 mins ago
+                </small>
 
-    color: #FFFFFF;
+            </div>
 
-    font-size: 10px;
+            <div class="activity-result">
+                Limit Boosted
+            </div>
 
-    font-weight: 900;
+        </div>
 
-    letter-spacing: 0.7px;
-}
+    </section>
 
-.hero h2 {
-    color: #FFFFFF;
 
-    font-size: 31px;
+    <!-- =================================
+         FINAL CTA
+    ================================== -->
 
-    line-height: 1.2;
+    <section class="final-cta">
 
-    font-weight: 900;
+        <h2>
+            Ready to Boost Your Limit?
+        </h2>
 
-    -webkit-text-stroke: 0;
+        <p>
+            Takes only a few minutes.
+        </p>
 
-    text-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.6);
+        <button
+            class="primary-btn"
+            onclick="startIncrease()">
 
-    margin-bottom: 13px;
-}
+            START NOW
 
-.hero p {
-    width: 100%;
+        </button>
 
-    max-width: 650px;
+    </section>
 
-    margin: 0 auto 20px;
 
-    color: #000000;
+    <!-- =================================
+         FOOTER
+    ================================== -->
 
-    font-size: 15px;
+    <footer>
 
-    line-height: 1.6;
+        <strong>FULIZAA</strong>
 
-    font-weight: 700;
-}
+        <p>
+            Independent limit-management service
+        </p>
 
+        <small>
+            © 2026 FULIZAA • All Rights Reserved
+        </small>
 
-/* =================================
-   PRIMARY BUTTON
-================================= */
+    </footer>
 
-.primary-btn {
-    width: 100%;
+</div>
 
-    max-width: 430px;
 
-    min-height: 55px;
+<script>
 
-    padding: 15px 18px;
+/* =========================================
+   START
+========================================= */
 
-    border: none;
+function startIncrease() {
 
-    border-radius: 14px;
+    window.location.href =
+        "registration.html";
 
-    background: #FFFFFF;
-
-    color: #000000;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 17px;
-
-    font-weight: 900;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 6px 0 rgba(0, 0, 0, 0.35);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.primary-btn:hover {
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 8px 0 rgba(0, 0, 0, 0.35);
-}
-
-.primary-btn:active {
-    transform: translateY(3px);
-
-    box-shadow:
-        0 2px 0 rgba(0, 0, 0, 0.35);
-}
-
-.security-line {
-    margin-top: 13px;
-
-    color: #000000;
-
-    font-size: 12px;
-
-    font-weight: 800;
 }
 
 
-/* =================================
-   ACTIVITY
-================================= */
-
-.activity {
-    width: 100%;
-
-    margin-top: 30px;
-}
-
-.section-heading {
-    text-align: center;
-
-    margin-bottom: 14px;
-}
-
-.section-heading h2 {
-    color: #FFFFFF;
-
-    font-size: 24px;
-
-    font-weight: 900;
-
-    -webkit-text-stroke: 0;
-
-    text-shadow:
-        0 3px 8px rgba(0, 0, 0, 0.5);
-
-    margin-bottom: 8px;
-}
-
-.section-heading span {
-    display: inline-block;
-
-    padding: 5px 11px;
-
-    border-radius: 20px;
-
-    background: #000000;
-
-    color: #FFFFFF;
-
-    font-size: 10px;
-
-    font-weight: 900;
-}
-
-.activity-card {
-    width: 100%;
-
-    min-height: 105px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 15px;
-
-    border-radius: 17px;
-
-    background: #FFFFFF;
-
-    border: none;
-
-    box-shadow:
-        0 8px 0 rgba(0, 0, 0, 0.35);
-}
-
-.activity-status {
-    flex-shrink: 0;
-
-    width: 45px;
-    height: 45px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #50C878;
-
-    border: none;
-
-    color: #FFFFFF;
-
-    font-size: 20px;
-
-    font-weight: 900;
-}
-
-.activity-info {
-    flex: 1;
-
-    min-width: 0;
-}
-
-.activity-info strong {
-    display: block;
-
-    color: #000000;
-
-    font-size: 14px;
-
-    margin-bottom: 4px;
-}
-
-.activity-amount {
-    color: #50C878;
-
-    font-size: 20px;
-
-    font-weight: 900;
-
-    transition: opacity 1s ease;
-}
-
-.activity-info small {
-    color: #000000;
-
-    font-size: 10px;
-
-    font-weight: 700;
-
-    transition: opacity 1s ease;
-}
-
-.activity-result {
-    flex-shrink: 0;
-
-    padding: 6px 8px;
-
-    border-radius: 8px;
-
-    background: #50C878;
-
-    border: none;
-
-    color: #FFFFFF;
-
-    font-size: 9px;
-
-    font-weight: 900;
-
-    text-align: center;
-}
-
-
-/* =================================
-   FINAL CTA
-================================= */
-
-.final-cta {
-    width: 100%;
-
-    margin-top: 35px;
-
-    padding: 24px 16px;
-
-    text-align: center;
-
-    border-radius: 20px;
-
-    background: #FFFFFF;
-
-    border: none;
-
-    box-shadow:
-        0 9px 0 rgba(0, 0, 0, 0.35);
-}
-
-.final-cta h2 {
-    color: #FFFFFF;
-
-    background: #50C878;
-
-    padding: 5px 8px;
-
-    border-radius: 8px;
-
-    font-size: 23px;
-
-    font-weight: 900;
-
-    margin-bottom: 7px;
-}
-
-.final-cta p {
-    color: #000000;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    margin-bottom: 5px;
-}
-
-.final-cta .primary-btn {
-    margin-top: 12px;
-}
-
-
-/* =================================
-   FOOTER
-================================= */
-
-footer {
-    width: 100%;
-
-    text-align: center;
-
-    margin-top: 28px;
-
-    color: #000000;
-}
-
-footer strong {
-    display: block;
-
-    color: #FFFFFF;
-
-    font-size: 17px;
-
-    font-weight: 900;
-
-    -webkit-text-stroke: 0;
-
-    text-shadow:
-        0 3px 7px rgba(0, 0, 0, 0.5);
-
-    margin-bottom: 5px;
-}
-
-footer p {
-    font-size: 12px;
-
-    font-weight: 700;
-
-    margin-bottom: 7px;
-}
-
-footer small {
-    font-size: 10px;
-
-    font-weight: 700;
-}
-
-
-/* =================================
-   MOBILE
-================================= */
-
-@media (max-width: 480px) {
-
-    .page {
-        padding: 16px 13px 32px;
+/* =========================================
+   SIMULATED ACTIVITY
+========================================= */
+
+const activities = [
+
+    {
+        number: "075678***12",
+        amount: "+KSh 28,750",
+        time: "9 mins ago"
+    },
+
+    {
+        number: "071234***45",
+        amount: "+KSh 15,000",
+        time: "12 mins ago"
+    },
+
+    {
+        number: "079876***21",
+        amount: "+KSh 35,000",
+        time: "16 mins ago"
+    },
+
+    {
+        number: "072345***67",
+        amount: "+KSh 20,000",
+        time: "21 mins ago"
+    },
+
+    {
+        number: "070123***89",
+        amount: "+KSh 42,500",
+        time: "25 mins ago"
     }
 
-    .brand h1 {
-        font-size: 30px;
-    }
+];
 
-    .hero h2 {
-        font-size: 27px;
-    }
+let activityIndex = 0;
 
-    .hero p {
-        font-size: 14px;
-    }
 
-    .primary-btn {
-        min-height: 53px;
+/* =========================================
+   ACTIVITY TRANSITION
+========================================= */
 
-        font-size: 16px;
-    }
+function changeActivity() {
 
-    .activity-card {
-        padding: 12px;
-    }
+    const number =
+        document.getElementById("activityNumber");
 
-    .activity-amount {
-        font-size: 18px;
-    }
+    const amount =
+        document.getElementById("activityAmount");
 
-    .activity-result {
-        font-size: 8px;
-    }
+    const time =
+        document.getElementById("activityTime");
+
+
+    number.style.opacity = "0";
+    amount.style.opacity = "0";
+    time.style.opacity = "0";
+
+
+    setTimeout(function () {
+
+        activityIndex++;
+
+        if (
+            activityIndex >=
+            activities.length
+        ) {
+            activityIndex = 0;
+        }
+
+
+        number.textContent =
+            activities[activityIndex].number;
+
+        amount.textContent =
+            activities[activityIndex].amount;
+
+        time.textContent =
+            activities[activityIndex].time;
+
+
+        number.style.opacity = "1";
+        amount.style.opacity = "1";
+        time.style.opacity = "1";
+
+    }, 1000);
+
 }
 
 
-/* =================================
-   SMALL PHONES
-================================= */
+/*
+   Change simulated activity
+   every 6 seconds
+*/
 
-@media (max-width: 360px) {
+setInterval(
+    changeActivity,
+    6000
+);
 
-    .page {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+</script>
 
-    .logo-mark {
-        width: 55px;
-        height: 55px;
-
-        font-size: 29px;
-    }
-
-    .brand h1 {
-        font-size: 26px;
-    }
-
-    .hero h2 {
-        font-size: 23px;
-    }
-
-    .activity-result {
-        display: none;
-    }
-}
+</body>
+</html>
