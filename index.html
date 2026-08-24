@@ -20,23 +20,29 @@
     </header>
 
 
-    <!-- MAIN CARD -->
-    <main class="card">
+    <!-- MAIN HEADING -->
+    <section class="hero">
 
-        <div class="main-heading">
-            <h2>INCREASE YOUR FULIZA TODAY</h2>
-        </div>
+        <h2>
+            INCREASE YOUR FULIZA TODAY
+        </h2>
 
-        <p class="description">
+        <p>
             Increase your existing amount with FULIZBOOST,
-            with available funding of up to KSh 150,000.
+            with funding available up to KSh 150,000.
         </p>
 
+    </section>
 
-        <!-- BOOST BOX -->
+
+    <!-- MAIN INFORMATION -->
+    <section class="card">
+
         <div class="boost-box">
 
-            <h3>BOOST AVAILABLE UP TO</h3>
+            <h3>
+                BOOST AVAILABLE UP TO
+            </h3>
 
             <div class="amount">
                 KSh 150,000
@@ -56,19 +62,24 @@
                 type="button"
                 class="increase-btn"
                 onclick="increaseNow()">
+
                 INCREASE NOW
+
             </button>
+
 
             <button
                 type="button"
                 class="later-btn"
                 onclick="increaseLater()">
+
                 INCREASE LATER
+
             </button>
 
         </div>
 
-    </main>
+    </section>
 
 
     <!-- RECENT ACTIVITY -->
@@ -76,7 +87,9 @@
 
         <div class="live-title">
 
-            <h3>RECENT ACTIVITY</h3>
+            <h3>
+                RECENT ACTIVITY
+            </h3>
 
             <span class="simulation-note">
                 SIMULATED ACTIVITY
@@ -90,6 +103,7 @@
             <div class="activity-icon">
                 ✓
             </div>
+
 
             <div class="activity-content">
 
@@ -163,7 +177,7 @@ let activityIndex = 0;
 
 
 /* =========================================
-   SLOW ACTIVITY TRANSITION
+   SLOW ACTIVITY CHANGE
 ========================================= */
 
 function showNextActivity() {
@@ -171,12 +185,13 @@ function showNextActivity() {
     const liveText =
         document.getElementById("liveText");
 
+
     /* Fade out */
 
     liveText.style.opacity = "0";
 
 
-    /* Wait before changing */
+    /* Wait */
 
     setTimeout(function () {
 
@@ -186,20 +201,25 @@ function showNextActivity() {
             activityIndex = 0;
         }
 
+
         liveText.textContent =
             activities[activityIndex];
+
 
         /* Fade in */
 
         liveText.style.opacity = "1";
 
-    }, 1400);
+    }, 1800);
+
 }
 
 
-/* Change message slowly */
+/*
+   New activity every 10 seconds
+*/
 
-setInterval(showNextActivity, 8000);
+setInterval(showNextActivity, 10000);
 
 
 /* =========================================
