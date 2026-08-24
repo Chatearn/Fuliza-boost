@@ -1,121 +1,186 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #00A651;
-    color: #000000;
     min-height: 100vh;
+
+    background: #006400;
+
+    color: #000000;
+
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/* =================================
+   MAIN PAGE
+================================= */
 
 .page {
+    position: relative;
+
     width: 100%;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 20px 12px 30px;
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    padding: 20px 18px 40px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(0, 100, 0, 0.04) 30%,
+            transparent 65%
+        ),
+        #006400;
 }
 
-/* ================================
+
+/* =================================
    BRAND
-================================ */
+================================= */
 
 .brand {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
     text-align: center;
-    margin-bottom: 25px;
+
+    margin-top: 8px;
+    margin-bottom: 28px;
 }
 
 .brand h1 {
     color: #FFFFFF;
-    font-size: 42px;
+
+    font-size: 34px;
+
+    line-height: 1.2;
+
     font-weight: 900;
-    line-height: 1;
+
     letter-spacing: 1px;
 
     -webkit-text-stroke: 2px #000000;
 
     text-shadow:
-        2px 2px 0 #000000,
-        -2px -2px 0 #000000,
-        2px -2px 0 #000000,
-        -2px 2px 0 #000000;
+        0 4px 12px rgba(0, 0, 0, 0.65);
+
+    margin-bottom: 10px;
 }
 
 .brand p {
     color: #000000;
+
     font-size: 14px;
-    font-weight: 900;
-    margin-top: 9px;
+
+    line-height: 1.5;
+
+    font-weight: 800;
 }
 
-/* ================================
+
+/* =================================
    HERO
-================================ */
+================================= */
 
 .hero {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
     text-align: center;
-    margin-bottom: 22px;
+
+    margin-bottom: 24px;
 }
 
 .hero h2 {
     color: #FFFFFF;
 
-    font-size: 31px;
-    line-height: 1.15;
+    font-size: 30px;
+
+    line-height: 1.2;
+
     font-weight: 900;
 
     -webkit-text-stroke: 2px #000000;
 
     text-shadow:
-        2px 2px 0 #000000,
-        -2px -2px 0 #000000,
-        2px -2px 0 #000000,
-        -2px 2px 0 #000000;
+        0 4px 12px rgba(0, 0, 0, 0.65);
 
-    margin-bottom: 14px;
+    margin-bottom: 13px;
 }
 
 .hero p {
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 0 auto;
+
     color: #000000;
 
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 15px;
+
+    line-height: 1.6;
+
     font-weight: 700;
 }
 
-/* ================================
+
+/* =================================
    MAIN CARD
-================================ */
+================================= */
 
 .card {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    padding: 24px 20px;
+
+    border-radius: 22px;
+
     background: #FFFFFF;
 
     border: 3px solid #000000;
-    border-radius: 18px;
 
-    padding: 20px 16px;
-
-    box-shadow: 0 6px 0 #000000;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.55);
 }
 
-/* ================================
+
+/* =================================
    BOOST BOX
-================================ */
+================================= */
 
 .boost-box {
-    background: #00A651;
+    width: 100%;
+
+    padding: 20px 15px;
+
+    border-radius: 17px;
+
+    background: #006400;
 
     border: 3px solid #000000;
-    border-radius: 15px;
-
-    padding: 20px 12px;
 
     text-align: center;
 
@@ -125,8 +190,10 @@ body {
 .boost-box h3 {
     color: #FFFFFF;
 
-    font-size: 21px;
-    line-height: 1.2;
+    font-size: 20px;
+
+    line-height: 1.3;
+
     font-weight: 900;
 
     -webkit-text-stroke: 1.5px #000000;
@@ -138,29 +205,33 @@ body {
     color: #FFFFFF;
 
     font-size: 34px;
+
     line-height: 1.1;
+
     font-weight: 900;
 
     -webkit-text-stroke: 2px #000000;
 
     text-shadow:
-        2px 2px 0 #000000,
-        -1px -1px 0 #000000;
+        0 3px 8px rgba(0, 0, 0, 0.6);
 }
 
 .boost-box p {
     color: #000000;
 
     font-size: 14px;
-    line-height: 1.4;
+
+    line-height: 1.5;
+
     font-weight: 800;
 
-    margin-top: 9px;
+    margin-top: 10px;
 }
 
-/* ================================
+
+/* =================================
    BUTTON
-================================ */
+================================= */
 
 .buttons {
     width: 100%;
@@ -168,58 +239,82 @@ body {
 
 button {
     width: 100%;
-    min-height: 57px;
 
-    padding: 14px 16px;
+    min-height: 54px;
+
+    padding: 15px;
 
     border: 3px solid #000000;
+
     border-radius: 13px;
+
+    background: #006400;
+
+    color: #FFFFFF;
 
     font-family: Arial, Helvetica, sans-serif;
 
-    font-size: 18px;
+    font-size: 17px;
+
     font-weight: 900;
 
     cursor: pointer;
 
+    -webkit-text-stroke: 0.4px #000000;
+
+    box-shadow:
+        0 6px 0 #000000;
+
     transition:
-        transform 0.15s ease,
-        box-shadow 0.15s ease;
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.increase-btn {
-    background: #00A651;
-    color: #FFFFFF;
+button:hover {
+    transform: translateY(-2px);
 
-    -webkit-text-stroke: 0.5px #000000;
-
-    box-shadow: 0 4px 0 #000000;
+    box-shadow:
+        0 8px 0 #000000;
 }
 
 button:active {
     transform: translateY(3px);
-    box-shadow: 0 1px 0 #000000;
+
+    box-shadow:
+        0 2px 0 #000000;
 }
 
-/* ================================
-   RECENT ACTIVITY
-================================ */
+
+/* =================================
+   LIVE ACTIVITY
+================================= */
 
 .live-section {
-    margin-top: 30px;
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    margin-top: 27px;
 }
 
 .live-title {
+    width: 100%;
+
     text-align: center;
-    margin-bottom: 13px;
+
+    margin-bottom: 14px;
 }
 
 .live-title h3 {
     color: #FFFFFF;
 
     font-size: 23px;
-    font-weight: 900;
+
     line-height: 1.2;
+
+    font-weight: 900;
 
     -webkit-text-stroke: 1.5px #000000;
 
@@ -229,65 +324,90 @@ button:active {
 .simulation-note {
     display: inline-block;
 
-    background: #000000;
-    color: #FFFFFF;
-
-    border: 2px solid #000000;
-    border-radius: 20px;
-
     padding: 5px 12px;
 
+    border-radius: 20px;
+
+    background: #000000;
+
+    color: #FFFFFF;
+
     font-size: 10px;
+
     font-weight: 900;
+
+    letter-spacing: 0.5px;
 }
 
-/* ================================
-   ACTIVITY MESSAGE
-================================ */
+
+/* =================================
+   ACTIVITY WINDOW
+================================= */
 
 .live-message {
     width: 100%;
+
     min-height: 94px;
 
     display: flex;
+
     align-items: center;
 
     gap: 13px;
 
+    padding: 15px;
+
+    border-radius: 17px;
+
     background: #FFFFFF;
 
     border: 3px solid #000000;
-    border-radius: 16px;
 
-    padding: 15px;
-
-    box-shadow: 0 4px 0 #000000;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
 }
+
+
+/* =================================
+   ACTIVITY ICON
+================================= */
 
 .activity-icon {
     flex-shrink: 0;
 
-    width: 44px;
-    height: 44px;
+    width: 45px;
+
+    height: 45px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
-    background: #00A651;
-    color: #FFFFFF;
-
-    border: 3px solid #000000;
     border-radius: 50%;
 
+    background: #006400;
+
+    border: 3px solid #000000;
+
+    color: #FFFFFF;
+
     font-size: 22px;
+
     font-weight: 900;
 
     -webkit-text-stroke: 1px #000000;
 }
 
+
+/* =================================
+   ACTIVITY TEXT
+================================= */
+
 .activity-content {
     flex: 1;
+
     min-width: 0;
 }
 
@@ -295,41 +415,61 @@ button:active {
     color: #000000;
 
     font-size: 14px;
+
     line-height: 1.5;
+
     font-weight: 800;
 
     opacity: 1;
 
-    transition: opacity 1.8s ease-in-out;
+    transition:
+        opacity 2s ease-in-out;
 }
 
-/* ================================
+
+/* =================================
    FOOTER
-================================ */
+================================= */
 
 .footer {
-    color: #000000;
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
 
     text-align: center;
 
     margin-top: 25px;
 
+    color: #000000;
+
     font-size: 12px;
+
     font-weight: 800;
 }
 
-/* ================================
-   MOBILE
-================================ */
 
-@media (max-width: 380px) {
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 480px) {
 
     .page {
-        padding: 16px 10px 25px;
+        padding: 16px 14px 35px;
+    }
+
+    .brand {
+        margin-bottom: 24px;
     }
 
     .brand h1 {
-        font-size: 35px;
+        font-size: 28px;
+    }
+
+    .brand p {
+        font-size: 13px;
     }
 
     .hero h2 {
@@ -340,8 +480,18 @@ button:active {
         font-size: 14px;
     }
 
+    .card {
+        padding: 20px 16px;
+
+        border-radius: 19px;
+    }
+
+    .boost-box {
+        padding: 19px 12px;
+    }
+
     .boost-box h3 {
-        font-size: 19px;
+        font-size: 18px;
     }
 
     .boost-box .amount {
@@ -349,11 +499,17 @@ button:active {
     }
 
     button {
-        font-size: 17px;
+        min-height: 52px;
+
+        font-size: 16px;
     }
 
     .live-title h3 {
-        font-size: 20px;
+        font-size: 21px;
+    }
+
+    .live-message {
+        padding: 13px;
     }
 
     #liveText {
@@ -361,20 +517,35 @@ button:active {
     }
 
     .activity-icon {
-        width: 40px;
-        height: 40px;
+        width: 41px;
+        height: 41px;
+
         font-size: 19px;
     }
 }
 
-@media (max-width: 320px) {
+
+/* =================================
+   SMALL PHONES
+================================= */
+
+@media (max-width: 360px) {
+
+    .page {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
 
     .brand h1 {
-        font-size: 31px;
+        font-size: 25px;
     }
 
     .hero h2 {
         font-size: 23px;
+    }
+
+    .card {
+        padding: 18px 13px;
     }
 
     .boost-box .amount {
@@ -382,7 +553,6 @@ button:active {
     }
 
     .live-message {
-        padding: 12px;
         gap: 9px;
     }
 
