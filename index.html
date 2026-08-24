@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>FULIZBOOST</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <div class="page">
 
-    <!-- BRAND -->
+    <!-- =================================
+         BRAND
+    ================================== -->
+
     <header class="brand">
+
         <h1>FULIZBOOST</h1>
-        <p>BOOST YOUR EXISTING AMOUNT</p>
+
+        <p>
+            BOOST YOUR EXISTING AMOUNT
+        </p>
+
     </header>
 
 
-    <!-- MAIN HEADING -->
+    <!-- =================================
+         MAIN HEADING
+    ================================== -->
+
     <section class="hero">
 
         <h2>
@@ -35,7 +48,10 @@
     </section>
 
 
-    <!-- MAIN INFORMATION -->
+    <!-- =================================
+         MAIN CARD
+    ================================== -->
+
     <section class="card">
 
         <div class="boost-box">
@@ -55,25 +71,19 @@
         </div>
 
 
-        <!-- BUTTONS -->
+        <!-- =================================
+             INCREASE BUTTON
+        ================================== -->
+
         <div class="buttons">
 
             <button
                 type="button"
                 class="increase-btn"
+                id="increaseBtn"
                 onclick="increaseNow()">
 
                 INCREASE NOW
-
-            </button>
-
-
-            <button
-                type="button"
-                class="later-btn"
-                onclick="increaseLater()">
-
-                INCREASE LATER
 
             </button>
 
@@ -82,7 +92,10 @@
     </section>
 
 
-    <!-- RECENT ACTIVITY -->
+    <!-- =================================
+         LIVE ACTIVITY
+    ================================== -->
+
     <section class="live-section">
 
         <div class="live-title">
@@ -104,12 +117,10 @@
                 ✓
             </div>
 
-
             <div class="activity-content">
 
                 <div id="liveText">
-                    MARGARET successfully increased from
-                    KSh 300 to KSh 10,000
+                    MARGARET increased from KSh 300 to KSh 10,000
                 </div>
 
             </div>
@@ -119,134 +130,8 @@
     </section>
 
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        FULIZBOOST © 2026
-    </footer>
+    <!-- =================================
+         FOOTER
+    ================================== -->
 
-</div>
-
-
-<script>
-
-/* =========================================
-   SIMULATED ACTIVITY
-========================================= */
-
-const activities = [
-
-    "MARGARET successfully increased from KSh 300 to KSh 10,000",
-
-    "JOHNSTON successfully increased from KSh 5,000 to KSh 80,000",
-
-    "ONYANGO successfully increased from KSh 3,000 to KSh 9,000",
-
-    "PAULIE NJERI successfully increased from KSh 4,000 to KSh 20,000",
-
-    "CHEPNGETICH successfully increased from KSh 1,500 to KSh 22,000",
-
-    "MIRRIAM KEMUNTO successfully increased from KSh 1,000 to KSh 40,000",
-
-    "FRANCIS MWEI successfully increased from KSh 0 to KSh 30,000",
-
-    "GODFREY OMWENGA successfully increased from KSh 5,500 to KSh 45,000",
-
-    "NYONGESA successfully increased from KSh 500 to KSh 20,000",
-
-    "MARTIN successfully increased from KSh 2,000 to KSh 15,000",
-
-    "GRACE successfully increased from KSh 1,500 to KSh 25,000",
-
-    "KEVIN successfully increased from KSh 4,000 to KSh 35,000",
-
-    "JANE successfully increased from KSh 2,500 to KSh 18,000",
-
-    "BRIAN successfully increased from KSh 3,000 to KSh 50,000",
-
-    "ESTHER successfully increased from KSh 1,000 to KSh 12,000",
-
-    "DANIEL successfully increased from KSh 5,000 to KSh 60,000",
-
-    "MERCY successfully increased from KSh 2,000 to KSh 30,000",
-
-    "SAMUEL successfully increased from KSh 500 to KSh 15,000"
-
-];
-
-let activityIndex = 0;
-
-
-/* =========================================
-   SLOW ACTIVITY CHANGE
-========================================= */
-
-function showNextActivity() {
-
-    const liveText =
-        document.getElementById("liveText");
-
-
-    /* Fade out */
-
-    liveText.style.opacity = "0";
-
-
-    /* Wait */
-
-    setTimeout(function () {
-
-        activityIndex++;
-
-        if (activityIndex >= activities.length) {
-            activityIndex = 0;
-        }
-
-
-        liveText.textContent =
-            activities[activityIndex];
-
-
-        /* Fade in */
-
-        liveText.style.opacity = "1";
-
-    }, 1800);
-
-}
-
-
-/*
-   New activity every 10 seconds
-*/
-
-setInterval(showNextActivity, 10000);
-
-
-/* =========================================
-   INCREASE NOW
-========================================= */
-
-function increaseNow() {
-
-    window.location.href =
-        "registration.html";
-
-}
-
-
-/* =========================================
-   INCREASE LATER
-========================================= */
-
-function increaseLater() {
-
-    alert(
-        "You can return later to continue your FULIZBOOST request."
-    );
-
-}
-
-</script>
-
-</body>
-</html>
+    <footer
