@@ -6,201 +6,126 @@
 
     <title>FULIZBOOST</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <link rel="stylesheet" href="style.css">
+</head>
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #00A651;
-            color: #000000;
-            min-height: 100vh;
-        }
+<body>
 
-        .page {
-            width: 100%;
-            max-width: 520px;
-            margin: auto;
-            padding: 18px 12px 30px;
-        }
+<div class="page">
 
-        /* BRAND */
-        .brand {
-            text-align: center;
-            margin-bottom: 18px;
-        }
+    <div class="brand">
+        <h1>FULIZBOOST</h1>
+        <p>BOOST YOUR EXISTING AMOUNT</p>
+    </div>
 
-        .brand h1 {
-            font-size: 38px;
-            font-weight: 900;
-            color: #FFFFFF;
-            -webkit-text-stroke: 2px #000000;
-            text-shadow:
-                2px 2px 0 #000000,
-                -2px -2px 0 #000000,
-                2px -2px 0 #000000,
-                -2px 2px 0 #000000;
-            letter-spacing: 1px;
-        }
+    <div class="card">
 
-        .brand p {
-            font-size: 15px;
-            font-weight: bold;
-            color: #000000;
-            margin-top: 5px;
-        }
+        <div class="main-heading">
+            <h2>INCREASE YOUR FULIZA TODAY</h2>
+        </div>
 
-        /* MAIN CARD */
-        .card {
-            background: #FFFFFF;
-            border: 3px solid #000000;
-            border-radius: 18px;
-            padding: 24px 18px;
-            box-shadow: 0 6px 0 #000000;
-        }
+        <p class="description">
+            Increase your existing amount with FULIZBOOST,
+            with funding available up to KSh 150,000.
+        </p>
 
-        .main-heading {
-            text-align: center;
-            margin-bottom: 14px;
-        }
+        <div class="boost-box">
+            <h3>BOOST AVAILABLE UP TO</h3>
 
-        .main-heading h2 {
-            font-size: 30px;
-            line-height: 1.1;
-            font-weight: 900;
-            color: #FFFFFF;
-            -webkit-text-stroke: 1.5px #000000;
-            text-shadow:
-                2px 2px 0 #000000,
-                -1px -1px 0 #000000,
-                1px -1px 0 #000000,
-                -1px 1px 0 #000000;
-        }
+            <div class="amount">
+                KSh 150,000
+            </div>
 
-        .description {
-            text-align: center;
-            font-size: 16px;
-            line-height: 1.5;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
+            <p>
+                Start your increase request today.
+            </p>
+        </div>
 
-        /* BOOST INFO */
-        .boost-box {
-            background: #00A651;
-            border: 3px solid #000000;
-            border-radius: 14px;
-            padding: 18px 12px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        <div class="buttons">
 
-        .boost-box h3 {
-            color: #FFFFFF;
-            font-size: 22px;
-            font-weight: 900;
-            -webkit-text-stroke: 1px #000000;
-            margin-bottom: 8px;
-        }
+            <button
+                class="increase-btn"
+                onclick="increaseNow()">
+                INCREASE NOW
+            </button>
 
-        .boost-box .amount {
-            font-size: 32px;
-            font-weight: 900;
-            color: #FFFFFF;
-            -webkit-text-stroke: 1.5px #000000;
-        }
+            <button
+                class="later-btn"
+                onclick="increaseLater()">
+                INCREASE LATER
+            </button>
 
-        .boost-box p {
-            margin-top: 6px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #000000;
-        }
+        </div>
 
-        /* BUTTONS */
-        .buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-top: 10px;
-        }
+    </div>
 
-        button {
-            width: 100%;
-            padding: 16px;
-            border-radius: 12px;
-            border: 3px solid #000000;
-            font-size: 19px;
-            font-weight: 900;
-            cursor: pointer;
-            transition: 0.15s ease;
-        }
+    <div class="live-section">
 
-        .increase-btn {
-            background: #00A651;
-            color: #FFFFFF;
-            text-shadow: 1px 1px 0 #000000;
-        }
+        <div class="live-title">
+            <h3>LIVE ACTIVITY</h3>
+        </div>
 
-        .later-btn {
-            background: #FFFFFF;
-            color: #000000;
-        }
+        <div class="live-message">
 
-        button:active {
-            transform: translateY(2px);
-            box-shadow: none;
-        }
+            <div>
 
-        /* LIVE MESSAGES */
-        .live-section {
-            margin-top: 22px;
-        }
+                <div class="live-label">
+                    SIMULATED
+                </div>
 
-        .live-title {
-            text-align: center;
-            margin-bottom: 10px;
-        }
+                <div id="liveText">
+                    New FULIZBOOST request received.
+                </div>
 
-        .live-title h3 {
-            color: #FFFFFF;
-            font-size: 21px;
-            font-weight: 900;
-            -webkit-text-stroke: 1px #000000;
-        }
+            </div>
 
-        .live-message {
-            min-height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: #FFFFFF;
-            border: 3px solid #000000;
-            border-radius: 14px;
-            padding: 12px;
-            font-size: 14px;
-            font-weight: bold;
-            line-height: 1.4;
-        }
+        </div>
 
-        .live-label {
-            display: inline-block;
-            background: #00A651;
-            color: #FFFFFF;
-            border: 2px solid #000000;
-            border-radius: 20px;
-            padding: 4px 10px;
-            font-size: 11px;
-            font-weight: 900;
-            margin-bottom: 7px;
-            text-shadow: 1px 1px 0 #000000;
-        }
+    </div>
 
-        /* FOOTER */
-        .footer {
-            text-align: center;
-            margin-top: 22px
+    <div class="footer">
+        FULIZBOOST © 2026
+    </div>
+
+</div>
+
+<script>
+
+const messages = [
+    "New FULIZBOOST request received.",
+    "A customer has started an increase request.",
+    "A FULIZBOOST request is being processed.",
+    "A customer has completed the increase process.",
+    "New increase request received.",
+    "A customer is checking their available boost."
+];
+
+let messageIndex = 0;
+
+function showNextMessage() {
+
+    const liveText = document.getElementById("liveText");
+
+    messageIndex++;
+
+    if (messageIndex >= messages.length) {
+        messageIndex = 0;
+    }
+
+    liveText.textContent = messages[messageIndex];
+}
+
+setInterval(showNextMessage, 4000);
+
+function increaseNow() {
+    window.location.href = "registration.html";
+}
+
+function increaseLater() {
+    alert("You can return later to continue your FULIZBOOST request.");
+}
+
+</script>
+
+</body>
+</html>
