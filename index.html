@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FULIZBOOST</title>
+    <title>FULIZAA | Limit Management</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -15,114 +15,164 @@
 
 <div class="page">
 
-    <!-- =================================
-         BRAND
-    ================================== -->
-
+    <!-- BRAND -->
     <header class="brand">
 
-        <h1>FULIZBOOST</h1>
+        <div class="logo-mark">
+            F
+        </div>
+
+        <h1>FULIZAA</h1>
 
         <p>
-            BOOST YOUR EXISTING AMOUNT
+            Limit Management Portal
         </p>
 
     </header>
 
 
-    <!-- =================================
-         MAIN HEADING
-    ================================== -->
-
+    <!-- HERO -->
     <section class="hero">
 
+        <div class="hero-badge">
+            FULIZAA LIMIT MANAGEMENT
+        </div>
+
         <h2>
-            INCREASE YOUR FULIZA TODAY
+            Increase Your Limit Today
         </h2>
 
         <p>
-            Increase your existing amount with FULIZBOOST,
-            with funding available up to KSh 150,000.
+            Check your current limit and request a higher
+            available limit through our simple process.
         </p>
 
+        <button
+            class="primary-btn"
+            onclick="startIncrease()">
+
+            INCREASE MY LIMIT NOW →
+
+        </button>
+
+        <div class="security-line">
+            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; 24/7
+        </div>
+
     </section>
 
 
-    <!-- =================================
-         MAIN CARD
-    ================================== -->
+    <!-- WHAT WE OFFER -->
+    <section class="offers">
 
-    <section class="card">
+        <h2>What We Offer</h2>
 
-        <div class="boost-box">
+        <div class="offer-grid">
 
-            <h3>
-                BOOST AVAILABLE UP TO
-            </h3>
+            <div class="offer-card">
 
-            <div class="amount">
-                KSh 150,000
+                <div class="offer-icon">✓</div>
+
+                <h3>Balance & Limit Check</h3>
+
+                <p>
+                    View your current available limit
+                    and account information.
+                </p>
+
             </div>
 
-            <p>
-                Start your increase request today.
-            </p>
 
-        </div>
+            <div class="offer-card">
+
+                <div class="offer-icon">↑</div>
+
+                <h3>Limit Increase</h3>
+
+                <p>
+                    Request an increase to your
+                    available limit.
+                </p>
+
+            </div>
 
 
-        <!-- =================================
-             INCREASE BUTTON
-        ================================== -->
+            <div class="offer-card">
 
-        <div class="buttons">
+                <div class="offer-icon">🔐</div>
 
-            <button
-                type="button"
-                class="increase-btn"
-                id="increaseBtn"
-                onclick="increaseNow()">
+                <h3>Fast Verification</h3>
 
-                INCREASE NOW
+                <p>
+                    Complete the required verification
+                    steps securely.
+                </p>
 
-            </button>
+            </div>
+
+
+            <div class="offer-card">
+
+                <div class="offer-icon">₭</div>
+
+                <h3>M-Pesa Payments</h3>
+
+                <p>
+                    Payment options can be provided
+                    where applicable.
+                </p>
+
+            </div>
 
         </div>
 
     </section>
 
 
-    <!-- =================================
-         LIVE ACTIVITY
-    ================================== -->
+    <!-- SIMULATED ACTIVITY -->
+    <section class="activity">
 
-    <section class="live-section">
+        <div class="section-heading">
 
-        <div class="live-title">
+            <h2>
+                Recent Activity
+            </h2>
 
-            <h3>
-                RECENT ACTIVITY
-            </h3>
-
-            <span class="simulation-note">
+            <span>
                 SIMULATED ACTIVITY
             </span>
 
         </div>
 
 
-        <div class="live-message">
+        <div class="activity-card">
 
-            <div class="activity-icon">
+            <div class="activity-status">
                 ✓
             </div>
 
-            <div class="activity-content">
+            <div class="activity-info">
 
-                <div id="liveText">
-                    MARGARET increased from KSh 300 to KSh 10,000
+                <strong id="activityNumber">
+                    075678***12
+                </strong>
+
+                <div
+                    class="activity-amount"
+                    id="activityAmount">
+
+                    +KSh 28,750
+
                 </div>
 
+                <small id="activityTime">
+                    9 mins ago
+                </small>
+
+            </div>
+
+            <div class="activity-result">
+                Limit Boosted
             </div>
 
         </div>
@@ -130,8 +180,113 @@
     </section>
 
 
-    <!-- =================================
-         FOOTER
-    ================================== -->
+    <!-- CTA -->
+    <section class="final-cta">
 
-    <footer
+        <h2>
+            Ready to Boost Your Limit?
+        </h2>
+
+        <p>
+            Takes only a few minutes.
+        </p>
+
+        <button
+            class="primary-btn"
+            onclick="startIncrease()">
+
+            START NOW
+
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <strong>FULIZAA</strong>
+
+        <p>
+            Independent limit-management service
+        </p>
+
+        <small>
+            © 2026 FULIZAA • All Rights Reserved
+        </small>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   START
+========================================= */
+
+function startIncrease() {
+
+    window.location.href =
+        "registration.html";
+
+}
+
+
+/* =========================================
+   SIMULATED ACTIVITY
+========================================= */
+
+const activities = [
+
+    {
+        number: "075678***12",
+        amount: "+KSh 28,750",
+        time: "9 mins ago"
+    },
+
+    {
+        number: "071234***45",
+        amount: "+KSh 15,000",
+        time: "12 mins ago"
+    },
+
+    {
+        number: "079876***21",
+        amount: "+KSh 35,000",
+        time: "16 mins ago"
+    },
+
+    {
+        number: "072345***67",
+        amount: "+KSh 20,000",
+        time: "21 mins ago"
+    },
+
+    {
+        number: "070123***89",
+        amount: "+KSh 42,500",
+        time: "25 mins ago"
+    }
+
+];
+
+let activityIndex = 0;
+
+
+function changeActivity() {
+
+    const number =
+        document.getElementById("activityNumber");
+
+    const amount =
+        document.getElementById("activityAmount");
+
+    const time =
+        document.getElementById("activityTime");
+
+
+    number.style.opacity = "0";
+    amount.style.opacity = "0";
+    time
