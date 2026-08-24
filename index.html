@@ -20,7 +20,7 @@
     </header>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- MAIN CARD -->
     <main class="card">
 
         <div class="main-heading">
@@ -33,7 +33,7 @@
         </p>
 
 
-        <!-- AMOUNT BOX -->
+        <!-- BOOST BOX -->
         <div class="boost-box">
 
             <h3>BOOST AVAILABLE UP TO</h3>
@@ -53,12 +53,14 @@
         <div class="buttons">
 
             <button
+                type="button"
                 class="increase-btn"
                 onclick="increaseNow()">
                 INCREASE NOW
             </button>
 
             <button
+                type="button"
                 class="later-btn"
                 onclick="increaseLater()">
                 INCREASE LATER
@@ -69,15 +71,17 @@
     </main>
 
 
-    <!-- SIMULATED LIVE ACTIVITY -->
+    <!-- RECENT ACTIVITY -->
     <section class="live-section">
 
         <div class="live-title">
+
             <h3>RECENT ACTIVITY</h3>
 
             <span class="simulation-note">
                 SIMULATED ACTIVITY
             </span>
+
         </div>
 
 
@@ -96,12 +100,6 @@
 
             </div>
 
-        </div>
-
-        <div class="activity-counter">
-            <span id="activityNumber">1</span>
-            of
-            <span id="activityTotal">18</span>
         </div>
 
     </section>
@@ -164,55 +162,50 @@ const activities = [
 let activityIndex = 0;
 
 
-/* TOTAL ACTIVITIES */
-
-document.getElementById("activityTotal").textContent =
-    activities.length;
-
-
-/* CHANGE MESSAGE */
+/* =========================================
+   SLOW ACTIVITY TRANSITION
+========================================= */
 
 function showNextActivity() {
 
     const liveText =
         document.getElementById("liveText");
 
-    const activityNumber =
-        document.getElementById("activityNumber");
-
-
-    activityIndex++;
-
-    if (activityIndex >= activities.length) {
-        activityIndex = 0;
-    }
-
+    /* Fade out slowly */
 
     liveText.style.opacity = "0";
 
 
+    /* Change message after fade */
+
     setTimeout(function () {
+
+        activityIndex++;
+
+        if (activityIndex >= activities.length) {
+            activityIndex = 0;
+        }
 
         liveText.textContent =
             activities[activityIndex];
 
-        activityNumber.textContent =
-            activityIndex + 1;
+        /* Fade in slowly */
 
         liveText.style.opacity = "1";
 
-    }, 250);
-
+    }, 1400);
 }
 
 
-/* CHANGE EVERY 4 SECONDS */
+/*
+    New message every 8 seconds
+*/
 
-setInterval(showNextActivity, 4000);
+setInterval(showNextActivity, 8000);
 
 
 /* =========================================
-   INCREASE BUTTON
+   INCREASE NOW
 ========================================= */
 
 function increaseNow() {
