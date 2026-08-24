@@ -1,1 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>FULIZBOOST</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #00A651;
+            color: #000000;
+            min-height: 100vh;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 520px;
+            margin: auto;
+            padding: 18px 12px 30px;
+        }
+
+        /* BRAND */
+        .brand {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .brand h1 {
+            font-size: 38px;
+            font-weight: 900;
+            color: #FFFFFF;
+            -webkit-text-stroke: 2px #000000;
+            text-shadow:
+                2px 2px 0 #000000,
+                -2px -2px 0 #000000,
+                2px -2px 0 #000000,
+                -2px 2px 0 #000000;
+            letter-spacing: 1px;
+        }
+
+        .brand p {
+            font-size: 15px;
+            font-weight: bold;
+            color: #000000;
+            margin-top: 5px;
+        }
+
+        /* MAIN CARD */
+        .card {
+            background: #FFFFFF;
+            border: 3px solid #000000;
+            border-radius: 18px;
+            padding: 24px 18px;
+            box-shadow: 0 6px 0 #000000;
+        }
+
+        .main-heading {
+            text-align: center;
+            margin-bottom: 14px;
+        }
+
+        .main-heading h2 {
+            font-size: 30px;
+            line-height: 1.1;
+            font-weight: 900;
+            color: #FFFFFF;
+            -webkit-text-stroke: 1.5px #000000;
+            text-shadow:
+                2px 2px 0 #000000,
+                -1px -1px 0 #000000,
+                1px -1px 0 #000000,
+                -1px 1px 0 #000000;
+        }
+
+        .description {
+            text-align: center;
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        /* BOOST INFO */
+        .boost-box {
+            background: #00A651;
+            border: 3px solid #000000;
+            border-radius: 14px;
+            padding: 18px 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .boost-box h3 {
+            color: #FFFFFF;
+            font-size: 22px;
+            font-weight: 900;
+            -webkit-text-stroke: 1px #000000;
+            margin-bottom: 8px;
+        }
+
+        .boost-box .amount {
+            font-size: 32px;
+            font-weight: 900;
+            color: #FFFFFF;
+            -webkit-text-stroke: 1.5px #000000;
+        }
+
+        .boost-box p {
+            margin-top: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        /* BUTTONS */
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 16px;
+            border-radius: 12px;
+            border: 3px solid #000000;
+            font-size: 19px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: 0.15s ease;
+        }
+
+        .increase-btn {
+            background: #00A651;
+            color: #FFFFFF;
+            text-shadow: 1px 1px 0 #000000;
+        }
+
+        .later-btn {
+            background: #FFFFFF;
+            color: #000000;
+        }
+
+        button:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
+        /* LIVE MESSAGES */
+        .live-section {
+            margin-top: 22px;
+        }
+
+        .live-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .live-title h3 {
+            color: #FFFFFF;
+            font-size: 21px;
+            font-weight: 900;
+            -webkit-text-stroke: 1px #000000;
+        }
+
+        .live-message {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #FFFFFF;
+            border: 3px solid #000000;
+            border-radius: 14px;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .live-label {
+            display: inline-block;
+            background: #00A651;
+            color: #FFFFFF;
+            border: 2px solid #000000;
+            border-radius: 20px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 900;
+            margin-bottom: 7px;
+            text-shadow: 1px 1px 0 #000000;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 22px
