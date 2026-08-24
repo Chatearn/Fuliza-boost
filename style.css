@@ -1,296 +1,559 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>FULIZAA | Limit Management</title>
-
-    <link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<div class="page">
-
-    <!-- =================================
-         FULIZAA BRAND
-    ================================== -->
-
-    <header class="brand">
-
-        <div class="logo-mark">
-
-            <img
-                src="fulizaa-logo.png"
-                alt="FULIZAA Logo">
-
-        </div>
-
-        <h1>FULIZAA</h1>
-
-        <p>
-            Limit Management Portal
-        </p>
-
-    </header>
-
-
-    <!-- =================================
-         HERO
-    ================================== -->
-
-    <section class="hero">
-
-        <div class="hero-badge">
-            FULIZAA LIMIT MANAGEMENT
-        </div>
-
-        <h2>
-            Increase Your Limit Today
-        </h2>
-
-        <p>
-            Check your current limit and request a higher
-            available limit through our simple process.
-        </p>
-
-        <button
-            class="primary-btn"
-            onclick="startIncrease()">
-
-            INCREASE MY LIMIT NOW →
-
-        </button>
-
-        <div class="security-line">
-            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; 24/7
-        </div>
-
-    </section>
-
-
-    <!-- =================================
-         SIMULATED ACTIVITY
-    ================================== -->
-
-    <section class="activity">
-
-        <div class="section-heading">
-
-            <h2>
-                Recent Activity
-            </h2>
-
-            <span>
-                SIMULATED ACTIVITY
-            </span>
-
-        </div>
-
-
-        <div class="activity-card">
-
-            <div class="activity-status">
-                ✓
-            </div>
-
-            <div class="activity-info">
-
-                <strong id="activityNumber">
-                    075678***12
-                </strong>
-
-                <div
-                    class="activity-amount"
-                    id="activityAmount">
-
-                    +KSh 28,750
-
-                </div>
-
-                <small id="activityTime">
-                    9 mins ago
-                </small>
-
-            </div>
-
-            <div class="activity-result">
-                Limit Boosted
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================
-         FINAL CTA
-    ================================== -->
-
-    <section class="final-cta">
-
-        <h2>
-            Ready to Boost Your Limit?
-        </h2>
-
-        <p>
-            Takes only a few minutes.
-        </p>
-
-        <button
-            class="primary-btn"
-            onclick="startIncrease()">
-
-            START NOW
-
-        </button>
-
-    </section>
-
-
-    <!-- =================================
-         FOOTER
-    ================================== -->
-
-    <footer>
-
-        <strong>FULIZAA</strong>
-
-        <p>
-            Independent limit-management service
-        </p>
-
-        <small>
-            © 2026 FULIZAA • All Rights Reserved
-        </small>
-
-    </footer>
-
-</div>
-
-
-<script>
-
-/* =========================================
-   START
-========================================= */
-
-function startIncrease() {
-
-    window.location.href =
-        "registration.html";
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background: #50C878;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
-/* =========================================
-   SIMULATED ACTIVITY
-========================================= */
+/* =================================
+   MAIN PAGE
+================================= */
 
-const activities = [
+.page {
+    position: relative;
 
-    {
-        number: "075678***12",
-        amount: "+KSh 28,750",
-        time: "9 mins ago"
-    },
+    width: 100%;
+    min-height: 100vh;
 
-    {
-        number: "071234***45",
-        amount: "+KSh 15,000",
-        time: "12 mins ago"
-    },
+    overflow-x: hidden;
 
-    {
-        number: "079876***21",
-        amount: "+KSh 35,000",
-        time: "16 mins ago"
-    },
+    padding: 20px 16px 40px;
 
-    {
-        number: "072345***67",
-        amount: "+KSh 20,000",
-        time: "21 mins ago"
-    },
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255, 255, 255, 0.08),
+            transparent 55%
+        ),
+        #50C878;
+}
 
-    {
-        number: "070123***89",
-        amount: "+KSh 42,500",
-        time: "25 mins ago"
+
+/* =================================
+   BRAND
+================================= */
+
+.brand {
+    width: 100%;
+
+    text-align: center;
+
+    margin-top: 8px;
+    margin-bottom: 28px;
+}
+
+.logo-mark {
+    width: 64px;
+    height: 64px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 12px;
+
+    border-radius: 50%;
+
+    background: #FFFFFF;
+
+    border: none;
+
+    color: #50C878;
+
+    font-size: 34px;
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.brand h1 {
+    color: #FFFFFF;
+
+    font-size: 35px;
+    line-height: 1.15;
+
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    -webkit-text-stroke: 0;
+
+    text-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.6);
+
+    margin-bottom: 8px;
+}
+
+.brand p {
+    color: #000000;
+
+    font-size: 14px;
+    font-weight: 800;
+}
+
+
+/* =================================
+   HERO
+================================= */
+
+.hero {
+    width: 100%;
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 7px 13px;
+
+    margin-bottom: 14px;
+
+    border-radius: 20px;
+
+    background: #000000;
+
+    color: #FFFFFF;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.7px;
+}
+
+.hero h2 {
+    color: #FFFFFF;
+
+    font-size: 31px;
+
+    line-height: 1.2;
+
+    font-weight: 900;
+
+    -webkit-text-stroke: 0;
+
+    text-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.6);
+
+    margin-bottom: 13px;
+}
+
+.hero p {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 0 auto 20px;
+
+    color: #000000;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    font-weight: 700;
+}
+
+
+/* =================================
+   PRIMARY BUTTON
+================================= */
+
+.primary-btn {
+    width: 100%;
+
+    max-width: 430px;
+
+    min-height: 55px;
+
+    padding: 15px 18px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background: #FFFFFF;
+
+    color: #000000;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 0 rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 0 rgba(0, 0, 0, 0.35);
+}
+
+.primary-btn:active {
+    transform: translateY(3px);
+
+    box-shadow:
+        0 2px 0 rgba(0, 0, 0, 0.35);
+}
+
+.security-line {
+    margin-top: 13px;
+
+    color: #000000;
+
+    font-size: 12px;
+
+    font-weight: 800;
+}
+
+
+/* =================================
+   ACTIVITY
+================================= */
+
+.activity {
+    width: 100%;
+
+    margin-top: 30px;
+}
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 14px;
+}
+
+.section-heading h2 {
+    color: #FFFFFF;
+
+    font-size: 24px;
+
+    font-weight: 900;
+
+    -webkit-text-stroke: 0;
+
+    text-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.5);
+
+    margin-bottom: 8px;
+}
+
+.section-heading span {
+    display: inline-block;
+
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    background: #000000;
+
+    color: #FFFFFF;
+
+    font-size: 10px;
+
+    font-weight: 900;
+}
+
+.activity-card {
+    width: 100%;
+
+    min-height: 105px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    border-radius: 17px;
+
+    background: #FFFFFF;
+
+    border: none;
+
+    box-shadow:
+        0 8px 0 rgba(0, 0, 0, 0.35);
+}
+
+.activity-status {
+    flex-shrink: 0;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #50C878;
+
+    border: none;
+
+    color: #FFFFFF;
+
+    font-size: 20px;
+
+    font-weight: 900;
+}
+
+.activity-info {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.activity-info strong {
+    display: block;
+
+    color: #000000;
+
+    font-size: 14px;
+
+    margin-bottom: 4px;
+}
+
+.activity-amount {
+    color: #50C878;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    transition: opacity 1s ease;
+}
+
+.activity-info small {
+    color: #000000;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    transition: opacity 1s ease;
+}
+
+.activity-result {
+    flex-shrink: 0;
+
+    padding: 6px 8px;
+
+    border-radius: 8px;
+
+    background: #50C878;
+
+    border: none;
+
+    color: #FFFFFF;
+
+    font-size: 9px;
+
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+/* =================================
+   FINAL CTA
+================================= */
+
+.final-cta {
+    width: 100%;
+
+    margin-top: 35px;
+
+    padding: 24px 16px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: #FFFFFF;
+
+    border: none;
+
+    box-shadow:
+        0 9px 0 rgba(0, 0, 0, 0.35);
+}
+
+.final-cta h2 {
+    color: #FFFFFF;
+
+    background: #50C878;
+
+    padding: 5px 8px;
+
+    border-radius: 8px;
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    margin-bottom: 7px;
+}
+
+.final-cta p {
+    color: #000000;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 5px;
+}
+
+.final-cta .primary-btn {
+    margin-top: 12px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+    width: 100%;
+
+    text-align: center;
+
+    margin-top: 28px;
+
+    color: #000000;
+}
+
+footer strong {
+    display: block;
+
+    color: #FFFFFF;
+
+    font-size: 17px;
+
+    font-weight: 900;
+
+    -webkit-text-stroke: 0;
+
+    text-shadow:
+        0 3px 7px rgba(0, 0, 0, 0.5);
+
+    margin-bottom: 5px;
+}
+
+footer p {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+footer small {
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 480px) {
+
+    .page {
+        padding: 16px 13px 32px;
     }
 
-];
+    .brand h1 {
+        font-size: 30px;
+    }
 
-let activityIndex = 0;
+    .hero h2 {
+        font-size: 27px;
+    }
 
+    .hero p {
+        font-size: 14px;
+    }
 
-/* =========================================
-   ACTIVITY TRANSITION
-========================================= */
+    .primary-btn {
+        min-height: 53px;
 
-function changeActivity() {
+        font-size: 16px;
+    }
 
-    const number =
-        document.getElementById("activityNumber");
+    .activity-card {
+        padding: 12px;
+    }
 
-    const amount =
-        document.getElementById("activityAmount");
+    .activity-amount {
+        font-size: 18px;
+    }
 
-    const time =
-        document.getElementById("activityTime");
-
-
-    number.style.opacity = "0";
-    amount.style.opacity = "0";
-    time.style.opacity = "0";
-
-
-    setTimeout(function () {
-
-        activityIndex++;
-
-        if (
-            activityIndex >=
-            activities.length
-        ) {
-            activityIndex = 0;
-        }
-
-
-        number.textContent =
-            activities[activityIndex].number;
-
-        amount.textContent =
-            activities[activityIndex].amount;
-
-        time.textContent =
-            activities[activityIndex].time;
-
-
-        number.style.opacity = "1";
-        amount.style.opacity = "1";
-        time.style.opacity = "1";
-
-    }, 1000);
-
+    .activity-result {
+        font-size: 8px;
+    }
 }
 
 
-/*
-   Change simulated activity
-   every 6 seconds
-*/
+/* =================================
+   SMALL PHONES
+================================= */
 
-setInterval(
-    changeActivity,
-    6000
-);
+@media (max-width: 360px) {
 
-</script>
+    .page {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 
-</body>
-</html>
+    .logo-mark {
+        width: 55px;
+        height: 55px;
+
+        font-size: 29px;
+    }
+
+    .brand h1 {
+        font-size: 26px;
+    }
+
+    .hero h2 {
+        font-size: 23px;
+    }
+
+    .activity-result {
+        display: none;
+    }
+}
