@@ -22,6 +22,7 @@ body {
     padding: 18px 12px 30px;
 }
 
+
 /* =========================================
    BRAND
 ========================================= */
@@ -55,6 +56,7 @@ body {
     letter-spacing: 0.5px;
 }
 
+
 /* =========================================
    MAIN CARD
 ========================================= */
@@ -62,11 +64,15 @@ body {
 .card {
     width: 100%;
     background: #FFFFFF;
+
     border: 3px solid #000000;
     border-radius: 20px;
+
     padding: 24px 18px;
+
     box-shadow: 0 6px 0 #000000;
 }
+
 
 /* =========================================
    MAIN HEADING
@@ -81,6 +87,7 @@ body {
     font-size: 30px;
     line-height: 1.15;
     font-weight: 900;
+
     color: #FFFFFF;
 
     -webkit-text-stroke: 1.5px #000000;
@@ -92,18 +99,24 @@ body {
         -1px 1px 0 #000000;
 }
 
+
 /* =========================================
    DESCRIPTION
 ========================================= */
 
 .description {
     text-align: center;
+
     color: #000000;
+
     font-size: 16px;
     line-height: 1.5;
+
     font-weight: 600;
+
     margin-bottom: 22px;
 }
+
 
 /* =========================================
    BOOST BOX
@@ -111,18 +124,25 @@ body {
 
 .boost-box {
     width: 100%;
+
     background: #00A651;
+
     border: 3px solid #000000;
     border-radius: 16px;
+
     padding: 19px 12px;
+
     text-align: center;
+
     margin-bottom: 22px;
 }
 
 .boost-box h3 {
     color: #FFFFFF;
+
     font-size: 21px;
     line-height: 1.2;
+
     font-weight: 900;
 
     -webkit-text-stroke: 1px #000000;
@@ -132,8 +152,10 @@ body {
 
 .boost-box .amount {
     color: #FFFFFF;
+
     font-size: 34px;
     line-height: 1.1;
+
     font-weight: 900;
 
     -webkit-text-stroke: 1.5px #000000;
@@ -145,11 +167,15 @@ body {
 
 .boost-box p {
     color: #000000;
+
     font-size: 14px;
     line-height: 1.4;
+
     font-weight: 800;
+
     margin-top: 8px;
 }
+
 
 /* =========================================
    BUTTONS
@@ -157,23 +183,30 @@ body {
 
 .buttons {
     width: 100%;
+
     display: flex;
     flex-direction: column;
+
     gap: 12px;
 }
 
 button {
     width: 100%;
+
     min-height: 56px;
+
     border: 3px solid #000000;
     border-radius: 13px;
+
     padding: 14px 16px;
 
     font-family: Arial, Helvetica, sans-serif;
+
     font-size: 18px;
     font-weight: 900;
 
     cursor: pointer;
+
     transition:
         transform 0.15s ease,
         box-shadow 0.15s ease;
@@ -181,6 +214,7 @@ button {
 
 .increase-btn {
     background: #00A651;
+
     color: #FFFFFF;
 
     -webkit-text-stroke: 0.4px #000000;
@@ -190,7 +224,9 @@ button {
 
 .later-btn {
     background: #FFFFFF;
+
     color: #000000;
+
     box-shadow: 0 4px 0 #000000;
 }
 
@@ -200,8 +236,11 @@ button:hover {
 
 button:active {
     transform: translateY(3px);
-    box-shadow: 0 1px 0 #000000;
+
+    box-shadow:
+        0 1px 0 #000000;
 }
+
 
 /* =========================================
    RECENT ACTIVITY
@@ -209,18 +248,22 @@ button:active {
 
 .live-section {
     width: 100%;
+
     margin-top: 28px;
 }
 
 .live-title {
     text-align: center;
+
     margin-bottom: 12px;
 }
 
 .live-title h3 {
     color: #FFFFFF;
+
     font-size: 22px;
     line-height: 1.2;
+
     font-weight: 900;
 
     -webkit-text-stroke: 1px #000000;
@@ -240,9 +283,12 @@ button:active {
     padding: 5px 11px;
 
     font-size: 10px;
+
     font-weight: 900;
+
     letter-spacing: 0.5px;
 }
+
 
 /* =========================================
    ACTIVITY MESSAGE
@@ -250,6 +296,7 @@ button:active {
 
 .live-message {
     width: 100%;
+
     min-height: 92px;
 
     display: flex;
@@ -267,7 +314,8 @@ button:active {
     box-shadow: 0 4px 0 #000000;
 }
 
-/* Activity check icon */
+
+/* Activity icon */
 
 .activity-icon {
     flex-shrink: 0;
@@ -280,53 +328,46 @@ button:active {
     justify-content: center;
 
     background: #00A651;
+
     color: #FFFFFF;
 
     border: 3px solid #000000;
     border-radius: 50%;
 
     font-size: 22px;
+
     font-weight: 900;
 
     -webkit-text-stroke: 1px #000000;
 }
 
-/* Activity text */
+
+/* Activity content */
 
 .activity-content {
     flex: 1;
+
     min-width: 0;
 }
+
+
+/* Slow fade */
 
 #liveText {
     color: #000000;
 
     font-size: 14px;
+
     line-height: 1.45;
+
     font-weight: 800;
 
-    transition: opacity 0.25s ease;
+    opacity: 1;
+
+    transition:
+        opacity 1.4s ease-in-out;
 }
 
-/* =========================================
-   ACTIVITY COUNTER
-========================================= */
-
-.activity-counter {
-    text-align: center;
-
-    margin-top: 10px;
-
-    color: #000000;
-
-    font-size: 12px;
-    font-weight: 900;
-}
-
-#activityNumber,
-#activityTotal {
-    font-weight: 900;
-}
 
 /* =========================================
    FOOTER
@@ -340,9 +381,12 @@ button:active {
     color: #000000;
 
     font-size: 12px;
+
     line-height: 1.4;
+
     font-weight: 800;
 }
+
 
 /* =========================================
    SMALL PHONES
@@ -397,9 +441,36 @@ button:active {
     .activity-icon {
         width: 39px;
         height: 39px;
+
         font-size: 19px;
     }
 }
 
+
 /* =========================================
    VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 320px) {
+
+    .brand h1 {
+        font-size: 30px;
+    }
+
+    .main-heading h2 {
+        font-size: 23px;
+    }
+
+    .boost-box .amount {
+        font-size: 26px;
+    }
+
+    .live-message {
+        padding: 12px;
+        gap: 9px;
+    }
+
+    #liveText {
+        font-size: 12px;
+    }
+}
