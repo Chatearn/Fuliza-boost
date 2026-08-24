@@ -171,12 +171,12 @@ function showNextActivity() {
     const liveText =
         document.getElementById("liveText");
 
-    /* Fade out slowly */
+    /* Fade out */
 
     liveText.style.opacity = "0";
 
 
-    /* Change message after fade */
+    /* Wait before changing */
 
     setTimeout(function () {
 
@@ -189,7 +189,7 @@ function showNextActivity() {
         liveText.textContent =
             activities[activityIndex];
 
-        /* Fade in slowly */
+        /* Fade in */
 
         liveText.style.opacity = "1";
 
@@ -197,9 +197,7 @@ function showNextActivity() {
 }
 
 
-/*
-    New message every 8 seconds
-*/
+/* Change message slowly */
 
 setInterval(showNextActivity, 8000);
 
