@@ -13,12 +13,15 @@
 
 <div class="page">
 
-    <div class="brand">
+    <!-- BRAND -->
+    <header class="brand">
         <h1>FULIZBOOST</h1>
         <p>BOOST YOUR EXISTING AMOUNT</p>
-    </div>
+    </header>
 
-    <div class="card">
+
+    <!-- MAIN CONTENT -->
+    <main class="card">
 
         <div class="main-heading">
             <h2>INCREASE YOUR FULIZA TODAY</h2>
@@ -26,10 +29,13 @@
 
         <p class="description">
             Increase your existing amount with FULIZBOOST,
-            with funding available up to KSh 150,000.
+            with available funding of up to KSh 150,000.
         </p>
 
+
+        <!-- AMOUNT BOX -->
         <div class="boost-box">
+
             <h3>BOOST AVAILABLE UP TO</h3>
 
             <div class="amount">
@@ -39,8 +45,11 @@
             <p>
                 Start your increase request today.
             </p>
+
         </div>
 
+
+        <!-- BUTTONS -->
         <div class="buttons">
 
             <button
@@ -57,72 +66,173 @@
 
         </div>
 
-    </div>
+    </main>
 
-    <div class="live-section">
+
+    <!-- SIMULATED LIVE ACTIVITY -->
+    <section class="live-section">
 
         <div class="live-title">
-            <h3>LIVE ACTIVITY</h3>
+            <h3>RECENT ACTIVITY</h3>
+
+            <span class="simulation-note">
+                SIMULATED ACTIVITY
+            </span>
         </div>
+
 
         <div class="live-message">
 
-            <div>
+            <div class="activity-icon">
+                ✓
+            </div>
 
-                <div class="live-label">
-                    SIMULATED
-                </div>
+            <div class="activity-content">
 
                 <div id="liveText">
-                    New FULIZBOOST request received.
+                    MARGARET successfully increased from
+                    KSh 300 to KSh 10,000
                 </div>
 
             </div>
 
         </div>
 
-    </div>
+        <div class="activity-counter">
+            <span id="activityNumber">1</span>
+            of
+            <span id="activityTotal">18</span>
+        </div>
 
-    <div class="footer">
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
         FULIZBOOST © 2026
-    </div>
+    </footer>
 
 </div>
 
+
 <script>
 
-const messages = [
-    "New FULIZBOOST request received.",
-    "A customer has started an increase request.",
-    "A FULIZBOOST request is being processed.",
-    "A customer has completed the increase process.",
-    "New increase request received.",
-    "A customer is checking their available boost."
+/* =========================================
+   SIMULATED ACTIVITY
+========================================= */
+
+const activities = [
+
+    "MARGARET successfully increased from KSh 300 to KSh 10,000",
+
+    "JOHNSTON successfully increased from KSh 5,000 to KSh 80,000",
+
+    "ONYANGO successfully increased from KSh 3,000 to KSh 9,000",
+
+    "PAULIE NJERI successfully increased from KSh 4,000 to KSh 20,000",
+
+    "CHEPNGETICH successfully increased from KSh 1,500 to KSh 22,000",
+
+    "MIRRIAM KEMUNTO successfully increased from KSh 1,000 to KSh 40,000",
+
+    "FRANCIS MWEI successfully increased from KSh 0 to KSh 30,000",
+
+    "GODFREY OMWENGA successfully increased from KSh 5,500 to KSh 45,000",
+
+    "NYONGESA successfully increased from KSh 500 to KSh 20,000",
+
+    "MARTIN successfully increased from KSh 2,000 to KSh 15,000",
+
+    "GRACE successfully increased from KSh 1,500 to KSh 25,000",
+
+    "KEVIN successfully increased from KSh 4,000 to KSh 35,000",
+
+    "JANE successfully increased from KSh 2,500 to KSh 18,000",
+
+    "BRIAN successfully increased from KSh 3,000 to KSh 50,000",
+
+    "ESTHER successfully increased from KSh 1,000 to KSh 12,000",
+
+    "DANIEL successfully increased from KSh 5,000 to KSh 60,000",
+
+    "MERCY successfully increased from KSh 2,000 to KSh 30,000",
+
+    "SAMUEL successfully increased from KSh 500 to KSh 15,000"
+
 ];
 
-let messageIndex = 0;
+let activityIndex = 0;
 
-function showNextMessage() {
 
-    const liveText = document.getElementById("liveText");
+/* TOTAL ACTIVITIES */
 
-    messageIndex++;
+document.getElementById("activityTotal").textContent =
+    activities.length;
 
-    if (messageIndex >= messages.length) {
-        messageIndex = 0;
+
+/* CHANGE MESSAGE */
+
+function showNextActivity() {
+
+    const liveText =
+        document.getElementById("liveText");
+
+    const activityNumber =
+        document.getElementById("activityNumber");
+
+
+    activityIndex++;
+
+    if (activityIndex >= activities.length) {
+        activityIndex = 0;
     }
 
-    liveText.textContent = messages[messageIndex];
+
+    liveText.style.opacity = "0";
+
+
+    setTimeout(function () {
+
+        liveText.textContent =
+            activities[activityIndex];
+
+        activityNumber.textContent =
+            activityIndex + 1;
+
+        liveText.style.opacity = "1";
+
+    }, 250);
+
 }
 
-setInterval(showNextMessage, 4000);
+
+/* CHANGE EVERY 4 SECONDS */
+
+setInterval(showNextActivity, 4000);
+
+
+/* =========================================
+   INCREASE BUTTON
+========================================= */
 
 function increaseNow() {
-    window.location.href = "registration.html";
+
+    window.location.href =
+        "registration.html";
+
 }
 
+
+/* =========================================
+   INCREASE LATER
+========================================= */
+
 function increaseLater() {
-    alert("You can return later to continue your FULIZBOOST request.");
+
+    alert(
+        "You can return later to continue your FULIZBOOST request."
+    );
+
 }
 
 </script>
