@@ -12,7 +12,7 @@ body {
 
 body {
     min-height: 100vh;
-    background: #00FF00;
+    background: #50C878;
     color: #000000;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -38,7 +38,7 @@ body {
             rgba(255, 255, 255, 0.08),
             transparent 55%
         ),
-        #00FF00;
+        #50C878;
 }
 
 
@@ -69,9 +69,9 @@ body {
 
     background: #FFFFFF;
 
-    border: 3px solid #000000;
+    border: none;
 
-    color: #00FF00;
+    color: #50C878;
 
     font-size: 34px;
     font-weight: 900;
@@ -90,7 +90,7 @@ body {
 
     letter-spacing: 1px;
 
-    -webkit-text-stroke: 2px #000000;
+    -webkit-text-stroke: 0;
 
     text-shadow:
         0 4px 12px rgba(0, 0, 0, 0.6);
@@ -147,7 +147,7 @@ body {
 
     font-weight: 900;
 
-    -webkit-text-stroke: 2px #000000;
+    -webkit-text-stroke: 0;
 
     text-shadow:
         0 4px 12px rgba(0, 0, 0, 0.6);
@@ -185,7 +185,7 @@ body {
 
     padding: 15px 18px;
 
-    border: 3px solid #000000;
+    border: none;
 
     border-radius: 14px;
 
@@ -202,7 +202,7 @@ body {
     cursor: pointer;
 
     box-shadow:
-        0 6px 0 #000000;
+        0 6px 0 rgba(0, 0, 0, 0.35);
 
     transition:
         transform 0.2s ease,
@@ -213,14 +213,14 @@ body {
     transform: translateY(-2px);
 
     box-shadow:
-        0 8px 0 #000000;
+        0 8px 0 rgba(0, 0, 0, 0.35);
 }
 
 .primary-btn:active {
     transform: translateY(3px);
 
     box-shadow:
-        0 2px 0 #000000;
+        0 2px 0 rgba(0, 0, 0, 0.35);
 }
 
 .security-line {
@@ -257,7 +257,10 @@ body {
 
     font-weight: 900;
 
-    -webkit-text-stroke: 1.5px #000000;
+    -webkit-text-stroke: 0;
+
+    text-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.5);
 
     margin-bottom: 8px;
 }
@@ -295,10 +298,10 @@ body {
 
     background: #FFFFFF;
 
-    border: 3px solid #000000;
+    border: none;
 
     box-shadow:
-        0 8px 0 #000000;
+        0 8px 0 rgba(0, 0, 0, 0.35);
 }
 
 .activity-status {
@@ -314,9 +317,9 @@ body {
 
     border-radius: 50%;
 
-    background: #00FF00;
+    background: #50C878;
 
-    border: 3px solid #000000;
+    border: none;
 
     color: #FFFFFF;
 
@@ -342,7 +345,7 @@ body {
 }
 
 .activity-amount {
-    color: #00FF00;
+    color: #50C878;
 
     font-size: 20px;
 
@@ -368,9 +371,9 @@ body {
 
     border-radius: 8px;
 
-    background: #00FF00;
+    background: #50C878;
 
-    border: 2px solid #000000;
+    border: none;
 
     color: #FFFFFF;
 
@@ -399,14 +402,20 @@ body {
 
     background: #FFFFFF;
 
-    border: 3px solid #000000;
+    border: none;
 
     box-shadow:
-        0 9px 0 #000000;
+        0 9px 0 rgba(0, 0, 0, 0.35);
 }
 
 .final-cta h2 {
-    color: #000000;
+    color: #FFFFFF;
+
+    background: #50C878;
+
+    padding: 5px 8px;
+
+    border-radius: 8px;
 
     font-size: 23px;
 
@@ -453,7 +462,10 @@ footer strong {
 
     font-weight: 900;
 
-    -webkit-text-stroke: 1px #000000;
+    -webkit-text-stroke: 0;
+
+    text-shadow:
+        0 3px 7px rgba(0, 0, 0, 0.5);
 
     margin-bottom: 5px;
 }
