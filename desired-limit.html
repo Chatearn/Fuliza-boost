@@ -516,13 +516,13 @@
 
         <img
             src="fuliza-logo.jpg"
-            alt="FULIZA Logo"
+            alt="FULIZAA Logo"
             class="brand-logo"
         >
 
 
         <!-- =================================
-             DEMO LIVE-STYLE MESSAGES
+             DEMO NOTIFICATIONS
         ================================== -->
 
         <div
@@ -739,20 +739,14 @@ function continueToNext() {
         selectedLimit
     );
 
-
-    /*
-       Next page will be connected here
-       when it is created.
-    */
-
 }
 
 
 /* =========================================
-   CURRENT NOTIFICATIONS
+   DEMO NOTIFICATIONS
 ========================================= */
 
-const currentNumbers = [
+const demoNumbers = [
 
     "0742***287",
     "0718***463",
@@ -761,19 +755,35 @@ const currentNumbers = [
     "0703***196",
     "0754***638",
     "0782***351",
-    "0114***729"
+    "0114***729",
+    "0721***405",
+    "0798***612",
+    "0712***934",
+    "0745***168",
+    "0708***753",
+    "0763***291",
+    "0785***846"
 
 ];
 
 
-const currentMessages = [
+const demoMessages = [
 
     "Limit options viewed",
     "Limit selection updated",
     "Application information updated",
     "Service status checked",
     "Limit request reviewed",
-    "Account information checked"
+    "Account information checked",
+    "Limit options available",
+    "Application details reviewed",
+    "Service information updated",
+    "Limit selection reviewed",
+    "Account details checked",
+    "Application status updated",
+    "Limit information viewed",
+    "Service status active",
+    "Application information checked"
 
 ];
 
@@ -791,19 +801,15 @@ function showDemoMessage() {
 
     const number =
         demoNumbers[
-            Math.floor(
-                Math.random() *
-                demoNumbers.length
-            )
+            demoIndex %
+            demoNumbers.length
         ];
 
 
     const message =
         demoMessages[
-            Math.floor(
-                Math.random() *
-                demoMessages.length
-            )
+            demoIndex %
+            demoMessages.length
         ];
 
 
@@ -819,42 +825,4 @@ function showDemoMessage() {
 
     notification.innerHTML =
 
-        '<span class="demo-label">' +
-        'CURRENT NOTIFICATION' +
-        '</span>' +
-
-        number +
-        " — " +
-        message;
-
-
-    container.innerHTML = "";
-
-
-    container.appendChild(
-        notification
-    );
-
-
-    demoIndex++;
-
-}
-
-
-/* Start first message */
-
-showDemoMessage();
-
-
-/* Change message every 3.5 seconds */
-
-setInterval(
-    showDemoMessage,
-    3500
-);
-
-</script>
-
-</body>
-
-</html>
+        '<span class="demo-label
