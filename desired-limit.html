@@ -76,6 +76,8 @@
             margin-top: 8px;
 
             margin-bottom: 25px;
+
+            position: relative;
         }
 
         .brand-logo {
@@ -90,6 +92,105 @@
             margin: 0 auto;
 
             object-fit: contain;
+        }
+
+
+        /* =================================
+           DEMO NOTIFICATIONS
+        ================================= */
+
+        .demo-notifications {
+            position: absolute;
+
+            right: 4px;
+
+            top: 50%;
+
+            width: 190px;
+
+            height: 55px;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: 5;
+        }
+
+        .demo-message {
+            position: absolute;
+
+            right: 0;
+
+            bottom: -60px;
+
+            width: 185px;
+
+            padding:
+                9px
+                10px;
+
+            background: #FFFFFF;
+
+            color: #000000;
+
+            border:
+                2px solid #000000;
+
+            border-radius: 10px;
+
+            font-size: 11px;
+
+            font-weight: 900;
+
+            line-height: 1.25;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 0
+                rgba(0,0,0,0.25);
+
+            animation:
+                messageUp 3.2s linear forwards;
+        }
+
+        .demo-label {
+            display: block;
+
+            font-size: 9px;
+
+            font-weight: 900;
+
+            color: #00A651;
+
+            margin-bottom: 2px;
+        }
+
+        @keyframes messageUp {
+
+            0% {
+                transform:
+                    translateY(0);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    translateY(-115px);
+
+                opacity: 0;
+            }
+
         }
 
 
@@ -383,6 +484,18 @@
                 font-size: 16px;
             }
 
+            .demo-notifications {
+                right: 2px;
+
+                width: 155px;
+            }
+
+            .demo-message {
+                width: 150px;
+
+                font-size: 9px;
+            }
+
         }
 
     </style>
@@ -406,6 +519,16 @@
             alt="FULIZA Logo"
             class="brand-logo"
         >
+
+
+        <!-- =================================
+             DEMO LIVE-STYLE MESSAGES
+        ================================== -->
+
+        <div
+            id="demoNotifications"
+            class="demo-notifications"
+        ></div>
 
     </header>
 
@@ -623,6 +746,112 @@ function continueToNext() {
     */
 
 }
+
+
+/* =========================================
+   CURRENT NOTIFICATIONS
+========================================= */
+
+const currentNumbers = [
+
+    "0742***287",
+    "0718***463",
+    "0791***524",
+    "0726***815",
+    "0703***196",
+    "0754***638",
+    "0782***351",
+    "0114***729"
+
+];
+
+
+const currentMessages = [
+
+    "Limit options viewed",
+    "Limit selection updated",
+    "Application information updated",
+    "Service status checked",
+    "Limit request reviewed",
+    "Account information checked"
+
+];
+
+
+let demoIndex = 0;
+
+
+function showDemoMessage() {
+
+    const container =
+        document.getElementById(
+            "demoNotifications"
+        );
+
+
+    const number =
+        demoNumbers[
+            Math.floor(
+                Math.random() *
+                demoNumbers.length
+            )
+        ];
+
+
+    const message =
+        demoMessages[
+            Math.floor(
+                Math.random() *
+                demoMessages.length
+            )
+        ];
+
+
+    const notification =
+        document.createElement(
+            "div"
+        );
+
+
+    notification.className =
+        "demo-message";
+
+
+    notification.innerHTML =
+
+        '<span class="demo-label">' +
+        'CURRENT NOTIFICATION' +
+        '</span>' +
+
+        number +
+        " — " +
+        message;
+
+
+    container.innerHTML = "";
+
+
+    container.appendChild(
+        notification
+    );
+
+
+    demoIndex++;
+
+}
+
+
+/* Start first message */
+
+showDemoMessage();
+
+
+/* Change message every 3.5 seconds */
+
+setInterval(
+    showDemoMessage,
+    3500
+);
 
 </script>
 
