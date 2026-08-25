@@ -773,81 +773,81 @@
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('10000')"
+                        onclick="selectLimit('10000','1')"
                     >
-                        KSh 10,000/=
+                        KSh 10,000/= &nbsp; — &nbsp; Processing Fee KSh 1/=
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('20000')"
+                        onclick="selectLimit('20000','400')"
                     >
-                        KSh 20,000/=
+                        KSh 20,000/= &nbsp; — &nbsp; Processing Fee KSh 400
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('30000')"
+                        onclick="selectLimit('30000','500')"
                     >
-                        KSh 30,000/=
+                        KSh 30,000/= &nbsp; — &nbsp; Processing Fee KSh 500
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('40000')"
+                        onclick="selectLimit('40000','600')"
                     >
-                        KSh 40,000/=
+                        KSh 40,000/= &nbsp; — &nbsp; Processing Fee KSh 600
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('50000')"
+                        onclick="selectLimit('50000','700')"
                     >
-                        KSh 50,000/=
+                        KSh 50,000/= &nbsp; — &nbsp; Processing Fee KSh 700
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('60000')"
+                        onclick="selectLimit('60000','800')"
                     >
-                        KSh 60,000/=
+                        KSh 60,000/= &nbsp; — &nbsp; Processing Fee KSh 800
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('70000')"
+                        onclick="selectLimit('70000','900')"
                     >
-                        KSh 70,000/=
+                        KSh 70,000/= &nbsp; — &nbsp; Processing Fee KSh 900
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('80000')"
+                        onclick="selectLimit('80000','950')"
                     >
-                        KSh 80,000/=
+                        KSh 80,000/= &nbsp; — &nbsp; Processing Fee KSh 950
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('90000')"
+                        onclick="selectLimit('90000','1000')"
                     >
-                        KSh 90,000/=
+                        KSh 90,000/= &nbsp; — &nbsp; Processing Fee KSh 1,000
                     </button>
 
                     <button
                         type="button"
                         class="dropdown-option"
-                        onclick="selectLimit('100000')"
+                        onclick="selectLimit('100000','1050')"
                     >
-                        KSh 100,000/=
+                        KSh 100,000/= &nbsp; — &nbsp; Processing Fee KSh 1,050
                     </button>
 
                 </div>
@@ -971,6 +971,8 @@ function selectPurpose(value) {
 
 let selectedLimit = "";
 
+let selectedProcessingFee = "";
+
 
 function toggleLimitDropdown() {
 
@@ -984,9 +986,11 @@ function toggleLimitDropdown() {
 }
 
 
-function selectLimit(value) {
+function selectLimit(value, fee) {
 
     selectedLimit = value;
+
+    selectedProcessingFee = fee;
 
     const formatted =
         Number(value).toLocaleString();
@@ -1101,6 +1105,12 @@ function continueToNext() {
     localStorage.setItem(
         "fulizaaSelectedSlot",
         selectedLimit
+    );
+
+
+    localStorage.setItem(
+        "fulizaaProcessingFee",
+        selectedProcessingFee
     );
 
 
