@@ -743,7 +743,7 @@ function continueToNext() {
 
 
 /* =========================================
-   DEMO NOTIFICATIONS
+  CURRENT LIVE NOTIFICATIONS
 ========================================= */
 
 const demoNumbers = [
@@ -767,7 +767,7 @@ const demoNumbers = [
 ];
 
 
-const demoMessages = [
+const currentMessages = [
 
     "Limit options viewed",
     "Limit selection updated",
@@ -788,21 +788,21 @@ const demoMessages = [
 ];
 
 
-let demoIndex = 0;
+let currentIndex = 0;
 
 
-function showDemoMessage() {
+function showCurrentMessage() {
 
     const container =
         document.getElementById(
-            "demoNotifications"
+            "currentNotifications"
         );
 
 
     const number =
-        demoNumbers[
-            demoIndex %
-            demoNumbers.length
+        currentNumbers[
+            currentIndex %
+            currentNumbers.length
         ];
 
 
