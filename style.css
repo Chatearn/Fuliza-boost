@@ -12,7 +12,7 @@ body {
 
 body {
     min-height: 100vh;
-    background: #50C878;
+    background: #00A651;
     color: #000000;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -35,7 +35,7 @@ body {
             rgba(255, 255, 255, 0.08),
             transparent 55%
         ),
-        #50C878;
+        #00A651;
 }
 
 
@@ -72,7 +72,7 @@ body {
 
     border: none;
 
-    color: #50C878;
+    color: #00A651;
 
     font-size: 27px;
     font-weight: 900;
@@ -321,7 +321,7 @@ body {
 
     border-radius: 50%;
 
-    background: #50C878;
+    background: #00A651;
 
     color: #000000;
 
