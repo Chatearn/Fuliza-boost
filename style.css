@@ -51,11 +51,14 @@ body {
 }
 
 
-/* REDUCED LOGO SIZE ONLY */
+/* =================================
+   FULIZAA LOGO
+================================= */
 
 .logo-mark {
-    width: 50px;
-    height: 50px;
+    width: 100%;
+    max-width: 430px;
+    height: 230px;
 
     display: flex;
     align-items: center;
@@ -63,7 +66,7 @@ body {
 
     margin: 0 auto 12px;
 
-    border-radius: 50%;
+    border-radius: 0;
 
     background: #FFFFFF;
 
@@ -76,6 +79,8 @@ body {
 
     box-shadow:
         0 8px 22px rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
 }
 
 
@@ -84,8 +89,12 @@ body {
 .logo-mark img {
     width: 100%;
     height: 100%;
+
     object-fit: contain;
-    border-radius: 50%;
+
+    border-radius: 0;
+
+    display: block;
 }
 
 
@@ -297,4 +306,212 @@ body {
     border: none;
 
     box-shadow:
-        0 8px 0 rgba(0, 0, 0, 0.35
+        0 8px 0 rgba(0, 0, 0, 0.35);
+}
+
+.activity-status {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #50C878;
+
+    color: #000000;
+
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.activity-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity-info strong {
+    display: block;
+
+    color: #000000;
+
+    font-size: 14px;
+    font-weight: 900;
+
+    margin-bottom: 4px;
+}
+
+.activity-amount {
+    color: #000000;
+
+    font-size: 17px;
+    font-weight: 900;
+
+    transition: opacity 0.5s ease;
+}
+
+.activity-info small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #000000;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    transition: opacity 0.5s ease;
+}
+
+.activity-result {
+    flex-shrink: 0;
+
+    padding: 7px 9px;
+
+    border-radius: 12px;
+
+    background: #000000;
+
+    color: #FFFFFF;
+
+    font-size: 9px;
+    font-weight: 900;
+
+    text-align: center;
+}
+
+
+/* =================================
+   FINAL CTA
+================================= */
+
+.final-cta {
+    width: 100%;
+
+    margin-top: 35px;
+
+    padding: 25px 16px;
+
+    text-align: center;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.final-cta h2 {
+    color: #FFFFFF;
+
+    font-size: 25px;
+    line-height: 1.25;
+
+    font-weight: 900;
+
+    text-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.5);
+
+    margin-bottom: 8px;
+}
+
+.final-cta p {
+    color: #000000;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    margin-bottom: 18px;
+}
+
+
+/* =================================
+   FOOTER
+================================= */
+
+footer {
+    width: 100%;
+
+    margin-top: 35px;
+
+    text-align: center;
+}
+
+footer strong {
+    display: block;
+
+    color: #FFFFFF;
+
+    font-size: 18px;
+    font-weight: 900;
+
+    letter-spacing: 1px;
+
+    text-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.5);
+
+    margin-bottom: 7px;
+}
+
+footer p {
+    color: #000000;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    margin-bottom: 7px;
+}
+
+footer small {
+    color: #000000;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+    .page {
+        padding: 16px 12px 35px;
+    }
+
+    .brand {
+        margin-top: 4px;
+        margin-bottom: 25px;
+    }
+
+    .logo-mark {
+        width: 100%;
+        max-width: 430px;
+        height: 230px;
+    }
+
+    .brand h1 {
+        font-size: 32px;
+    }
+
+    .hero h2 {
+        font-size: 29px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .activity-card {
+        gap: 9px;
+        padding: 12px;
+    }
+
+    .activity-result {
+        font-size: 8px;
+        padding: 6px 7px;
+    }
+}
