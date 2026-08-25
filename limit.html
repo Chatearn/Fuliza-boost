@@ -220,4 +220,876 @@
 
             font-family:
                 Arial,
-               
+                Helvetica,
+                sans-serif;
+
+            font-size: 15px;
+            font-weight: 900;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dropdown-arrow {
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .dropdown-options {
+            display: none;
+
+            width: 100%;
+
+            max-height: 230px;
+
+            overflow-y: auto;
+
+            margin-top: 7px;
+
+            padding: 5px;
+
+            background: #FFFFFF;
+
+            border: 2px solid #000000;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 6px 14px
+                rgba(0,0,0,0.20);
+        }
+
+        .dropdown.open .dropdown-options {
+            display: block;
+        }
+
+        .dropdown-option {
+            width: 100%;
+
+            padding: 14px 12px;
+
+            margin-bottom: 5px;
+
+            background: #FFFFFF;
+
+            border: 1px solid #000000;
+
+            border-radius: 9px;
+
+            color: #000000;
+
+            font-size: 15px;
+
+            font-weight: 900;
+
+            text-align: left;
+
+            cursor: pointer;
+        }
+
+        .dropdown-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .dropdown-option:hover,
+        .dropdown-option.selected {
+            background: #50C878;
+        }
+
+        .dropdown-options::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        .dropdown-options::-webkit-scrollbar-track {
+            background: #eeeeee;
+            border-radius: 10px;
+        }
+
+        .dropdown-options::-webkit-scrollbar-thumb {
+            background: #000000;
+            border-radius: 10px;
+        }
+
+
+        /* =================================
+           CONTINUE BUTTON
+        ================================= */
+
+        .continue-btn {
+            width: 100%;
+
+            min-height: 55px;
+
+            padding: 15px 18px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background: #000000;
+
+            color: #FFFFFF;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 17px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 0
+                rgba(0,0,0,0.35);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 0
+                rgba(0,0,0,0.35);
+        }
+
+        .continue-btn:active {
+            transform: translateY(3px);
+
+            box-shadow:
+                0 2px 0
+                rgba(0,0,0,0.35);
+        }
+
+        .security-line {
+            margin-top: 15px;
+
+            color: #000000;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-align: center;
+        }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
+
+        footer {
+            width: 100%;
+
+            margin-top: 30px;
+
+            text-align: center;
+        }
+
+        footer strong {
+            display: block;
+
+            color: #FFFFFF;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 3px 8px
+                rgba(0,0,0,0.5);
+
+            margin-bottom: 7px;
+        }
+
+        footer p {
+            color: #000000;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+        }
+
+        footer small {
+            color: #000000;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding:
+                    16px
+                    12px
+                    35px;
+            }
+
+            .limit-card {
+                padding:
+                    22px
+                    15px
+                    23px;
+            }
+
+            .limit-card h2 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- =================================
+         BRAND
+    ================================== -->
+
+    <header class="brand">
+
+        <h1>
+            FULIZAA
+        </h1>
+
+        <p>
+            Limit Management Portal
+        </p>
+
+    </header>
+
+
+    <!-- =================================
+         LIMIT MANAGEMENT
+    ================================== -->
+
+    <main class="limit-card">
+
+        <h2>
+            Limit Management
+        </h2>
+
+        <p class="intro">
+            Review your current limit, select your purpose,
+            and choose your preferred limit.
+        </p>
+
+
+        <!-- FIRST NAME -->
+
+        <div class="info-box">
+
+            <span class="info-label">
+                First Name
+            </span>
+
+            <span
+                class="info-value"
+                id="clientFirstName"
+            >
+                Client
+            </span>
+
+        </div>
+
+
+        <!-- CURRENT LIMIT -->
+
+        <div class="current-limit">
+
+            <div class="current-limit-title">
+                CURRENT FULIZAA LIMIT
+            </div>
+
+            <input
+                type="number"
+                id="currentLimit"
+                class="current-limit-input"
+                placeholder="Enter your current limit"
+                min="0"
+                step="5000"
+            >
+
+        </div>
+
+
+        <!-- =================================
+             PURPOSE
+        ================================== -->
+
+        <div class="dropdown-section">
+
+            <div class="dropdown-title">
+                Purpose for Increasing Your Limit
+            </div>
+
+            <div
+                class="dropdown"
+                id="purposeDropdown"
+            >
+
+                <button
+                    type="button"
+                    class="dropdown-button"
+                    onclick="toggleDropdown('purposeDropdown')"
+                >
+
+                    <span id="purposeText">
+                        Choose purpose
+                    </span>
+
+                    <span class="dropdown-arrow">
+                        ▾
+                    </span>
+
+                </button>
+
+
+                <div class="dropdown-options">
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Farming', this)"
+                    >
+                        🌱 Farming
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Business', this)"
+                    >
+                        🏪 Business
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Transport', this)"
+                    >
+                        🚚 Transport
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Food', this)"
+                    >
+                        🍽️ Food
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('School Fees', this)"
+                    >
+                        🎓 School Fees
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Other', this)"
+                    >
+                        Other
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             LIMIT THEY WANT
+        ================================== -->
+
+        <div class="dropdown-section">
+
+            <div class="dropdown-title">
+                Choose the Limit You Want
+            </div>
+
+            <div
+                class="dropdown"
+                id="limitDropdown"
+            >
+
+                <button
+                    type="button"
+                    class="dropdown-button"
+                    onclick="toggleDropdown('limitDropdown')"
+                >
+
+                    <span id="limitText">
+                        Choose limit
+                    </span>
+
+                    <span class="dropdown-arrow">
+                        ▾
+                    </span>
+
+                </button>
+
+
+                <div class="dropdown-options">
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('10000', this)">
+                        KSh 10,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('15000', this)">
+                        KSh 15,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('20000', this)">
+                        KSh 20,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('25000', this)">
+                        KSh 25,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('30000', this)">
+                        KSh 30,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('35000', this)">
+                        KSh 35,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('40000', this)">
+                        KSh 40,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('45000', this)">
+                        KSh 45,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('50000', this)">
+                        KSh 50,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('55000', this)">
+                        KSh 55,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('60000', this)">
+                        KSh 60,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('65000', this)">
+                        KSh 65,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('70000', this)">
+                        KSh 70,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('75000', this)">
+                        KSh 75,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('80000', this)">
+                        KSh 80,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('85000', this)">
+                        KSh 85,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('90000', this)">
+                        KSh 90,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('95000', this)">
+                        KSh 95,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('100000', this)">
+                        KSh 100,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('105000', this)">
+                        KSh 105,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('110000', this)">
+                        KSh 110,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('115000', this)">
+                        KSh 115,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('120000', this)">
+                        KSh 120,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('125000', this)">
+                        KSh 125,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('130000', this)">
+                        KSh 130,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('135000', this)">
+                        KSh 135,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('140000', this)">
+                        KSh 140,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('145000', this)">
+                        KSh 145,000/=
+                    </button>
+
+                    <button type="button" class="dropdown-option" onclick="selectLimit('150000', this)">
+                        KSh 150,000/=
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTINUE -->
+
+        <button
+            type="button"
+            class="continue-btn"
+            onclick="continueToNext()"
+        >
+            CONTINUE →
+        </button>
+
+
+        <div class="security-line">
+            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; Simple
+        </div>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        <strong>
+            FULIZAA
+        </strong>
+
+        <p>
+            Independent limit-management service
+        </p>
+
+        <small>
+            © 2026 FULIZAA • All Rights Reserved
+        </small>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   LOAD FIRST NAME
+========================================= */
+
+const savedName =
+    localStorage.getItem(
+        "fulizaaFullName"
+    );
+
+
+if (savedName) {
+
+    const firstName =
+        savedName
+            .trim()
+            .split(/\s+/)[0];
+
+    document
+        .getElementById(
+            "clientFirstName"
+        )
+        .textContent =
+            firstName;
+}
+
+
+/* =========================================
+   DROPDOWN
+========================================= */
+
+function toggleDropdown(id) {
+
+    const dropdown =
+        document.getElementById(id);
+
+    document
+        .querySelectorAll(".dropdown")
+        .forEach(function(item) {
+
+            if (item !== dropdown) {
+
+                item.classList.remove(
+                    "open"
+                );
+
+            }
+
+        });
+
+    dropdown.classList.toggle("open");
+}
+
+
+/* =========================================
+   PURPOSE
+========================================= */
+
+let selectedPurpose = "";
+
+
+function selectPurpose(
+    value,
+    element
+) {
+
+    selectedPurpose = value;
+
+    document
+        .getElementById(
+            "purposeText"
+        )
+        .textContent =
+            value;
+
+    const options =
+        element
+            .parentElement
+            .querySelectorAll(
+                ".dropdown-option"
+            );
+
+    options.forEach(function(option) {
+
+        option.classList.remove(
+            "selected"
+        );
+
+    });
+
+    element.classList.add(
+        "selected"
+    );
+
+    document
+        .getElementById(
+            "purposeDropdown"
+        )
+        .classList.remove(
+            "open"
+        );
+}
+
+
+/* =========================================
+   LIMIT
+========================================= */
+
+let selectedLimit = "";
+
+
+function selectLimit(
+    value,
+    element
+) {
+
+    selectedLimit = value;
+
+    document
+        .getElementById(
+            "limitText"
+        )
+        .textContent =
+            "KSh " +
+            Number(value).toLocaleString() +
+            "/=";
+
+    const options =
+        element
+            .parentElement
+            .querySelectorAll(
+                ".dropdown-option"
+            );
+
+    options.forEach(function(option) {
+
+        option.classList.remove(
+            "selected"
+        );
+
+    });
+
+    element.classList.add(
+        "selected"
+    );
+
+    document
+        .getElementById(
+            "limitDropdown"
+        )
+        .classList.remove(
+            "open"
+        );
+}
+
+
+/* =========================================
+   CLOSE DROPDOWNS
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            !event.target.closest(
+                ".dropdown"
+            )
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".dropdown"
+                )
+                .forEach(
+                    function(dropdown) {
+
+                        dropdown.classList.remove(
+                            "open"
+                        );
+
+                    }
+                );
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   CONTINUE
+========================================= */
+
+function continueToNext() {
+
+    const currentLimit =
+        document
+            .getElementById(
+                "currentLimit"
+            )
+            .value
+            .trim();
+
+
+    if (!currentLimit) {
+
+        alert(
+            "Please enter your current FULIZAA limit."
+        );
+
+        return;
+    }
+
+
+    if (!selectedPurpose) {
+
+        alert(
+            "Please choose the purpose for increasing your limit."
+        );
+
+        return;
+    }
+
+
+    if (!selectedLimit) {
+
+        alert(
+            "Please choose the limit you want."
+        );
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "fulizaaCurrentLimit",
+        currentLimit
+    );
+
+
+    localStorage.setItem(
+        "fulizaaPurpose",
+        selectedPurpose
+    );
+
+
+    localStorage.setItem(
+        "fulizaaSelectedSlot",
+        selectedLimit
+    );
+
+
+    /* Continue to the next file */
+    window.location.href =
+        "confirmation.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
