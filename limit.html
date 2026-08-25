@@ -279,10 +279,16 @@
 
 
         /* =================================
-           PURPOSE
+           DROPDOWN SECTIONS
         ================================= */
 
-        .section-title {
+        .dropdown-section {
+            width: 100%;
+
+            margin-bottom: 22px;
+        }
+
+        .dropdown-title {
             color: #000000;
 
             font-size: 18px;
@@ -292,132 +298,62 @@
             margin-bottom: 12px;
         }
 
-        .purpose-grid {
+        .custom-dropdown {
+            position: relative;
+
+            width: 100%;
+        }
+
+        .dropdown-button {
             width: 100%;
 
-            display: grid;
+            min-height: 54px;
 
-            grid-template-columns:
-                repeat(2, 1fr);
+            padding:
+                14px
+                16px;
 
-            gap: 10px;
+            background: #FFFFFF;
 
-            margin-bottom: 24px;
-        }
+            border:
+                2px solid #000000;
 
-        .purpose-option {
-            position: relative;
-        }
+            border-radius: 12px;
 
-        .purpose-option input {
-            position: absolute;
+            color: #000000;
 
-            opacity: 0;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-            pointer-events: none;
-        }
+            font-size: 15px;
 
-        .purpose-option label {
+            font-weight: 900;
+
+            text-align: left;
+
+            cursor: pointer;
+
             display: flex;
 
             align-items: center;
 
-            justify-content: center;
-
-            min-height: 54px;
-
-            padding: 10px;
-
-            background: #FFFFFF;
-
-            border:
-                2px solid #000000;
-
-            border-radius: 12px;
-
-            color: #000000;
-
-            font-size: 14px;
-
-            font-weight: 900;
-
-            text-align: center;
-
-            cursor: pointer;
-
-            transition:
-                0.2s ease;
+            justify-content: space-between;
         }
 
-        .purpose-option input:checked + label {
-            background: #50C878;
-
-            color: #000000;
-
-            transform:
-                translateY(-1px);
-
-            box-shadow:
-                0 4px 0
-                rgba(0,0,0,0.35);
-        }
-
-
-        /* =================================
-           REQUESTED LIMIT
-        ================================= */
-
-        .slots-title {
-            color: #000000;
-
+        .dropdown-arrow {
             font-size: 18px;
 
             font-weight: 900;
-
-            margin-bottom: 12px;
         }
 
-        .slots {
+        .dropdown-menu {
+            display: none;
+
             width: 100%;
 
-            max-height: 230px;
-
-            overflow-y: auto;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 10px;
-
-            padding: 3px;
-
-            margin-bottom: 23px;
-        }
-
-        .slots::-webkit-scrollbar {
-            width: 7px;
-        }
-
-        .slots::-webkit-scrollbar-track {
-            background: #eeeeee;
-
-            border-radius: 10px;
-        }
-
-        .slots::-webkit-scrollbar-thumb {
-            background: #000000;
-
-            border-radius: 10px;
-        }
-
-        .slot {
-            width: 100%;
-
-            padding:
-                16px
-                10px;
+            margin-top: 7px;
 
             background: #FFFFFF;
 
@@ -426,47 +362,48 @@
 
             border-radius: 12px;
 
-            text-align: center;
+            overflow: hidden;
 
-            cursor: pointer;
-
-            transition:
-                0.2s ease;
+            box-shadow:
+                0 5px 0
+                rgba(0,0,0,0.25);
         }
 
-        .slot input {
-            display: none;
-        }
-
-        .slot-amount {
+        .dropdown-menu.open {
             display: block;
+        }
+
+        .dropdown-option {
+            width: 100%;
+
+            padding:
+                14px
+                15px;
+
+            background: #FFFFFF;
 
             color: #000000;
 
-            font-size: 17px;
+            font-size: 15px;
 
             font-weight: 900;
 
-            margin-bottom: 5px;
+            border: none;
+
+            border-bottom:
+                1px solid #dddddd;
+
+            text-align: left;
+
+            cursor: pointer;
         }
 
-        .slot-status {
-            color: #000000;
-
-            font-size: 11px;
-
-            font-weight: 800;
+        .dropdown-option:last-child {
+            border-bottom: none;
         }
 
-        .slot:has(input:checked) {
+        .dropdown-option:hover {
             background: #50C878;
-
-            transform:
-                translateY(-1px);
-
-            box-shadow:
-                0 4px 0
-                rgba(0,0,0,0.35);
         }
 
 
@@ -620,12 +557,6 @@
                 font-size: 24px;
             }
 
-            .purpose-grid,
-            .slots {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
         }
 
     </style>
@@ -709,191 +640,212 @@
         </div>
 
 
-        <!-- PURPOSE -->
+        <!-- =================================
+             PURPOSE DROPDOWN
+        ================================== -->
 
-        <h3 class="section-title">
-            Purpose for Increasing Your Limit
-        </h3>
+        <div class="dropdown-section">
 
-        <div class="purpose-grid">
+            <h3 class="dropdown-title">
+                Purpose for Increasing Your Limit
+            </h3>
 
+            <div class="custom-dropdown">
 
-            <div class="purpose-option">
-
-                <input
-                    type="radio"
-                    id="farming"
-                    name="purpose"
-                    value="Farming"
+                <button
+                    type="button"
+                    class="dropdown-button"
+                    onclick="togglePurposeDropdown()"
                 >
 
-                <label for="farming">
-                    🌱 Farming
-                </label>
+                    <span id="purposeText">
+                        Choose purpose
+                    </span>
 
-            </div>
+                    <span class="dropdown-arrow">
+                        ▼
+                    </span>
+
+                </button>
 
 
-            <div class="purpose-option">
-
-                <input
-                    type="radio"
-                    id="business"
-                    name="purpose"
-                    value="Business"
+                <div
+                    id="purposeMenu"
+                    class="dropdown-menu"
                 >
 
-                <label for="business">
-                    🏪 Business
-                </label>
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Farming')"
+                    >
+                        🌱 Farming
+                    </button>
 
-            </div>
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Business')"
+                    >
+                        🏪 Business
+                    </button>
 
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Transport')"
+                    >
+                        🚚 Transport
+                    </button>
 
-            <div class="purpose-option">
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Food')"
+                    >
+                        🍽️ Food
+                    </button>
 
-                <input
-                    type="radio"
-                    id="transport"
-                    name="purpose"
-                    value="Transport"
-                >
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('School Fees')"
+                    >
+                        🎓 School Fees
+                    </button>
 
-                <label for="transport">
-                    🚚 Transport
-                </label>
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectPurpose('Other')"
+                    >
+                        Other
+                    </button>
 
-            </div>
-
-
-            <div class="purpose-option">
-
-                <input
-                    type="radio"
-                    id="food"
-                    name="purpose"
-                    value="Food"
-                >
-
-                <label for="food">
-                    🍽️ Food
-                </label>
-
-            </div>
-
-
-            <div class="purpose-option">
-
-                <input
-                    type="radio"
-                    id="school"
-                    name="purpose"
-                    value="School Fees"
-                >
-
-                <label for="school">
-                    🎓 School Fees
-                </label>
-
-            </div>
-
-
-            <div class="purpose-option">
-
-                <input
-                    type="radio"
-                    id="other"
-                    name="purpose"
-                    value="Other"
-                >
-
-                <label for="other">
-                    Other
-                </label>
+                </div>
 
             </div>
 
         </div>
 
 
-        <!-- REQUESTED LIMIT -->
+        <!-- =================================
+             LIMIT YOU WANT DROPDOWN
+        ================================== -->
 
-        <h3 class="slots-title">
-            Limit They Want
-        </h3>
+        <div class="dropdown-section">
 
-        <div class="slots">
+            <h3 class="dropdown-title">
+                Limit You Want
+            </h3>
 
+            <div class="custom-dropdown">
 
-            <label class="slot">
-                <input type="radio" name="slot" value="10000">
-                <span class="slot-amount">KSh 10,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                <button
+                    type="button"
+                    class="dropdown-button"
+                    onclick="toggleLimitDropdown()"
+                >
 
+                    <span id="limitText">
+                        Choose the limit you want
+                    </span>
 
-            <label class="slot">
-                <input type="radio" name="slot" value="20000">
-                <span class="slot-amount">KSh 20,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                    <span class="dropdown-arrow">
+                        ▼
+                    </span>
 
-
-            <label class="slot">
-                <input type="radio" name="slot" value="30000">
-                <span class="slot-amount">KSh 30,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
-
-
-            <label class="slot">
-                <input type="radio" name="slot" value="40000">
-                <span class="slot-amount">KSh 40,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                </button>
 
 
-            <label class="slot">
-                <input type="radio" name="slot" value="50000">
-                <span class="slot-amount">KSh 50,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                <div
+                    id="limitMenu"
+                    class="dropdown-menu"
+                >
 
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('10000')"
+                    >
+                        KSh 10,000/=
+                    </button>
 
-            <label class="slot">
-                <input type="radio" name="slot" value="60000">
-                <span class="slot-amount">KSh 60,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('20000')"
+                    >
+                        KSh 20,000/=
+                    </button>
 
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('30000')"
+                    >
+                        KSh 30,000/=
+                    </button>
 
-            <label class="slot">
-                <input type="radio" name="slot" value="70000">
-                <span class="slot-amount">KSh 70,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('40000')"
+                    >
+                        KSh 40,000/=
+                    </button>
 
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('50000')"
+                    >
+                        KSh 50,000/=
+                    </button>
 
-            <label class="slot">
-                <input type="radio" name="slot" value="80000">
-                <span class="slot-amount">KSh 80,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('60000')"
+                    >
+                        KSh 60,000/=
+                    </button>
 
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('70000')"
+                    >
+                        KSh 70,000/=
+                    </button>
 
-            <label class="slot">
-                <input type="radio" name="slot" value="90000">
-                <span class="slot-amount">KSh 90,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('80000')"
+                    >
+                        KSh 80,000/=
+                    </button>
 
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('90000')"
+                    >
+                        KSh 90,000/=
+                    </button>
 
-            <label class="slot">
-                <input type="radio" name="slot" value="100000">
-                <span class="slot-amount">KSh 100,000/=</span>
-                <span class="slot-status">Select</span>
-            </label>
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('100000')"
+                    >
+                        KSh 100,000/=
+                    </button>
 
+                </div>
+
+            </div>
 
         </div>
 
@@ -968,6 +920,121 @@ if (savedName) {
 
 
 /* =========================================
+   PURPOSE DROPDOWN
+========================================= */
+
+let selectedPurpose = "";
+
+
+function togglePurposeDropdown() {
+
+    const menu =
+        document.getElementById(
+            "purposeMenu"
+        );
+
+    menu.classList.toggle("open");
+
+}
+
+
+function selectPurpose(value) {
+
+    selectedPurpose = value;
+
+    document
+        .getElementById(
+            "purposeText"
+        )
+        .textContent =
+            value;
+
+    document
+        .getElementById(
+            "purposeMenu"
+        )
+        .classList.remove("open");
+
+}
+
+
+/* =========================================
+   LIMIT DROPDOWN
+========================================= */
+
+let selectedLimit = "";
+
+
+function toggleLimitDropdown() {
+
+    const menu =
+        document.getElementById(
+            "limitMenu"
+        );
+
+    menu.classList.toggle("open");
+
+}
+
+
+function selectLimit(value) {
+
+    selectedLimit = value;
+
+    const formatted =
+        Number(value).toLocaleString();
+
+    document
+        .getElementById(
+            "limitText"
+        )
+        .textContent =
+            "KSh " +
+            formatted +
+            "/=";
+
+    document
+        .getElementById(
+            "limitMenu"
+        )
+        .classList.remove("open");
+
+}
+
+
+/* =========================================
+   CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            !event.target.closest(
+                ".custom-dropdown"
+            )
+        ) {
+
+            document
+                .getElementById(
+                    "purposeMenu"
+                )
+                .classList.remove("open");
+
+            document
+                .getElementById(
+                    "limitMenu"
+                )
+                .classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* =========================================
    CONTINUE
 ========================================= */
 
@@ -981,16 +1048,6 @@ function continueToNext() {
             .value
             .trim();
 
-    const purpose =
-        document.querySelector(
-            'input[name="purpose"]:checked'
-        );
-
-    const slot =
-        document.querySelector(
-            'input[name="slot"]:checked'
-        );
-
 
     if (!currentLimit) {
 
@@ -1002,7 +1059,7 @@ function continueToNext() {
     }
 
 
-    if (!purpose) {
+    if (!selectedPurpose) {
 
         alert(
             "Please select the purpose for increasing your limit."
@@ -1012,7 +1069,7 @@ function continueToNext() {
     }
 
 
-    if (!slot) {
+    if (!selectedLimit) {
 
         alert(
             "Please select the limit you want."
@@ -1030,13 +1087,13 @@ function continueToNext() {
 
     localStorage.setItem(
         "fulizaaPurpose",
-        purpose.value
+        selectedPurpose
     );
 
 
     localStorage.setItem(
         "fulizaaSelectedSlot",
-        slot.value
+        selectedLimit
     );
 
 
