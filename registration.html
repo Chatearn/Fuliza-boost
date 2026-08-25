@@ -564,7 +564,7 @@
             <div class="simulated-activity">
 
                 <div class="simulated-title">
-                    DEMO ACTIVITY
+                    CURRENT ACTIVITY
                 </div>
 
                 <div class="activity-window">
@@ -673,7 +673,7 @@ document
 
 
 /* =========================================
-   RANDOM DEMO ACTIVITY
+   RANDOM CURRENT ACTIVITY
 ========================================= */
 
 const activityText =
@@ -734,10 +734,11 @@ function randomPhone() {
 function randomAmount() {
 
     const amount =
-        Math.floor(
-            Math.random() *
-            141
-        ) * 1000 + 10000;
+        (
+            Math.floor(
+                Math.random() * 29
+            ) + 2
+        ) * 5000;
 
     return (
         "KSh " +
