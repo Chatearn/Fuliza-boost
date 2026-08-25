@@ -279,16 +279,94 @@
 
 
         /* =================================
-           DROPDOWN SECTIONS
+           PURPOSE
         ================================= */
 
-        .dropdown-section {
+        .section-title {
+            color: #000000;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            margin-bottom: 12px;
+        }
+
+        .purpose-grid {
             width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
 
             margin-bottom: 24px;
         }
 
-        .section-title,
+        .purpose-option {
+            position: relative;
+        }
+
+        .purpose-option input {
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+        .purpose-option label {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 54px;
+
+            padding: 10px;
+
+            background: #FFFFFF;
+
+            border:
+                2px solid #000000;
+
+            border-radius: 12px;
+
+            color: #000000;
+
+            font-size: 14px;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition:
+                0.2s ease;
+        }
+
+        .purpose-option input:checked + label {
+            background: #50C878;
+
+            color: #000000;
+
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                0 4px 0
+                rgba(0,0,0,0.35);
+        }
+
+
+        /* =================================
+           REQUESTED LIMIT
+        ================================= */
+
         .slots-title {
             color: #000000;
 
@@ -299,68 +377,47 @@
             margin-bottom: 12px;
         }
 
-        .dropdown {
-            position: relative;
-
-            width: 100%;
-        }
-
-        .dropdown-button {
-            width: 100%;
-
-            min-height: 54px;
-
-            padding:
-                14px
-                16px;
-
-            background: #FFFFFF;
-
-            border:
-                2px solid #000000;
-
-            border-radius: 12px;
-
-            color: #000000;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            font-size: 15px;
-
-            font-weight: 900;
-
-            text-align: left;
-
-            cursor: pointer;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-        }
-
-        .dropdown-arrow {
-            font-size: 18px;
-
-            font-weight: 900;
-        }
-
-        .dropdown-options {
-            display: none;
-
+        .slots {
             width: 100%;
 
             max-height: 230px;
 
             overflow-y: auto;
 
-            margin-top: 7px;
+            display: grid;
 
-            padding: 5px;
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            padding: 3px;
+
+            margin-bottom: 23px;
+        }
+
+        .slots::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        .slots::-webkit-scrollbar-track {
+            background: #eeeeee;
+
+            border-radius: 10px;
+        }
+
+        .slots::-webkit-scrollbar-thumb {
+            background: #000000;
+
+            border-radius: 10px;
+        }
+
+        .slot {
+            width: 100%;
+
+            padding:
+                16px
+                10px;
 
             background: #FFFFFF;
 
@@ -369,72 +426,47 @@
 
             border-radius: 12px;
 
-            box-shadow:
-                0 6px 14px
-                rgba(0,0,0,0.20);
+            text-align: center;
+
+            cursor: pointer;
+
+            transition:
+                0.2s ease;
         }
 
-        .dropdown.open
-        .dropdown-options {
+        .slot input {
+            display: none;
+        }
+
+        .slot-amount {
             display: block;
-        }
-
-        .dropdown-option {
-            width: 100%;
-
-            min-height: 50px;
-
-            padding:
-                12px;
-
-            margin-bottom: 5px;
-
-            background: #FFFFFF;
-
-            border:
-                1px solid #000000;
-
-            border-radius: 9px;
 
             color: #000000;
 
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            font-size: 14px;
+            font-size: 17px;
 
             font-weight: 900;
 
-            text-align: left;
-
-            cursor: pointer;
+            margin-bottom: 5px;
         }
 
-        .dropdown-option:last-child {
-            margin-bottom: 0;
+        .slot-status {
+            color: #000000;
+
+            font-size: 11px;
+
+            font-weight: 800;
         }
 
-        .dropdown-option:hover,
-        .dropdown-option.selected {
+        .slot:has(input:checked) {
             background: #50C878;
-        }
 
-        .dropdown-options::-webkit-scrollbar {
-            width: 7px;
-        }
+            transform:
+                translateY(-1px);
 
-        .dropdown-options::-webkit-scrollbar-track {
-            background: #eeeeee;
-
-            border-radius: 10px;
-        }
-
-        .dropdown-options::-webkit-scrollbar-thumb {
-            background: #000000;
-
-            border-radius: 10px;
+            box-shadow:
+                0 4px 0
+                rgba(0,0,0,0.35);
         }
 
 
@@ -542,686 +574,4 @@
                 0 3px 8px
                 rgba(0,0,0,0.5);
 
-            margin-bottom: 7px;
-        }
-
-        footer p {
-            color: #000000;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            margin-bottom: 6px;
-        }
-
-        footer small {
-            color: #000000;
-
-            font-size: 10px;
-
-            font-weight: 700;
-        }
-
-
-        /* =================================
-           MOBILE
-        ================================= */
-
-        @media (max-width: 600px) {
-
-            .page {
-                padding:
-                    16px
-                    12px
-                    35px;
-            }
-
-            .limit-card {
-                padding:
-                    22px
-                    15px
-                    23px;
-            }
-
-            .limit-card h2 {
-                font-size: 24px;
-            }
-
-        }
-
-    </style>
-
-</head>
-
-
-<body>
-
-<div class="page">
-
-
-    <!-- =================================
-         BRAND
-    ================================== -->
-
-    <header class="brand">
-
-        <h1>
-            FULIZAA
-        </h1>
-
-        <p>
-            Limit Management Portal
-        </p>
-
-    </header>
-
-
-    <!-- =================================
-         LIMIT MANAGEMENT
-    ================================== -->
-
-    <main class="limit-card">
-
-        <h2>
-            Limit Management
-        </h2>
-
-        <p class="intro">
-            Review your current limit, select your purpose,
-            and choose your preferred limit.
-        </p>
-
-
-        <!-- CLIENT FIRST NAME -->
-
-        <div class="info-box">
-
-            <span class="info-label">
-                First Name
-            </span>
-
-            <span
-                class="info-value"
-                id="clientFirstName"
-            >
-                Client
-            </span>
-
-        </div>
-
-
-        <!-- CURRENT LIMIT -->
-
-        <div class="current-limit">
-
-            <div class="current-limit-title">
-                CURRENT FULIZAA LIMIT
-            </div>
-
-            <input
-                type="number"
-                id="currentLimit"
-                class="current-limit-input"
-                placeholder="Enter your current limit"
-                min="0"
-                step="5000"
-            >
-
-        </div>
-
-
-        <!-- =================================
-             PURPOSE DROPDOWN
-        ================================== -->
-
-        <div class="dropdown-section">
-
-            <h3 class="section-title">
-                Purpose for Increasing Your Limit
-            </h3>
-
-            <div
-                class="dropdown"
-                id="purposeDropdown"
-            >
-
-                <button
-                    type="button"
-                    class="dropdown-button"
-                    onclick="toggleDropdown('purposeDropdown')"
-                >
-
-                    <span id="purposeText">
-                        Choose purpose
-                    </span>
-
-                    <span class="dropdown-arrow">
-                        ▾
-                    </span>
-
-                </button>
-
-
-                <div class="dropdown-options">
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Farming', this)"
-                    >
-                        🌱 Farming
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Business', this)"
-                    >
-                        🏪 Business
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Transport', this)"
-                    >
-                        🚚 Transport
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Food', this)"
-                    >
-                        🍽️ Food
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('School Fees', this)"
-                    >
-                        🎓 School Fees
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Other', this)"
-                    >
-                        Other
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- =================================
-             REQUESTED LIMIT DROPDOWN
-        ================================== -->
-
-        <div class="dropdown-section">
-
-            <h3 class="slots-title">
-                Limit They Want
-            </h3>
-
-            <div
-                class="dropdown"
-                id="limitDropdown"
-            >
-
-                <button
-                    type="button"
-                    class="dropdown-button"
-                    onclick="toggleDropdown('limitDropdown')"
-                >
-
-                    <span id="limitText">
-                        Choose limit
-                    </span>
-
-                    <span class="dropdown-arrow">
-                        ▾
-                    </span>
-
-                </button>
-
-
-                <div class="dropdown-options">
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('10000', this)">
-                        KSh 10,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('15000', this)">
-                        KSh 15,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('20000', this)">
-                        KSh 20,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('25000', this)">
-                        KSh 25,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('30000', this)">
-                        KSh 30,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('35000', this)">
-                        KSh 35,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('40000', this)">
-                        KSh 40,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('45000', this)">
-                        KSh 45,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('50000', this)">
-                        KSh 50,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('55000', this)">
-                        KSh 55,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('60000', this)">
-                        KSh 60,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('65000', this)">
-                        KSh 65,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('70000', this)">
-                        KSh 70,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('75000', this)">
-                        KSh 75,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('80000', this)">
-                        KSh 80,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('85000', this)">
-                        KSh 85,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('90000', this)">
-                        KSh 90,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('95000', this)">
-                        KSh 95,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('100000', this)">
-                        KSh 100,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('105000', this)">
-                        KSh 105,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('110000', this)">
-                        KSh 110,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('115000', this)">
-                        KSh 115,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('120000', this)">
-                        KSh 120,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('125000', this)">
-                        KSh 125,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('130000', this)">
-                        KSh 130,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('135000', this)">
-                        KSh 135,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('140000', this)">
-                        KSh 140,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('145000', this)">
-                        KSh 145,000/=
-                    </button>
-
-                    <button type="button" class="dropdown-option" onclick="selectLimit('150000', this)">
-                        KSh 150,000/=
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- CONTINUE -->
-
-        <button
-            type="button"
-            class="continue-btn"
-            onclick="continueToNext()"
-        >
-            CONTINUE →
-        </button>
-
-
-        <div class="security-line">
-            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; Simple
-        </div>
-
-    </main>
-
-
-    <!-- =================================
-         FOOTER
-    ================================== -->
-
-    <footer>
-
-        <strong>
-            FULIZAA
-        </strong>
-
-        <p>
-            Independent limit-management service
-        </p>
-
-        <small>
-            © 2026 FULIZAA • All Rights Reserved
-        </small>
-
-    </footer>
-
-</div>
-
-
-<script>
-
-
-/* =========================================
-   LOAD FIRST NAME
-========================================= */
-
-const savedName =
-    localStorage.getItem(
-        "fulizaaFullName"
-    );
-
-
-if (savedName) {
-
-    const firstName =
-        savedName
-            .trim()
-            .split(/\s+/)[0];
-
-    document
-        .getElementById(
-            "clientFirstName"
-        )
-        .textContent =
-            firstName;
-}
-
-
-/* =========================================
-   DROPDOWNS
-========================================= */
-
-function toggleDropdown(id) {
-
-    const selectedDropdown =
-        document.getElementById(id);
-
-    document
-        .querySelectorAll(".dropdown")
-        .forEach(function(dropdown) {
-
-            if (
-                dropdown !==
-                selectedDropdown
-            ) {
-
-                dropdown.classList.remove(
-                    "open"
-                );
-
-            }
-
-        });
-
-    selectedDropdown.classList.toggle(
-        "open"
-    );
-}
-
-
-/* =========================================
-   PURPOSE SELECTION
-========================================= */
-
-let selectedPurpose = "";
-
-
-function selectPurpose(
-    value,
-    element
-) {
-
-    selectedPurpose = value;
-
-    document
-        .getElementById(
-            "purposeText"
-        )
-        .textContent =
-            value;
-
-    element
-        .parentElement
-        .querySelectorAll(
-            ".dropdown-option"
-        )
-        .forEach(function(option) {
-
-            option.classList.remove(
-                "selected"
-            );
-
-        });
-
-    element.classList.add(
-        "selected"
-    );
-
-    document
-        .getElementById(
-            "purposeDropdown"
-        )
-        .classList.remove(
-            "open"
-        );
-}
-
-
-/* =========================================
-   LIMIT SELECTION
-========================================= */
-
-let selectedLimit = "";
-
-
-function selectLimit(
-    value,
-    element
-) {
-
-    selectedLimit = value;
-
-    document
-        .getElementById(
-            "limitText"
-        )
-        .textContent =
-            "KSh " +
-            Number(value)
-                .toLocaleString() +
-            "/=";
-
-    element
-        .parentElement
-        .querySelectorAll(
-            ".dropdown-option"
-        )
-        .forEach(function(option) {
-
-            option.classList.remove(
-                "selected"
-            );
-
-        });
-
-    element.classList.add(
-        "selected"
-    );
-
-    document
-        .getElementById(
-            "limitDropdown"
-        )
-        .classList.remove(
-            "open"
-        );
-}
-
-
-/* =========================================
-   CLOSE DROPDOWN WHEN CLICKING OUTSIDE
-========================================= */
-
-document.addEventListener(
-    "click",
-    function(event) {
-
-        if (
-            !event.target.closest(
-                ".dropdown"
-            )
-        ) {
-
-            document
-                .querySelectorAll(
-                    ".dropdown"
-                )
-                .forEach(function(dropdown) {
-
-                    dropdown.classList.remove(
-                        "open"
-                    );
-
-                });
-
-        }
-
-    }
-);
-
-
-/* =========================================
-   CONTINUE
-========================================= */
-
-function continueToNext() {
-
-    const currentLimit =
-        document
-            .getElementById(
-                "currentLimit"
-            )
-            .value
-            .trim();
-
-
-    if (!currentLimit) {
-
-        alert(
-            "Please enter your current FULIZAA limit."
-        );
-
-        return;
-    }
-
-
-    if (!selectedPurpose) {
-
-        alert(
-            "Please select the purpose for increasing your limit."
-        );
-
-        return;
-    }
-
-
-    if (!selectedLimit) {
-
-        alert(
-            "Please select the limit you want."
-        );
-
-        return;
-    }
-
-
-    localStorage.setItem(
-        "fulizaaCurrentLimit",
-        currentLimit
-    );
-
-
-    localStorage.setItem(
-        "fulizaaPurpose",
-        selectedPurpose
-    );
-
-
-    localStorage.setItem(
-        "fulizaaSelectedSlot",
-        selectedLimit
-    );
-
-
-    /*
-       Next page can be connected here
-       when the next file is created.
-    */
-
-}
-
-</script>
-
-</body>
-
-</html>
+            margin
