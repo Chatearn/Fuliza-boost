@@ -96,7 +96,7 @@
 
 
         /* =================================
-           DEMO NOTIFICATIONS
+           LIVE NOTIFICATIONS
         ================================= */
 
         .demo-notifications {
@@ -522,7 +522,7 @@
 
 
         <!-- =================================
-             DEMO NOTIFICATIONS
+             LIVE NOTIFICATIONS
         ================================== -->
 
         <div
@@ -743,7 +743,7 @@ function continueToNext() {
 
 
 /* =========================================
-  CURRENT LIVE NOTIFICATIONS
+   LIVE NOTIFICATIONS
 ========================================= */
 
 const demoNumbers = [
@@ -767,7 +767,7 @@ const demoNumbers = [
 ];
 
 
-const currentMessages = [
+const demoMessages = [
 
     "Limit options viewed",
     "Limit selection updated",
@@ -788,21 +788,21 @@ const currentMessages = [
 ];
 
 
-let currentIndex = 0;
+let demoIndex = 0;
 
 
-function showCurrentMessage() {
+function showDemoMessage() {
 
     const container =
         document.getElementById(
-            "currentNotifications"
+            "demoNotifications"
         );
 
 
     const number =
-        currentNumbers[
-            currentIndex %
-            currentNumbers.length
+        demoNumbers[
+            demoIndex %
+            demoNumbers.length
         ];
 
 
@@ -826,7 +826,7 @@ function showCurrentMessage() {
     notification.innerHTML =
 
         '<span class="demo-label">' +
-        'DEMO NOTIFICATION' +
+        'LIVE NOTIFICATION' +
         '</span>' +
 
         number +
@@ -848,7 +848,7 @@ function showCurrentMessage() {
 
 
 /* =========================================
-   START DEMO NOTIFICATIONS
+   START LIVE NOTIFICATIONS
 ========================================= */
 
 showDemoMessage();
