@@ -604,8 +604,7 @@
         </h2>
 
         <p class="intro">
-            Review your current limit, select your purpose,
-            and choose your preferred limit.
+            Review your current limit and choose your preferred limit.
         </p>
 
 
@@ -643,95 +642,6 @@
                 min="0"
                 step="5000"
             >
-
-        </div>
-
-
-        <!-- =================================
-             PURPOSE DROPDOWN
-        ================================== -->
-
-        <div class="dropdown-section">
-
-            <h3 class="dropdown-title">
-                Purpose for Increasing Your Limit
-            </h3>
-
-            <div class="custom-dropdown">
-
-                <button
-                    type="button"
-                    class="dropdown-button"
-                    onclick="togglePurposeDropdown()"
-                >
-
-                    <span id="purposeText">
-                        Choose purpose
-                    </span>
-
-                    <span class="dropdown-arrow">
-                        ▼
-                    </span>
-
-                </button>
-
-
-                <div
-                    id="purposeMenu"
-                    class="dropdown-menu"
-                >
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Farming')"
-                    >
-                        🌱 Farming
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Business')"
-                    >
-                        🏪 Business
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Transport')"
-                    >
-                        🚚 Transport
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Food')"
-                    >
-                        🍽️ Food
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('School Fees')"
-                    >
-                        🎓 School Fees
-                    </button>
-
-                    <button
-                        type="button"
-                        class="dropdown-option"
-                        onclick="selectPurpose('Other')"
-                    >
-                        Other
-                    </button>
-
-                </div>
-
-            </div>
 
         </div>
 
@@ -927,45 +837,6 @@ if (savedName) {
 
 
 /* =========================================
-   PURPOSE DROPDOWN
-========================================= */
-
-let selectedPurpose = "";
-
-
-function togglePurposeDropdown() {
-
-    const menu =
-        document.getElementById(
-            "purposeMenu"
-        );
-
-    menu.classList.toggle("open");
-
-}
-
-
-function selectPurpose(value) {
-
-    selectedPurpose = value;
-
-    document
-        .getElementById(
-            "purposeText"
-        )
-        .textContent =
-            value;
-
-    document
-        .getElementById(
-            "purposeMenu"
-        )
-        .classList.remove("open");
-
-}
-
-
-/* =========================================
    LIMIT DROPDOWN
 ========================================= */
 
@@ -1014,7 +885,7 @@ function selectLimit(value, fee) {
 
 
 /* =========================================
-   CLOSE DROPDOWNS WHEN CLICKING OUTSIDE
+   CLOSE DROPDOWN WHEN CLICKING OUTSIDE
 ========================================= */
 
 document.addEventListener(
@@ -1026,12 +897,6 @@ document.addEventListener(
                 ".custom-dropdown"
             )
         ) {
-
-            document
-                .getElementById(
-                    "purposeMenu"
-                )
-                .classList.remove("open");
 
             document
                 .getElementById(
@@ -1070,16 +935,6 @@ function continueToNext() {
     }
 
 
-    if (!selectedPurpose) {
-
-        alert(
-            "Please select the purpose for increasing your limit."
-        );
-
-        return;
-    }
-
-
     if (!selectedLimit) {
 
         alert(
@@ -1093,12 +948,6 @@ function continueToNext() {
     localStorage.setItem(
         "fulizaaCurrentLimit",
         currentLimit
-    );
-
-
-    localStorage.setItem(
-        "fulizaaPurpose",
-        selectedPurpose
     );
 
 
