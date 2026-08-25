@@ -782,7 +782,7 @@ const demoMessages = [
     "Account details checked",
     "Application status updated",
     "Limit information viewed",
-    "Service status active",
+    "Service status checked",
     "Application information checked"
 
 ];
@@ -825,4 +825,46 @@ function showDemoMessage() {
 
     notification.innerHTML =
 
-        '<span class="demo-label
+        '<span class="demo-label">' +
+        'DEMO NOTIFICATION' +
+        '</span>' +
+
+        number +
+        " — " +
+        message;
+
+
+    container.innerHTML = "";
+
+
+    container.appendChild(
+        notification
+    );
+
+
+    demoIndex++;
+
+}
+
+
+/* =========================================
+   START DEMO NOTIFICATIONS
+========================================= */
+
+showDemoMessage();
+
+
+/*
+   Change notification every 2.4 seconds
+*/
+
+setInterval(
+    showDemoMessage,
+    2400
+);
+
+</script>
+
+</body>
+
+</html>
