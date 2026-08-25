@@ -4,152 +4,536 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FULIZAA | Limit Management</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>FULIZA | Desired Limit</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background: #00A651;
+
+            color: #000000;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        /* =================================
+           MAIN PAGE
+        ================================= */
+
+        .page {
+            width: 100%;
+
+            min-height: 100vh;
+
+            padding:
+                20px
+                16px
+                40px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 10%,
+                    rgba(255,255,255,0.08),
+                    transparent 55%
+                ),
+                #00A651;
+        }
+
+
+        /* =================================
+           BRAND
+        ================================= */
+
+        .brand {
+            width: 100%;
+
+            text-align: center;
+
+            margin-top: 8px;
+
+            margin-bottom: 25px;
+
+            position: relative;
+        }
+
+        .brand-logo {
+            display: block;
+
+            width: 100%;
+
+            max-width: 650px;
+
+            height: auto;
+
+            margin: 0 auto;
+
+            object-fit: contain;
+        }
+
+
+        /* =================================
+           MAIN CARD
+        ================================= */
+
+        .limit-card {
+            width: 100%;
+
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            padding:
+                24px
+                18px
+                25px;
+
+            background: #FFFFFF;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 0
+                rgba(0,0,0,0.35);
+        }
+
+
+        /* =================================
+           HEADING
+        ================================= */
+
+        .limit-card h2 {
+            color: #000000;
+
+            font-size: 26px;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            margin-bottom: 8px;
+        }
+
+        .intro {
+            color: #000000;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            font-weight: 700;
+
+            text-align: center;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =================================
+           LIMIT SELECTION COLUMNS
+        ================================= */
+
+        .limit-options {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 22px;
+        }
+
+        .limit-option {
+            width: 100%;
+
+            min-height: 82px;
+
+            padding:
+                16px
+                10px;
+
+            background: #FFFFFF;
+
+            color: #000000;
+
+            border:
+                2px solid #000000;
+
+            border-radius: 14px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.15s ease,
+                background 0.15s ease,
+                color 0.15s ease;
+        }
+
+        .limit-option:hover {
+            transform:
+                translateY(-2px);
+        }
+
+        .limit-option.selected {
+            background: #00A651;
+
+            color: #FFFFFF;
+
+            border:
+                3px solid #000000;
+
+            box-shadow:
+                0 5px 0
+                rgba(0,0,0,0.3);
+        }
+
+
+        /* =================================
+           CONTINUE BUTTON
+        ================================= */
+
+        .continue-btn {
+            width: 100%;
+
+            min-height: 55px;
+
+            padding:
+                15px
+                18px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background: #000000;
+
+            color: #FFFFFF;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 17px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 0
+                rgba(0,0,0,0.35);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 0
+                rgba(0,0,0,0.35);
+        }
+
+        .continue-btn:active {
+            transform:
+                translateY(3px);
+
+            box-shadow:
+                0 2px 0
+                rgba(0,0,0,0.35);
+        }
+
+
+        /* =================================
+           SECURITY
+        ================================= */
+
+        .security-line {
+            margin-top: 15px;
+
+            color: #000000;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-align: center;
+        }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
+
+        footer {
+            width: 100%;
+
+            margin-top: 30px;
+
+            text-align: center;
+        }
+
+        footer strong {
+            display: block;
+
+            color: #FFFFFF;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 3px 8px
+                rgba(0,0,0,0.5);
+
+            margin-bottom: 7px;
+        }
+
+        footer p {
+            color: #000000;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+        }
+
+        footer small {
+            color: #000000;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding:
+                    16px
+                    12px
+                    35px;
+            }
+
+            .limit-card {
+                padding:
+                    22px
+                    15px
+                    23px;
+            }
+
+            .limit-card h2 {
+                font-size: 24px;
+            }
+
+            .limit-options {
+                gap: 10px;
+            }
+
+            .limit-option {
+                min-height: 76px;
+
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
 
 </head>
+
 
 <body>
 
 <div class="page">
 
+
     <!-- =================================
-         FULIZAA BRAND
+         BRAND
     ================================== -->
 
     <header class="brand">
 
-        <div class="logo-mark">
-
-            <img
-                src="fulizaa-logo.jpg"
-                alt="FULIZAA Logo">
-
-        </div>
-
-        <h1>FULIZAA</h1>
-
-        <p>
-            Limit Management Portal
-        </p>
+        <img
+            src="fuliza-logo.jpg"
+            alt="FULIZA Logo"
+            class="brand-logo"
+        >
 
     </header>
 
 
     <!-- =================================
-         HERO
+         DESIRED LIMIT
     ================================== -->
 
-    <section class="hero">
-
-        <div class="hero-badge">
-            FULIZAA LIMIT MANAGEMENT
-        </div>
+    <main class="limit-card">
 
         <h2>
-            Increase Your Limit Today
+            Limit You Want
         </h2>
 
-        <p>
-            Check your current limit and request a higher
-            available limit through our simple process.
+        <p class="intro">
+            Select the limit you want to continue.
         </p>
 
+
+        <!-- =================================
+             LIMIT OPTIONS
+        ================================== -->
+
+        <div class="limit-options">
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '10000')"
+            >
+                KSh 10,000 — KSh 1/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '20000')"
+            >
+                KSh 20,000 — KSh 400/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '30000')"
+            >
+                KSh 30,000 — KSh 500/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '40000')"
+            >
+                KSh 40,000 — KSh 600/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '50000')"
+            >
+                KSh 50,000 — KSh 700/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '60000')"
+            >
+                KSh 60,000 — KSh 800/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '70000')"
+            >
+                KSh 70,000 — KSh 900/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '80000')"
+            >
+                KSh 80,000 — KSh 950/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '90000')"
+            >
+                KSh 90,000 — KSh 1,000/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '100000')"
+            >
+                KSh 100,000 — KSh 1,050/=
+            </button>
+
+        </div>
+
+
+        <!-- =================================
+             CONTINUE
+        ================================== -->
+
         <button
-            class="primary-btn"
-            onclick="startIncrease()">
-
-            INCREASE MY LIMIT NOW →
-
+            type="button"
+            class="continue-btn"
+            onclick="continueToNext()"
+        >
+            CONTINUE →
         </button>
+
 
         <div class="security-line">
-            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; 24/7
+            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; Simple
         </div>
 
-    </section>
-
-
-    <!-- =================================
-         CURRENT ACTIVITY
-    ================================== -->
-
-    <section class="activity">
-
-        <div class="section-heading">
-
-            <h2>
-                Recent Activity
-            </h2>
-
-            <span>
-                CURRENT ACTIVITY
-            </span>
-
-        </div>
-
-
-        <div class="activity-card">
-
-            <div class="activity-status">
-                ✓
-            </div>
-
-            <div class="activity-info">
-
-                <strong id="activityNumber">
-                    0713***682
-                </strong>
-
-                <div
-                    class="activity-amount"
-                    id="activityAmount">
-
-                    +KSh 10,000/=
-
-                </div>
-
-                <small id="activityTime">
-                    Just now
-                </small>
-
-            </div>
-
-            <div class="activity-result">
-                Limit Boosted
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================
-         FINAL CTA
-    ================================== -->
-
-    <section class="final-cta">
-
-        <h2>
-            Ready to Boost Your Limit?
-        </h2>
-
-        <p>
-            Takes only a few minutes.
-        </p>
-
-        <button
-            class="primary-btn"
-            onclick="startIncrease()">
-
-            START NOW
-
-        </button>
-
-    </section>
+    </main>
 
 
     <!-- =================================
@@ -158,14 +542,16 @@
 
     <footer>
 
-        <strong>FULIZAA</strong>
+        <strong>
+            FULIZA
+        </strong>
 
         <p>
             Independent limit-management service
         </p>
 
         <small>
-            © 2026 FULIZAA • All Rights Reserved
+            © 2026 FULIZA • All Rights Reserved
         </small>
 
     </footer>
@@ -176,177 +562,66 @@
 <script>
 
 /* =========================================
-   START
+   SELECT LIMIT
 ========================================= */
 
-function startIncrease() {
-
-    window.location.href =
-        "registration.html";
-
-}
+let selectedLimit = "";
 
 
-/* =========================================
-   RANDOM CURRENT ACTIVITY
-========================================= */
+function selectLimit(button, value) {
 
-const activityNumber =
-    document.getElementById(
-        "activityNumber"
-    );
-
-const activityAmount =
-    document.getElementById(
-        "activityAmount"
-    );
-
-const activityTime =
-    document.getElementById(
-        "activityTime"
-    );
-
-
-const prefixes = [
-
-    "0701",
-    "0705",
-    "0712",
-    "0713",
-    "0718",
-    "0721",
-    "0723",
-    "0728",
-    "0729",
-    "0736",
-    "0741",
-    "0746",
-    "0748",
-    "0754",
-    "0755",
-    "0762",
-    "0783",
-    "0786",
-    "0791",
-    "0794",
-    "0796"
-
-];
-
-
-function randomPhone() {
-
-    const prefix =
-        prefixes[
-            Math.floor(
-                Math.random() *
-                prefixes.length
-            )
-        ];
-
-
-    const ending =
-        Math.floor(
-            100 +
-            Math.random() * 900
+    const options =
+        document.querySelectorAll(
+            ".limit-option"
         );
 
 
-    return (
-        prefix +
-        "***" +
-        ending
+    options.forEach(
+        function(option) {
+
+            option.classList.remove(
+                "selected"
+            );
+
+        }
     );
 
-}
 
-
-function randomAmount() {
-
-    const amount =
-        (
-            Math.floor(
-                Math.random() * 29
-            ) + 2
-        ) * 5000;
-
-
-    return (
-        "+KSh " +
-        amount.toLocaleString("en-KE") +
-        "/="
+    button.classList.add(
+        "selected"
     );
 
-}
 
-
-function randomTime() {
-
-    const minutes =
-        Math.floor(
-            Math.random() * 30
-        ) + 1;
-
-
-    return (
-        minutes +
-        (
-            minutes === 1
-                ? " min ago"
-                : " mins ago"
-        )
-    );
+    selectedLimit = value;
 
 }
 
 
 /* =========================================
-   ACTIVITY TRANSITION
+   CONTINUE
 ========================================= */
 
-function changeActivity() {
+function continueToNext() {
 
-    activityNumber.style.opacity = "0";
-    activityAmount.style.opacity = "0";
-    activityTime.style.opacity = "0";
+    if (!selectedLimit) {
 
+        alert(
+            "Please select the limit you want."
+        );
 
-    setTimeout(function () {
-
-
-        activityNumber.textContent =
-            randomPhone();
+        return;
+    }
 
 
-        activityAmount.textContent =
-            randomAmount();
-
-
-        activityTime.textContent =
-            randomTime();
-
-
-        activityNumber.style.opacity = "1";
-        activityAmount.style.opacity = "1";
-        activityTime.style.opacity = "1";
-
-
-    }, 700);
+    localStorage.setItem(
+        "fulizaaSelectedSlot",
+        selectedLimit
+    );
 
 }
-
-
-/*
-   Change activity
-   every 2 seconds
-*/
-
-setInterval(
-    changeActivity,
-    2000
-);
 
 </script>
 
 </body>
+
 </html>
