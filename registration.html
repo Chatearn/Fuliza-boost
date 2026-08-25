@@ -282,7 +282,7 @@
 
 
         /* =================================
-           SIMULATED ACTIVITY
+           ACTIVITY
         ================================= */
 
         .simulated-activity {
@@ -317,7 +317,7 @@
 
             width: 100%;
 
-            height: 32px;
+            height: 40px;
 
             overflow: hidden;
         }
@@ -331,14 +331,14 @@
 
             color: #000000;
 
-            font-size: 14px;
+            font-size: 17px;
 
             font-weight: 900;
 
             text-align: center;
 
             transform:
-                translateY(35px);
+                translateY(45px);
 
             opacity: 0;
 
@@ -356,7 +356,7 @@
 
         .activity-text.hide {
             transform:
-                translateY(-35px);
+                translateY(-45px);
 
             opacity: 0;
         }
@@ -558,13 +558,13 @@
 
 
             <!-- =================================
-                 SIMULATED ACTIVITY
+                 ACTIVITY
             ================================== -->
 
             <div class="simulated-activity">
 
                 <div class="simulated-title">
-                    SIMULATED ACTIVITY
+                    DEMO ACTIVITY
                 </div>
 
                 <div class="activity-window">
@@ -673,91 +673,79 @@ document
 
 
 /* =========================================
-   SIMULATED MOVING ACTIVITY
+   RANDOM DEMO ACTIVITY
 ========================================= */
-
-const simulatedActivities = [
-
-    {
-        phone: "0723***256",
-        amount: "KSh 20,000/="
-    },
-
-    {
-        phone: "0718***431",
-        amount: "KSh 30,000/="
-    },
-
-    {
-        phone: "0794***728",
-        amount: "KSh 40,000/="
-    },
-
-    {
-        phone: "0705***193",
-        amount: "KSh 50,000/="
-    },
-
-    {
-        phone: "0741***582",
-        amount: "KSh 60,000/="
-    },
-
-    {
-        phone: "0729***647",
-        amount: "KSh 70,000/="
-    },
-
-    {
-        phone: "0786***315",
-        amount: "KSh 80,000/="
-    },
-
-    {
-        phone: "0712***904",
-        amount: "KSh 90,000/="
-    },
-
-    {
-        phone: "0755***218",
-        amount: "KSh 100,000/="
-    },
-
-    {
-        phone: "0708***763",
-        amount: "KSh 120,000/="
-    },
-
-    {
-        phone: "0791***426",
-        amount: "KSh 140,000/="
-    },
-
-    {
-        phone: "0736***851",
-        amount: "KSh 160,000/="
-    },
-
-    {
-        phone: "0748***307",
-        amount: "KSh 180,000/="
-    },
-
-    {
-        phone: "0762***594",
-        amount: "KSh 200,000/="
-    }
-
-];
-
-
-let activityIndex = 0;
-
 
 const activityText =
     document.getElementById(
         "activityText"
     );
+
+
+function randomPhone() {
+
+    const prefixes = [
+        "0701",
+        "0705",
+        "0712",
+        "0713",
+        "0718",
+        "0721",
+        "0723",
+        "0728",
+        "0729",
+        "0736",
+        "0741",
+        "0746",
+        "0748",
+        "0754",
+        "0755",
+        "0762",
+        "0783",
+        "0786",
+        "0791",
+        "0794",
+        "0796"
+    ];
+
+    const prefix =
+        prefixes[
+            Math.floor(
+                Math.random() *
+                prefixes.length
+            )
+        ];
+
+    const ending =
+        Math.floor(
+            100 +
+            Math.random() * 900
+        );
+
+    return (
+        prefix +
+        "***" +
+        ending
+    );
+
+}
+
+
+function randomAmount() {
+
+    const amount =
+        Math.floor(
+            Math.random() *
+            141
+        ) * 1000 + 10000;
+
+    return (
+        "KSh " +
+        amount.toLocaleString("en-KE") +
+        "/="
+    );
+
+}
 
 
 function showActivity() {
@@ -774,16 +762,17 @@ function showActivity() {
     setTimeout(
         function() {
 
-            const activity =
-                CurrentActivities[
-                    activityIndex
-                ];
+            const phone =
+                randomPhone();
+
+            const amount =
+                randomAmount();
 
 
             activityText.textContent =
-                activity.phone +
+                phone +
                 " received " +
-                activity.amount;
+                amount;
 
 
             activityText.classList.remove(
@@ -794,17 +783,6 @@ function showActivity() {
                 "show"
             );
 
-
-            activityIndex++;
-
-
-            if (
-                activityIndex >=
-                CurrentActivities.length
-            ) {
-                activityIndex = 0;
-            }
-
         },
         250
     );
@@ -812,12 +790,12 @@ function showActivity() {
 }
 
 
-/* First message */
+/* First activity */
 
 showActivity();
 
 
-/* Change every 2 seconds */
+/* New activity every 2 seconds */
 
 setInterval(
     showActivity,
