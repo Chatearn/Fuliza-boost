@@ -1,1 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FULIZAA | Registration</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #50C878;
+            color: #000000;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        /* =================================
+           MAIN PAGE
+        ================================= */
+
+        .page {
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px 16px 40px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 15%,
+                    rgba(255, 255, 255, 0.08),
+                    transparent 55%
+                ),
+                #50C878;
+        }
+
+
+        /* =================================
+           BRAND
+        ================================= */
+
+        .brand {
+            width: 100%;
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 25px;
+        }
+
+        .logo-mark {
+            width: 100%;
+            max-width: 430px;
+            height: 230px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 12px;
+
+            background: #FFFFFF;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 22px rgba(0, 0, 0, 0.35);
+        }
+
+        .logo-mark img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+        .brand h1 {
+            color: #FFFFFF;
+
+            font-size: 32px;
+            line-height: 1.15;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.6);
+
+            margin-bottom: 7px;
+        }
+
+        .brand p {
+            color: #000000;
+
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+
+        /* =================================
+           REGISTRATION CARD
+        ================================= */
+
+        .registration-card {
+            width: 100%;
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            padding: 24px 18px 25px;
+
+            background: #FFFFFF;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 0 rgba(0, 0, 0, 0.35);
+        }
+
+        .registration-card h2 {
+            color: #000000;
+
+            font-size: 26px;
+            font-weight: 900;
+
+            text-align: center;
+
+            margin-bottom: 8px;
+        }
+
+        .registration-card .intro {
+            color: #000000;
+
+            font-size: 14px;
+            line-height: 1.5;
+
+            font-weight: 700;
+
+            text-align: center;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =================================
+           FORM
+        ================================= */
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+
+            color: #000000;
+
+            font-size: 13px;
+            font-weight: 900;
+
+            margin-bottom: 7px;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            min-height: 52px;
+
+            padding: 13px 14px;
+
+            border: 2px solid #000000;
+
+            border-radius: 12px;
+
+            background: #FFFFFF;
+
+            color: #000000;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            outline: none;
+        }
+
+        .form-group input:focus {
+            box-shadow:
+                0 0 0 3px rgba(80, 200, 120, 0.35);
+        }
+
+        .form-group input::placeholder {
+            color: #555555;
+        }
+
+
+        /* =================================
+           CONTINUE BUTTON
+        ================================= */
+
+        .continue-btn {
+            width: 100%;
+
+            min-height: 55px;
+
+            margin-top: 7px;
+
+            padding: 15px 18px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background: #000000;
+
+            color: #FFFFFF;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 17px;
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 0 rgba(0, 0, 0, 0.35);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 0 rgba(0, 0, 0, 0.35);
+        }
+
+        .continue-btn:active {
+            transform: translateY(3px);
+
+            box-shadow:
+                0 2px 0 rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* =================================
+           SECURITY
+        ================================= */
+
+        .security-line {
+            margin-top: 15px;
+
+            color: #000000;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            text-align: center;
+        }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
+
+        footer {
+            width: 100%;
+
+            margin-top: 30px;
+
+            text-align: center;
+        }
+
+        footer strong {
+            display: block;
+
+            color: #FFFFFF;
+
+            font-size: 18px;
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 3px 8px rgba(0, 0, 0, 0.5);
+
+            margin-bottom: 7px;
+        }
+
+        footer p {
+            color: #000000;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            margin-bottom: 6px;
+        }
+
+        footer small {
+            color: #000000;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+
+        /* =================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding: 16px 12px 35px;
+            }
+
+            .logo-mark {
+                width: 100%;
+                max-width: 430px;
+                height: 230px;
+            }
+
+            .registration-card {
+                padding: 22px 15px 23px;
+            }
+
+            .registration-card h2 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- =================================
+         BRAND
+    ================================== -->
+
+    <header class="brand">
+
+        <div class="logo-mark">
+
+            <img
+                src="fulizaa-logo.jpg"
+                alt="FULIZAA Logo"
+            >
+
+        </div>
+
+        <h1>FULIZAA</h1>
+
+        <p>
+            Limit Management Portal
+        </p>
+
+    </header>
+
+
+    <!-- =================================
+         REGISTRATION
+    ================================== -->
+
+    <main class="registration-card">
+
+        <h2>
+            Registration
+        </h2>
+
+        <p class="intro">
+            Enter your details below to continue.
+        </p>
+
+
+        <form
+            id="registrationForm"
+        >
+
+            <div class="form-group">
+
+                <label for="fullName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter your phone number"
+                    autocomplete="tel"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="idNumber">
+                    ID Number
+                </label>
+
+                <input
+                    type="text"
+                    id="idNumber"
+                    name="idNumber"
+                    placeholder="Enter your ID number"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="continue-btn"
+            >
+                CONTINUE →
+            </button>
+
+
+            <div class="security-line">
+                🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; Simple
+            </div>
+
+        </form>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        <strong>
+            FULIZAA
+        </strong>
+
+        <p>
+            Independent limit-management service
+        </p>
+
+        <small>
+            © 2026 FULIZAA • All Rights Reserved
+        </small>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+document
+    .getElementById("registrationForm")
+    .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const fullName =
+            document.getElementById("fullName").value.trim();
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const idNumber =
+            document.getElementById("idNumber").value.trim();
+
+
+        if (
+            !fullName ||
+            !phone ||
+            !idNumber
+        ) {
+            return;
+        }
+
+
+        localStorage.setItem(
+            "fulizaaFullName",
+            fullName
+        );
+
+        localStorage.setItem(
+            "fulizaaPhone",
+            phone
+        );
+
+        localStorage.setItem(
+            "fulizaaIdNumber",
+            idNumber
+        );
+
+
+        /*
+         * Continue to the next stage
+         */
+
+        window.location.href =
+            "limit.html";
+
+    });
+
+</script>
+
+</body>
+</html>
