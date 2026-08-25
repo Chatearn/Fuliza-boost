@@ -4,6 +4,7 @@
 <head>
 
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
@@ -281,6 +282,79 @@
 
 
         /* =================================
+           SIMULATED ACTIVITY
+        ================================= */
+
+        .simulated-activity {
+            width: 100%;
+            margin-top: 20px;
+
+            padding-top: 14px;
+
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .simulated-title {
+            color: #000000;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 0.7px;
+
+            margin-bottom: 8px;
+        }
+
+        .activity-window {
+            position: relative;
+
+            width: 100%;
+            height: 28px;
+
+            overflow: hidden;
+        }
+
+        .activity-text {
+            position: absolute;
+
+            width: 100%;
+
+            left: 0;
+
+            color: #000000;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            text-align: center;
+
+            transform: translateY(30px);
+
+            opacity: 0;
+
+            transition:
+                transform 0.8s ease,
+                opacity 0.8s ease;
+        }
+
+        .activity-text.show {
+            transform: translateY(0);
+
+            opacity: 1;
+        }
+
+        .activity-text.hide {
+            transform: translateY(-30px);
+
+            opacity: 0;
+        }
+
+
+        /* =================================
            FOOTER
         ================================= */
 
@@ -469,6 +543,28 @@
                 🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; Simple
             </div>
 
+
+            <!-- =================================
+                 SIMULATED MOVING TEXT
+            ================================== -->
+
+            <div class="simulated-activity">
+
+                <div class="simulated-title">
+                    SIMULATED ACTIVITY
+                </div>
+
+                <div class="activity-window">
+
+                    <div
+                        id="activityText"
+                        class="activity-text"
+                    ></div>
+
+                </div>
+
+            </div>
+
         </form>
 
     </main>
@@ -498,6 +594,10 @@
 
 
 <script>
+
+/* =========================================
+   REGISTRATION
+========================================= */
 
 document
     .getElementById("registrationForm")
@@ -540,14 +640,74 @@ document
         );
 
 
-        /*
-         * Continue to the next stage
-         */
-
         window.location.href =
             "limit.html";
 
     });
+
+
+/* =========================================
+   SIMULATED MOVING ACTIVITY
+========================================= */
+
+const simulatedActivities = [
+
+    "Example: Limit request received",
+    "Example: Application processing",
+    "Example: Limit review in progress",
+    "Example: Request successfully recorded",
+    "Example: Application status updated"
+
+];
+
+let activityIndex = 0;
+
+const activityText =
+    document.getElementById("activityText");
+
+
+function showActivity() {
+
+    activityText.classList.remove("show");
+
+    activityText.classList.add("hide");
+
+
+    setTimeout(function() {
+
+        activityText.textContent =
+            simulatedActivities[activityIndex];
+
+        activityText.classList.remove("hide");
+
+        activityText.classList.add("show");
+
+
+        activityIndex++;
+
+        if (
+            activityIndex >=
+            simulatedActivities.length
+        ) {
+            activityIndex = 0;
+        }
+
+    }, 250);
+
+}
+
+
+/* First message */
+
+showActivity();
+
+
+/* Change every second */
+
+setInterval(
+    showActivity,
+    1000
+);
 
 </script>
 
