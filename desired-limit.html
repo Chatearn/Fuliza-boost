@@ -1,1 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FULIZAA | Desired Limit</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+
+            background: #00A651;
+
+            color: #000000;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        /* =================================
+           MAIN PAGE
+        ================================= */
+
+        .page {
+            width: 100%;
+
+            min-height: 100vh;
+
+            padding:
+                20px
+                16px
+                40px;
+
+            background:
+                radial-gradient(
+                    circle at 50% 10%,
+                    rgba(255,255,255,0.08),
+                    transparent 55%
+                ),
+                #00A651;
+        }
+
+
+        /* =================================
+           BRAND
+        ================================= */
+
+        .brand {
+            width: 100%;
+
+            text-align: center;
+
+            margin-top: 8px;
+
+            margin-bottom: 25px;
+        }
+
+        .brand-logo {
+            display: block;
+
+            width: 100%;
+
+            max-width: 650px;
+
+            height: auto;
+
+            margin: 0 auto;
+
+            object-fit: contain;
+        }
+
+
+        /* =================================
+           MAIN CARD
+        ================================= */
+
+        .limit-card {
+            width: 100%;
+
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            padding:
+                24px
+                18px
+                25px;
+
+            background: #FFFFFF;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 0
+                rgba(0,0,0,0.35);
+        }
+
+
+        /* =================================
+           HEADING
+        ================================= */
+
+        .limit-card h2 {
+            color: #000000;
+
+            font-size: 26px;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            margin-bottom: 8px;
+        }
+
+        .intro {
+            color: #000000;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            font-weight: 700;
+
+            text-align: center;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =================================
+           CLIENT INFORMATION
+        ================================= */
+
+        .info-box {
+            width: 100%;
+
+            padding: 17px;
+
+            margin-bottom: 18px;
+
+            background: #FFFFFF;
+
+            border:
+                2px solid #000000;
+
+            border-radius: 14px;
+        }
+
+        .info-label {
+            display: block;
+
+            color: #555555;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            margin-bottom: 6px;
+
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            color: #000000;
+
+            font-size: 20px;
+
+            font-weight: 900;
+        }
+
+
+        /* =================================
+           CURRENT LIMIT
+        ================================= */
+
+        .current-limit {
+            width: 100%;
+
+            padding: 17px;
+
+            margin-bottom: 22px;
+
+            background: #FFFFFF;
+
+            border:
+                2px solid #000000;
+
+            border-radius: 14px;
+
+            text-align: center;
+        }
+
+        .current-limit-title {
+            color: #555555;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            margin-bottom: 6px;
+
+            text-transform: uppercase;
+        }
+
+        .current-limit-value {
+            color: #000000;
+
+            font-size: 20px;
+
+            font-weight: 900;
+        }
+
+
+        /* =================================
+           DESIRED LIMIT
+        ================================= */
+
+        .dropdown-section {
+            width: 100%;
+
+            margin-bottom: 22px;
+        }
+
+        .dropdown-title {
+            color: #000000;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            margin-bottom: 12px;
+        }
+
+        .custom-dropdown {
+            position: relative;
+
+            width: 100%;
+        }
+
+        .dropdown-button {
+            width: 100%;
+
+            min-height: 54px;
+
+            padding:
+                14px
+                16px;
+
+            background: #FFFFFF;
+
+            border:
+                2px solid #000000;
+
+            border-radius: 12px;
+
+            color: #000000;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 900;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
+        .dropdown-arrow {
+            font-size: 18px;
+
+            font-weight: 900;
+        }
+
+        .dropdown-menu {
+            display: none;
+
+            width: 100%;
+
+            margin-top: 7px;
+
+            background: #FFFFFF;
+
+            border:
+                2px solid #000000;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 5px 0
+                rgba(0,0,0,0.25);
+        }
+
+        .dropdown-menu.open {
+            display: block;
+        }
+
+        .dropdown-option {
+            width: 100%;
+
+            padding:
+                14px
+                15px;
+
+            background: #FFFFFF;
+
+            color: #000000;
+
+            font-size: 15px;
+
+            font-weight: 900;
+
+            border: none;
+
+            border-bottom:
+                1px solid #dddddd;
+
+            text-align: left;
+
+            cursor: pointer;
+        }
+
+        .dropdown-option:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-option:hover {
+            background: #00A651;
+        }
+
+
+        /* =================================
+           CONTINUE BUTTON
+        ================================= */
+
+        .continue-btn {
+            width: 100%;
+
+            min-height: 55px;
+
+            padding:
+                15px
+                18px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background: #000000;
+
+            color: #FFFFFF;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 17px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 0
+                rgba(0,0,0,0.35);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 0
+                rgba(0,0,0,0.35);
+        }
+
+        .continue-btn:active {
+            transform:
+                translateY(3px);
+
+            box-shadow:
+                0 2px 0
+                rgba(0,0,0,0.35);
+        }
+
+
+        /* =================================
+           SECURITY
+        ================================= */
+
+        .security-line {
+            margin-top: 15px;
+
+            color: #000000;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-align: center;
+        }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
+
+        footer {
+            width: 100%;
+
+            margin-top: 30px;
+
+            text-align: center;
+        }
+
+        footer strong {
+            display: block;
+
+            color: #FFFFFF;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 3px 8px
+                rgba(0,0,0,0.5);
+
+            margin-bottom: 7px;
+        }
+
+        footer p {
+            color: #000000;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+        }
+
+        footer small {
+            color: #000000;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding:
+                    16px
+                    12px
+                    35px;
+            }
+
+            .limit-card {
+                padding:
+                    22px
+                    15px
+                    23px;
+            }
+
+            .limit-card h2 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- =================================
+         BRAND
+    ================================== -->
+
+    <header class="brand">
+
+        <img
+            src="fuliza-logo.jpg"
+            alt="FULIZA Logo"
+            class="brand-logo"
+        >
+
+    </header>
+
+
+    <!-- =================================
+         DESIRED LIMIT
+    ================================== -->
+
+    <main class="limit-card">
+
+        <h2>
+            Limit Management
+        </h2>
+
+        <p class="intro">
+            Choose the limit you want to continue.
+        </p>
+
+
+        <!-- CLIENT FIRST NAME -->
+
+        <div class="info-box">
+
+            <span class="info-label">
+                First Name
+            </span>
+
+            <span
+                class="info-value"
+                id="clientFirstName"
+            >
+                Client
+            </span>
+
+        </div>
+
+
+        <!-- CURRENT LIMIT -->
+
+        <div class="current-limit">
+
+            <div class="current-limit-title">
+                CURRENT FULIZAA LIMIT
+            </div>
+
+            <div
+                class="current-limit-value"
+                id="currentLimitDisplay"
+            >
+                KSh 0/=
+            </div>
+
+        </div>
+
+
+        <!-- =================================
+             LIMIT YOU WANT
+        ================================== -->
+
+        <div class="dropdown-section">
+
+            <h3 class="dropdown-title">
+                Limit You Want
+            </h3>
+
+            <div class="custom-dropdown">
+
+                <button
+                    type="button"
+                    class="dropdown-button"
+                    onclick="toggleLimitDropdown()"
+                >
+
+                    <span id="limitText">
+                        Choose the limit you want
+                    </span>
+
+                    <span class="dropdown-arrow">
+                        ▼
+                    </span>
+
+                </button>
+
+
+                <div
+                    id="limitMenu"
+                    class="dropdown-menu"
+                >
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('10000')"
+                    >
+                        KSh 10,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('20000')"
+                    >
+                        KSh 20,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('30000')"
+                    >
+                        KSh 30,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('40000')"
+                    >
+                        KSh 40,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('50000')"
+                    >
+                        KSh 50,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('60000')"
+                    >
+                        KSh 60,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('70000')"
+                    >
+                        KSh 70,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('80000')"
+                    >
+                        KSh 80,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('90000')"
+                    >
+                        KSh 90,000/=
+                    </button>
+
+                    <button
+                        type="button"
+                        class="dropdown-option"
+                        onclick="selectLimit('100000')"
+                    >
+                        KSh 100,000/=
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTINUE -->
+
+        <button
+            type="button"
+            class="continue-btn"
+            onclick="continueToNext()"
+        >
+            CONTINUE →
+        </button>
+
+
+        <div class="security-line">
+            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; Simple
+        </div>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        <strong>
+            FULIZAA
+        </strong>
+
+        <p>
+            Independent limit-management service
+        </p>
+
+        <small>
+            © 2026 FULIZAA • All Rights Reserved
+        </small>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   LOAD FIRST NAME
+========================================= */
+
+const savedName =
+    localStorage.getItem(
+        "fulizaaFullName"
+    );
+
+
+if (savedName) {
+
+    const firstName =
+        savedName
+            .trim()
+            .split(/\s+/)[0];
+
+    document
+        .getElementById(
+            "clientFirstName"
+        )
+        .textContent =
+            firstName;
+}
+
+
+/* =========================================
+   LOAD CURRENT LIMIT
+========================================= */
+
+const savedCurrentLimit =
+    localStorage.getItem(
+        "fulizaaCurrentLimit"
+    );
+
+
+if (savedCurrentLimit) {
+
+    document
+        .getElementById(
+            "currentLimitDisplay"
+        )
+        .textContent =
+            "KSh " +
+            Number(
+                savedCurrentLimit
+            ).toLocaleString() +
+            "/=";
+}
+
+
+/* =========================================
+   LIMIT DROPDOWN
+========================================= */
+
+let selectedLimit = "";
+
+
+function toggleLimitDropdown() {
+
+    const menu =
+        document.getElementById(
+            "limitMenu"
+        );
+
+    menu.classList.toggle("open");
+
+}
+
+
+function selectLimit(value) {
+
+    selectedLimit = value;
+
+    const formatted =
+        Number(value).toLocaleString();
+
+    document
+        .getElementById(
+            "limitText"
+        )
+        .textContent =
+            "KSh " +
+            formatted +
+            "/=";
+
+    document
+        .getElementById(
+            "limitMenu"
+        )
+        .classList.remove("open");
+
+}
+
+
+/* =========================================
+   CLOSE DROPDOWN
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            !event.target.closest(
+                ".custom-dropdown"
+            )
+        ) {
+
+            document
+                .getElementById(
+                    "limitMenu"
+                )
+                .classList.remove("open");
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   CONTINUE
+========================================= */
+
+function continueToNext() {
+
+    if (!selectedLimit) {
+
+        alert(
+            "Please select the limit you want."
+        );
+
+        return;
+    }
+
+
+    localStorage.setItem(
+        "fulizaaSelectedSlot",
+        selectedLimit
+    );
+
+
+    /*
+       Next page can be connected here
+       when the next file is created.
+    */
+
+}
+
+</script>
+
+</body>
+
+</html>
