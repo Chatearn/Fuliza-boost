@@ -74,7 +74,7 @@
 
 
     <!-- =================================
-         SIMULATED ACTIVITY
+         CURRENT ACTIVITY
     ================================== -->
 
     <section class="activity">
@@ -86,7 +86,7 @@
             </h2>
 
             <span>
-                SIMULATED ACTIVITY
+                CURRENT ACTIVITY
             </span>
 
         </div>
@@ -101,19 +101,19 @@
             <div class="activity-info">
 
                 <strong id="activityNumber">
-                    075678***12
+                    0713***682
                 </strong>
 
                 <div
                     class="activity-amount"
                     id="activityAmount">
 
-                    +KSh 28,750
+                    +KSh 10,000/=
 
                 </div>
 
                 <small id="activityTime">
-                    9 mins ago
+                    Just now
                 </small>
 
             </div>
@@ -188,44 +188,116 @@ function startIncrease() {
 
 
 /* =========================================
-   SIMULATED ACTIVITY
+   RANDOM CURRENT ACTIVITY
 ========================================= */
 
-const activities = [
+const activityNumber =
+    document.getElementById(
+        "activityNumber"
+    );
 
-    {
-        number: "075678***12",
-        amount: "+KSh 28,750",
-        time: "9 mins ago"
-    },
+const activityAmount =
+    document.getElementById(
+        "activityAmount"
+    );
 
-    {
-        number: "071234***45",
-        amount: "+KSh 15,000",
-        time: "12 mins ago"
-    },
+const activityTime =
+    document.getElementById(
+        "activityTime"
+    );
 
-    {
-        number: "079876***21",
-        amount: "+KSh 35,000",
-        time: "16 mins ago"
-    },
 
-    {
-        number: "072345***67",
-        amount: "+KSh 20,000",
-        time: "21 mins ago"
-    },
+const prefixes = [
 
-    {
-        number: "070123***89",
-        amount: "+KSh 42,500",
-        time: "25 mins ago"
-    }
+    "0701",
+    "0705",
+    "0712",
+    "0713",
+    "0718",
+    "0721",
+    "0723",
+    "0728",
+    "0729",
+    "0736",
+    "0741",
+    "0746",
+    "0748",
+    "0754",
+    "0755",
+    "0762",
+    "0783",
+    "0786",
+    "0791",
+    "0794",
+    "0796"
 
 ];
 
-let activityIndex = 0;
+
+function randomPhone() {
+
+    const prefix =
+        prefixes[
+            Math.floor(
+                Math.random() *
+                prefixes.length
+            )
+        ];
+
+
+    const ending =
+        Math.floor(
+            100 +
+            Math.random() * 900
+        );
+
+
+    return (
+        prefix +
+        "***" +
+        ending
+    );
+
+}
+
+
+function randomAmount() {
+
+    const amount =
+        (
+            Math.floor(
+                Math.random() * 29
+            ) + 2
+        ) * 5000;
+
+
+    return (
+        "+KSh " +
+        amount.toLocaleString("en-KE") +
+        "/="
+    );
+
+}
+
+
+function randomTime() {
+
+    const minutes =
+        Math.floor(
+            Math.random() * 30
+        ) + 1;
+
+
+    return (
+        minutes +
+        (
+            minutes === 1
+                ? " min ago"
+                : " mins ago"
+        )
+    );
+
+}
 
 
 /* =========================================
@@ -234,60 +306,44 @@ let activityIndex = 0;
 
 function changeActivity() {
 
-    const number =
-        document.getElementById("activityNumber");
-
-    const amount =
-        document.getElementById("activityAmount");
-
-    const time =
-        document.getElementById("activityTime");
-
-
-    number.style.opacity = "0";
-    amount.style.opacity = "0";
-    time.style.opacity = "0";
+    activityNumber.style.opacity = "0";
+    activityAmount.style.opacity = "0";
+    activityTime.style.opacity = "0";
 
 
     setTimeout(function () {
 
-        activityIndex++;
 
-        if (
-            activityIndex >=
-            activities.length
-        ) {
-            activityIndex = 0;
-        }
+        activityNumber.textContent =
+            randomPhone();
 
 
-        number.textContent =
-            activities[activityIndex].number;
-
-        amount.textContent =
-            activities[activityIndex].amount;
-
-        time.textContent =
-            activities[activityIndex].time;
+        activityAmount.textContent =
+            randomAmount();
 
 
-        number.style.opacity = "1";
-        amount.style.opacity = "1";
-        time.style.opacity = "1";
+        activityTime.textContent =
+            randomTime();
 
-    }, 1000);
+
+        activityNumber.style.opacity = "1";
+        activityAmount.style.opacity = "1";
+        activityTime.style.opacity = "1";
+
+
+    }, 700);
 
 }
 
 
 /*
-   Change simulated activity
-   every 6 seconds
+   Change activity
+   every 2 seconds
 */
 
 setInterval(
     changeActivity,
-    6000
+    2000
 );
 
 </script>
