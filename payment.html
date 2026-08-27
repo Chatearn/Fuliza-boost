@@ -364,7 +364,7 @@ document.getElementById(
 
 
 /* =====================================================
-   CREATE DEMO APPLICATION REFERENCE
+   CREATE APPLICATION REFERENCE
 ===================================================== */
 
 let applicationReference =
@@ -376,7 +376,7 @@ let applicationReference =
 if (!applicationReference) {
 
     applicationReference =
-        "FUL-DEMO-" +
+        "FUL-" +
         Date.now()
             .toString(36)
             .toUpperCase();
@@ -390,10 +390,10 @@ if (!applicationReference) {
 
 
 /* =====================================================
-   PAY NOW — DEMO MODE
+   PAY NOW — REAL STK PUSH
 ===================================================== */
 
-function payNow(){
+async function payNow(){
 
     const message =
         document.getElementById(
@@ -403,6 +403,11 @@ function payNow(){
     const payBtn =
         document.getElementById(
             "payBtn"
+        );
+
+    const phoneInput =
+        document.getElementById(
+            "phone"
         );
 
 
@@ -428,9 +433,7 @@ function payNow(){
     ----------------------------------------- */
 
     const phone =
-        document.getElementById(
-            "phone"
-        ).value.trim();
+        phoneInput.value.trim();
 
 
     if(!phone){
@@ -438,9 +441,7 @@ function payNow(){
         message.textContent =
             "Please enter your M-PESA phone number.";
 
-        document.getElementById(
-            "phone"
-        ).focus();
+        phoneInput.focus();
 
         return;
 
@@ -468,11 +469,38 @@ function payNow(){
         message.textContent =
             "Please enter a valid Kenyan phone number.";
 
-        document.getElementById(
-            "phone"
-        ).focus();
+        phoneInput.focus();
 
         return;
+
+    }
+
+
+    /* -----------------------------------------
+       CONVERT TO 254XXXXXXXXX
+    ----------------------------------------- */
+
+    let stkPhone =
+        cleanPhone;
+
+
+    if(
+        /^(07|01)\d{8}$/.test(stkPhone)
+    ){
+
+        stkPhone =
+            "254" +
+            stkPhone.substring(1);
+
+    }
+
+
+    if(
+        stkPhone.startsWith("+")
+    ){
+
+        stkPhone =
+            stkPhone.substring(1);
 
     }
 
@@ -483,7 +511,7 @@ function payNow(){
 
     localStorage.setItem(
         "fulizaaPhoneNumber",
-        cleanPhone
+        stkPhone
     );
 
 
@@ -500,11 +528,11 @@ function payNow(){
 
 
     /* -----------------------------------------
-       CREATE DEMO PAYMENT REFERENCE
+       CREATE PAYMENT REFERENCE
     ----------------------------------------- */
 
     const paymentReference =
-        "PAY-DEMO-" +
+        "PAY-" +
         Date.now()
             .toString(36)
             .toUpperCase();
@@ -517,30 +545,166 @@ function payNow(){
 
 
     /* -----------------------------------------
-       DEMO SUCCESS
+       DISABLE BUTTON
     ----------------------------------------- */
 
     payBtn.disabled = true;
 
     payBtn.textContent =
-        "Payment Ready";
+        "Sending STK Push...";
 
 
     message.textContent =
-        "Demo payment created successfully. Reference: " +
-        paymentReference;
+        "Please wait. Sending payment prompt to your M-PESA phone...";
 
 
-    console.log(
-        "Demo Application Reference:",
-        applicationReference
-    );
+    /* -----------------------------------------
+       SEND TO YOUR SERVER
+    ----------------------------------------- */
+
+    try{
+
+        const response =
+            await fetch(
+                "/api/stk-push",
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+
+                        phone:
+                            stkPhone,
+
+                        amount:
+                            Number(
+                                paymentFee
+                            ),
+
+                        selectedLimit:
+                            Number(
+                                selectedLimit
+                            ),
+
+                        fullName:
+                            savedName || "",
+
+                        reference:
+                            paymentReference
+
+                    })
+
+                }
+            );
 
 
-    console.log(
-        "Demo Payment Reference:",
-        paymentReference
-    );
+        const data =
+            await response.json();
+
+
+        /* -----------------------------------------
+           SERVER ERROR
+        ----------------------------------------- */
+
+        if(!response.ok){
+
+            throw new Error(
+
+                data.message ||
+                data.error ||
+                "Unable to send STK Push."
+
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           SAVE SERVER REFERENCE
+        ----------------------------------------- */
+
+        if(
+            data.transactionId
+        ){
+
+            localStorage.setItem(
+                "fulizaaTransactionId",
+                data.transactionId
+            );
+
+        }
+
+
+        if(
+            data.reference
+        ){
+
+            localStorage.setItem(
+                "fulizaaPaymentReference",
+                data.reference
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           SUCCESS
+        ----------------------------------------- */
+
+        payBtn.textContent =
+            "STK Sent";
+
+
+        message.textContent =
+            data.message ||
+            "STK Push sent successfully. Check your M-PESA phone and enter your PIN.";
+
+
+        console.log(
+            "Application Reference:",
+            applicationReference
+        );
+
+
+        console.log(
+            "Payment Reference:",
+            data.reference ||
+            paymentReference
+        );
+
+
+        console.log(
+            "Paylor Response:",
+            data
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "STK Push Error:",
+            error
+        );
+
+
+        message.textContent =
+            error.message ||
+            "Payment request failed. Please try again.";
+
+
+        payBtn.disabled =
+            false;
+
+
+        payBtn.textContent =
+            "Continue to Payment";
+
+    }
 
 }
 
