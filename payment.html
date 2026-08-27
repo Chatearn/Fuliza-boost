@@ -604,19 +604,15 @@ async function payNow(){
 
 
         /* -----------------------------------------
-           READ SERVER RESPONSE SAFELY
+           SAFELY READ SERVER RESPONSE
         ----------------------------------------- */
 
         const responseText =
             await response.text();
 
-
         let data = {};
 
-
-        if(
-            responseText.trim()
-        ){
+        if(responseText.trim()){
 
             try{
 
@@ -627,14 +623,8 @@ async function payNow(){
 
             }catch(parseError){
 
-                console.error(
-                    "Invalid JSON from backend:",
-                    responseText
-                );
-
                 throw new Error(
-                    "Backend returned an invalid response: " +
-                    responseText
+                    "Server returned an invalid response."
                 );
 
             }
@@ -652,26 +642,8 @@ async function payNow(){
 
                 data.message ||
                 data.error ||
-                (
-                    "Server returned HTTP " +
-                    response.status
-                )
+                "Unable to send STK Push."
 
-            );
-
-        }
-
-
-        /* -----------------------------------------
-           EMPTY SERVER RESPONSE
-        ----------------------------------------- */
-
-        if(
-            !responseText.trim()
-        ){
-
-            throw new Error(
-                "The backend returned an empty response. Please check the Render logs."
             );
 
         }
