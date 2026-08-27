@@ -254,7 +254,7 @@ M-PESA Phone Number
 
 const selectedLimit =
     localStorage.getItem(
-        "fulizaSelectedSlot"
+        "fulizaaSelectedSlot"
     );
 
 
@@ -326,7 +326,7 @@ if(
 
 
     localStorage.setItem(
-        "fulizaPaymentFee",
+        "fulizaaPaymentFee",
         paymentFee
     );
 
@@ -339,7 +339,7 @@ if(
 
 const savedName =
     localStorage.getItem(
-        "fulizaFullName"
+        "fulizaaFullName"
     );
 
 
@@ -409,22 +409,35 @@ function payNow(){
 
 
     localStorage.setItem(
-        "fulizaPhoneNumber",
+        "fulizaaPhoneNumber",
         phone
     );
 
 
     localStorage.setItem(
-        "fulizaPaymentAmount",
+        "fulizaaPaymentAmount",
         paymentFee
     );
 
 
     localStorage.setItem(
-        "fulizaSelectedLimit",
+        "fulizaaSelectedLimit",
         selectedLimit
     );
 
 
     /*
-      
+       Payment processing will be
+       connected in the next step.
+    */
+
+    message.textContent =
+        "Payment details saved successfully.";
+
+}
+
+</script>
+
+</body>
+
+</html>
