@@ -3,441 +3,608 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>FULIZAA | Payment</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<style>
+    <title>FULIZAA | Desired Limit</title>
 
-*{
-    box-sizing:border-box;
-}
+    <style>
 
-body{
-    margin:0;
-    padding:16px 10px;
-    font-family:Arial,sans-serif;
-    background:#006400;
-    color:#fff;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.container{
-    width:100%;
-    max-width:430px;
-    margin:0 auto;
-}
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
 
-.card{
-    width:100%;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.09),
-            rgba(255,255,255,0.035)
-        );
+        body {
+            min-height: 100vh;
 
-    padding:22px 18px 18px;
-    border-radius:18px;
+            background: #00A651;
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.45),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+            color: #000000;
 
-    border:1px solid #000000;
-}
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
 
-h1{
-    text-align:center;
-    background:#000000;
-    color:#FFFFFF;
-    -webkit-text-stroke:1px #FFFFFF;
-    font-size:28px;
-    font-weight:800;
-    margin:2px 0 16px;
-    padding:10px;
-    border:1px solid #FFFFFF;
-    border-radius:10px;
-}
 
-p{
-    text-align:center;
-    font-size:14px;
-    line-height:1.5;
-    color:#FFFFFF;
-}
+        /* =================================
+           MAIN PAGE
+        ================================= */
 
-.amount{
-    background:#000000;
-    border:1px solid #FFFFFF;
-    border-radius:12px;
-    padding:16px 10px;
-    font-size:25px;
-    font-weight:800;
-    text-align:center;
-    color:#FFFFFF;
-    -webkit-text-stroke:0.8px #FFFFFF;
-    margin:18px 0;
-}
+        .page {
+            width: 100%;
 
-label{
-    display:block;
-    margin-top:15px;
-    margin-bottom:7px;
-    font-size:14px;
-    font-weight:700;
-    color:#FFFFFF;
-}
+            min-height: 100vh;
 
-input{
-    width:100%;
-    padding:14px 12px;
-    border:1px solid #000000;
-    border-radius:10px;
-    font-size:16px;
-    background:#FFFFFF;
-    color:#000000;
-    outline:none;
-}
+            padding:
+                20px
+                16px
+                40px;
 
-input::placeholder{
-    color:#666666;
-}
+            background:
+                radial-gradient(
+                    circle at 50% 10%,
+                    rgba(255,255,255,0.08),
+                    transparent 55%
+                ),
+                #00A651;
+        }
 
-input:focus{
-    border-color:#000000;
-    box-shadow:
-        0 0 0 3px rgba(128,128,128,0.25);
-}
 
-button{
-    width:100%;
-    padding:15px;
-    margin-top:17px;
+        /* =================================
+           BRAND
+        ================================= */
 
-    background:#FFD400;
+        .brand {
+            width: 100%;
 
-    color:#000000;
-    border:1px solid #000000;
-    border-radius:11px;
-    font-size:16px;
-    font-weight:700;
-    cursor:pointer;
+            text-align: center;
 
-    box-shadow:
-        0 10px 30px rgba(0,0,0,0.30);
-}
+            margin-top: 8px;
 
-button:hover{
-    background:#FFD400;
-}
+            margin-bottom: 25px;
 
-button:active{
-    transform:scale(.98);
-}
+            position: relative;
+        }
 
-button:disabled{
-    background:rgba(255,255,255,0.25);
-    cursor:not-allowed;
-    box-shadow:none;
-}
+        .brand-logo {
+            display: block;
 
-#paymentMessage{
-    min-height:20px;
-    margin-top:13px;
-    color:#FFD400;
-    -webkit-text-stroke:0.4px #808080;
-    font-size:13px;
-    font-weight:600;
-    line-height:1.5;
-}
+            width: 100%;
 
-@media(max-width:360px){
+            max-width: 650px;
 
-    body{
-        padding:10px 7px;
-    }
+            height: auto;
 
-    .card{
-        padding:18px 13px 15px;
-        border-radius:15px;
-    }
+            margin: 0 auto;
 
-    h1{
-        font-size:24px;
-    }
+            object-fit: contain;
+        }
 
-    button{
-        padding:14px;
-        font-size:15px;
-    }
 
-}
+        /* =================================
+           MAIN CARD
+        ================================= */
 
-</style>
+        .limit-card {
+            width: 100%;
+
+            max-width: 650px;
+
+            margin: 0 auto;
+
+            padding:
+                24px
+                18px
+                25px;
+
+            background: #FFFFFF;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 0
+                rgba(0,0,0,0.35);
+        }
+
+
+        /* =================================
+           HEADING
+        ================================= */
+
+        .limit-card h2 {
+            color: #000000;
+
+            font-size: 26px;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            margin-bottom: 8px;
+        }
+
+        .intro {
+            color: #000000;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+
+            font-weight: 700;
+
+            text-align: center;
+
+            margin-bottom: 22px;
+        }
+
+
+        /* =================================
+           LIMIT SELECTION COLUMNS
+        ================================= */
+
+        .limit-options {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 22px;
+        }
+
+        .limit-option {
+            width: 100%;
+
+            min-height: 82px;
+
+            padding:
+                16px
+                10px;
+
+            background: #FFFFFF;
+
+            color: #000000;
+
+            border:
+                2px solid #E31837;
+
+            border-radius: 14px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.15s ease,
+                background 0.15s ease,
+                color 0.15s ease;
+        }
+
+        .limit-option:hover {
+            transform:
+                translateY(-2px);
+        }
+
+        .limit-option.selected {
+            background: #00A651;
+
+            color: #FFFFFF;
+
+            border:
+                3px solid #E31837;
+
+            box-shadow:
+                0 5px 0
+                rgba(0,0,0,0.3);
+        }
+
+
+        /* =================================
+           CONTINUE BUTTON
+        ================================= */
+
+        .continue-btn {
+            width: 100%;
+
+            min-height: 55px;
+
+            padding:
+                15px
+                18px;
+
+            border: none;
+
+            border-radius: 14px;
+
+            background: #000000;
+
+            color: #FFFFFF;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            font-size: 17px;
+
+            font-weight: 900;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 6px 0
+                rgba(0,0,0,0.35);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 0
+                rgba(0,0,0,0.35);
+        }
+
+        .continue-btn:active {
+            transform:
+                translateY(3px);
+
+            box-shadow:
+                0 2px 0
+                rgba(0,0,0,0.35);
+        }
+
+
+        /* =================================
+           SECURITY
+        ================================= */
+
+        .security-line {
+            margin-top: 15px;
+
+            color: #000000;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-align: center;
+        }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
+
+        footer {
+            width: 100%;
+
+            margin-top: 30px;
+
+            text-align: center;
+        }
+
+        footer strong {
+            display: block;
+
+            color: #FFFFFF;
+
+            font-size: 18px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+
+            text-shadow:
+                0 3px 8px
+                rgba(0,0,0,0.5);
+
+            margin-bottom: 7px;
+        }
+
+        footer p {
+            color: #000000;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+        }
+
+        footer small {
+            color: #000000;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 600px) {
+
+            .page {
+                padding:
+                    16px
+                    12px
+                    35px;
+            }
+
+            .limit-card {
+                padding:
+                    22px
+                    15px
+                    23px;
+            }
+
+            .limit-card h2 {
+                font-size: 24px;
+            }
+
+            .limit-options {
+                gap: 10px;
+            }
+
+            .limit-option {
+                min-height: 76px;
+
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
+
 <body>
 
-<div class="container">
+<div class="page">
 
-<div class="card">
 
-<h1>Payment</h1>
+    <!-- =================================
+         BRAND
+    ================================== -->
 
-<p>
-Welcome, <strong><span id="name"></span></strong>
-</p>
+    <header class="brand">
 
-<p>
-Complete the payment below to continue with your FULIZAA limit request.
-</p>
+        <img
+            src="fuliza-logo.jpg"
+            alt="FULIZAA Logo"
+            class="brand-logo"
+        >
 
-<div class="amount" id="selectedAmount">
-Selected Limit: KSh 0
-</div>
+    </header>
 
-<div class="amount" id="feeAmount">
-Payment Fee: KSh 0
-</div>
 
-<label>
-Full Name
-</label>
+    <!-- =================================
+         DESIRED LIMIT
+    ================================== -->
 
-<input
-    type="text"
-    id="fullName"
-    readonly
->
+    <main class="limit-card">
 
-<label>
-M-PESA Phone Number
-</label>
+        <h2>
+            Limit You Want
+        </h2>
 
-<input
-    type="tel"
-    id="phone"
-    placeholder="07XXXXXXXX"
-    autocomplete="tel"
->
+        <p class="intro">
+            Select the limit you want to continue.
+        </p>
 
-<button
-    type="button"
-    id="payBtn"
-    onclick="payNow()"
->
-    Continue to Payment
-</button>
 
-<p id="paymentMessage"></p>
+        <!-- =================================
+             LIMIT OPTIONS
+        ================================= -->
 
-</div>
+        <div class="limit-options">
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '10000')"
+            >
+                KSh 10,000 — KSh 1/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '20000')"
+            >
+                KSh 20,000 — KSh 400/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '30000')"
+            >
+                KSh 30,000 — KSh 500/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '40000')"
+            >
+                KSh 40,000 — KSh 600/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '50000')"
+            >
+                KSh 50,000 — KSh 700/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '60000')"
+            >
+                KSh 60,000 — KSh 800/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '70000')"
+            >
+                KSh 70,000 — KSh 900/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '80000')"
+            >
+                KSh 80,000 — KSh 950/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '90000')"
+            >
+                KSh 90,000 — KSh 1,000/=
+            </button>
+
+            <button
+                type="button"
+                class="limit-option"
+                onclick="selectLimit(this, '100000')"
+            >
+                KSh 100,000 — KSh 1,050/=
+            </button>
+
+        </div>
+
+
+        <!-- =================================
+             CONTINUE
+        ================================== -->
+
+        <button
+            type="button"
+            class="continue-btn"
+            onclick="continueToNext()"
+        >
+            CONTINUE →
+        </button>
+
+
+        <div class="security-line">
+            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; Simple
+        </div>
+
+    </main>
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        <strong>
+            FULIZAA
+        </strong>
+
+        <p>
+            Independent limit-management service
+        </p>
+
+        <small>
+            © 2026 FULIZAA • All Rights Reserved
+        </small>
+
+    </footer>
 
 </div>
 
 
 <script>
 
-/* =====================================================
-   SELECTED LIMIT
-===================================================== */
+let selectedLimit = "";
 
-const selectedLimit =
-    localStorage.getItem(
-        "fulizaaSelectedSlot"
+
+function selectLimit(button, value) {
+
+    const options =
+        document.querySelectorAll(
+            ".limit-option"
+        );
+
+    options.forEach(
+        function(option) {
+
+            option.classList.remove(
+                "selected"
+            );
+
+        }
     );
 
-
-/* =====================================================
-   LIMIT / FEE CORRESPONDENCE
-===================================================== */
-
-const fees = {
-
-    "10000": 1,
-
-    "20000": 400,
-
-    "30000": 500,
-
-    "40000": 600,
-
-    "50000": 700,
-
-    "60000": 800,
-
-    "70000": 900,
-
-    "80000": 950,
-
-    "90000": 1000,
-
-    "100000": 1050
-
-};
-
-
-const paymentFee =
-    fees[selectedLimit];
-
-
-/* =====================================================
-   DISPLAY SELECTED LIMIT AND FEE
-===================================================== */
-
-if(
-    !selectedLimit ||
-    paymentFee === undefined
-){
-
-    document.getElementById(
-        "paymentMessage"
-    ).textContent =
-        "No valid limit was selected.";
-
-}else{
-
-    document.getElementById(
-        "selectedAmount"
-    ).textContent =
-        "Selected Limit: KSh " +
-        Number(
-            selectedLimit
-        ).toLocaleString();
-
-
-    document.getElementById(
-        "feeAmount"
-    ).textContent =
-        "Payment Fee: KSh " +
-        Number(
-            paymentFee
-        ).toLocaleString();
-
-
-    localStorage.setItem(
-        "fulizaaPaymentFee",
-        String(paymentFee)
+    button.classList.add(
+        "selected"
     );
 
-
-    localStorage.setItem(
-        "fulizaaPaymentAmount",
-        String(paymentFee)
-    );
-
-
-    localStorage.setItem(
-        "fulizaaSelectedLimit",
-        String(selectedLimit)
-    );
+    selectedLimit = value;
 
 }
 
 
-/* =====================================================
-   LOAD FIRST NAME
-===================================================== */
+function continueToNext() {
 
-const savedName =
-    localStorage.getItem(
-        "fulizaaFullName"
-    );
+    if (!selectedLimit) {
 
-
-const firstName =
-    savedName
-        ? savedName
-            .trim()
-            .split(/\s+/)[0]
-        : "Client";
-
-
-document.getElementById(
-    "name"
-).textContent =
-    firstName;
-
-
-document.getElementById(
-    "fullName"
-).value =
-    savedName || "";
-
-
-/* =====================================================
-   PAYMENT BUTTON
-===================================================== */
-
-function payNow(){
-
-    const message =
-        document.getElementById(
-            "paymentMessage"
+        alert(
+            "Please select the limit you want."
         );
 
-
-    const phone =
-        document.getElementById(
-            "phone"
-        ).value.trim();
-
-
-    if(
-        !selectedLimit ||
-        paymentFee === undefined
-    ){
-
-        message.textContent =
-            "Please select a valid limit first.";
-
         return;
-
     }
 
-
-    if(!phone){
-
-        message.textContent =
-            "Please enter your M-PESA phone number.";
-
-        document.getElementById(
-            "phone"
-        ).focus();
-
-        return;
-
-    }
-
-
     localStorage.setItem(
-        "fulizaaPhoneNumber",
-        phone
+        "fulizaaSelectedSlot",
+        selectedLimit
     );
-
-
-    localStorage.setItem(
-        "fulizaaPaymentFee",
-        String(paymentFee)
-    );
-
-
-    localStorage.setItem(
-        "fulizaaPaymentAmount",
-        String(paymentFee)
-    );
-
-
-    localStorage.setItem(
-        "fulizaaSelectedLimit",
-        String(selectedLimit)
-    );
-
-
-    message.textContent =
-        "Payment details saved successfully.";
 
 }
 
