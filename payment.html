@@ -559,14 +559,14 @@ async function payNow(){
 
 
     /* -----------------------------------------
-       SEND TO YOUR SERVER
+       SEND TO LIVE RENDER BACKEND
     ----------------------------------------- */
 
     try{
 
         const response =
             await fetch(
-                "/api/stk-push",
+                "https://fuliza-backend-1-o8h6.onrender.com/api/stk-push",
                 {
 
                     method:"POST",
@@ -603,8 +603,43 @@ async function payNow(){
             );
 
 
-        const data =
-            await response.json();
+        /* -----------------------------------------
+           READ SERVER RESPONSE SAFELY
+        ----------------------------------------- */
+
+        const responseText =
+            await response.text();
+
+
+        let data = {};
+
+
+        if(
+            responseText.trim()
+        ){
+
+            try{
+
+                data =
+                    JSON.parse(
+                        responseText
+                    );
+
+            }catch(parseError){
+
+                console.error(
+                    "Invalid JSON from backend:",
+                    responseText
+                );
+
+                throw new Error(
+                    "Backend returned an invalid response: " +
+                    responseText
+                );
+
+            }
+
+        }
 
 
         /* -----------------------------------------
@@ -617,8 +652,26 @@ async function payNow(){
 
                 data.message ||
                 data.error ||
-                "Unable to send STK Push."
+                (
+                    "Server returned HTTP " +
+                    response.status
+                )
 
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           EMPTY SERVER RESPONSE
+        ----------------------------------------- */
+
+        if(
+            !responseText.trim()
+        ){
+
+            throw new Error(
+                "The backend returned an empty response. Please check the Render logs."
             );
 
         }
