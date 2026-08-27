@@ -28,16 +28,25 @@
 
         body {
             min-height: 100vh;
+
             background: #00A651;
+
             color: #000000;
+
             font-family:
                 Arial,
                 Helvetica,
                 sans-serif;
         }
 
+
+        /* =================================
+           MAIN PAGE
+        ================================= */
+
         .page {
             width: 100%;
+
             min-height: 100vh;
 
             padding:
@@ -54,113 +63,45 @@
                 #00A651;
         }
 
+
+        /* =================================
+           BRAND
+        ================================= */
+
         .brand {
             width: 100%;
+
             text-align: center;
+
             margin-top: 8px;
+
             margin-bottom: 25px;
+
             position: relative;
         }
 
         .brand-logo {
             display: block;
+
             width: 100%;
+
             max-width: 650px;
+
             height: auto;
+
             margin: 0 auto;
+
             object-fit: contain;
         }
 
+
         /* =================================
-           DEMO NOTIFICATIONS
+           MAIN CARD
         ================================= */
-
-        .demo-notifications {
-            position: absolute;
-
-            right: 4px;
-            top: 50%;
-
-            width: 190px;
-            height: 55px;
-
-            overflow: hidden;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .demo-message {
-            position: absolute;
-
-            right: 0;
-            bottom: -60px;
-
-            width: 185px;
-
-            padding:
-                9px
-                10px;
-
-            background: #FFFFFF;
-            color: #000000;
-
-            border:
-                2px solid #E31837;
-
-            border-radius: 10px;
-
-            font-size: 11px;
-            font-weight: 900;
-            line-height: 1.25;
-            text-align: center;
-
-            box-shadow:
-                0 4px 0
-                rgba(0,0,0,0.25);
-
-            animation:
-                messageUp 3.2s linear forwards;
-        }
-
-        .demo-label {
-            display: block;
-
-            font-size: 9px;
-            font-weight: 900;
-
-            color: #00A651;
-
-            margin-bottom: 2px;
-        }
-
-        @keyframes messageUp {
-
-            0% {
-                transform:
-                    translateY(0);
-
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            75% {
-                opacity: 1;
-            }
-
-            100% {
-                transform:
-                    translateY(-115px);
-
-                opacity: 0;
-            }
-
-        }
 
         .limit-card {
             width: 100%;
+
             max-width: 650px;
 
             margin: 0 auto;
@@ -179,10 +120,16 @@
                 rgba(0,0,0,0.35);
         }
 
+
+        /* =================================
+           HEADING
+        ================================= */
+
         .limit-card h2 {
             color: #000000;
 
             font-size: 26px;
+
             font-weight: 900;
 
             text-align: center;
@@ -194,13 +141,20 @@
             color: #000000;
 
             font-size: 14px;
+
             line-height: 1.5;
+
             font-weight: 700;
 
             text-align: center;
 
             margin-bottom: 22px;
         }
+
+
+        /* =================================
+           LIMIT SELECTION COLUMNS
+        ================================= */
 
         .limit-options {
             width: 100%;
@@ -225,6 +179,7 @@
                 10px;
 
             background: #FFFFFF;
+
             color: #000000;
 
             border:
@@ -238,6 +193,7 @@
                 sans-serif;
 
             font-size: 18px;
+
             font-weight: 900;
 
             text-align: center;
@@ -257,6 +213,7 @@
 
         .limit-option.selected {
             background: #00A651;
+
             color: #FFFFFF;
 
             border:
@@ -266,6 +223,11 @@
                 0 5px 0
                 rgba(0,0,0,0.3);
         }
+
+
+        /* =================================
+           CONTINUE BUTTON
+        ================================= */
 
         .continue-btn {
             width: 100%;
@@ -281,6 +243,7 @@
             border-radius: 14px;
 
             background: #000000;
+
             color: #FFFFFF;
 
             font-family:
@@ -289,6 +252,7 @@
                 sans-serif;
 
             font-size: 17px;
+
             font-weight: 900;
 
             cursor: pointer;
@@ -320,16 +284,27 @@
                 rgba(0,0,0,0.35);
         }
 
+
+        /* =================================
+           SECURITY
+        ================================= */
+
         .security-line {
             margin-top: 15px;
 
             color: #000000;
 
             font-size: 11px;
+
             font-weight: 800;
 
             text-align: center;
         }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
 
         footer {
             width: 100%;
@@ -345,6 +320,7 @@
             color: #FFFFFF;
 
             font-size: 18px;
+
             font-weight: 900;
 
             letter-spacing: 1px;
@@ -360,6 +336,7 @@
             color: #000000;
 
             font-size: 12px;
+
             font-weight: 700;
 
             margin-bottom: 6px;
@@ -369,8 +346,14 @@
             color: #000000;
 
             font-size: 10px;
+
             font-weight: 700;
         }
+
+
+        /* =================================
+           MOBILE
+        ================================= */
 
         @media (max-width: 600px) {
 
@@ -398,17 +381,8 @@
 
             .limit-option {
                 min-height: 76px;
+
                 font-size: 16px;
-            }
-
-            .demo-notifications {
-                right: 2px;
-                width: 155px;
-            }
-
-            .demo-message {
-                width: 150px;
-                font-size: 9px;
             }
 
         }
@@ -417,9 +391,15 @@
 
 </head>
 
+
 <body>
 
 <div class="page">
+
+
+    <!-- =================================
+         BRAND
+    ================================== -->
 
     <header class="brand">
 
@@ -429,13 +409,12 @@
             class="brand-logo"
         >
 
-        <div
-            id="demoNotifications"
-            class="demo-notifications"
-        ></div>
-
     </header>
 
+
+    <!-- =================================
+         DESIRED LIMIT
+    ================================== -->
 
     <main class="limit-card">
 
@@ -447,6 +426,10 @@
             Select the limit you want to continue.
         </p>
 
+
+        <!-- =================================
+             LIMIT OPTIONS
+        ================================= -->
 
         <div class="limit-options">
 
@@ -533,6 +516,10 @@
         </div>
 
 
+        <!-- =================================
+             CONTINUE
+        ================================== -->
+
         <button
             type="button"
             class="continue-btn"
@@ -548,6 +535,10 @@
 
     </main>
 
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
 
     <footer>
 
@@ -610,82 +601,21 @@ function continueToNext() {
         return;
     }
 
+
+    /* Save selected limit */
+
     localStorage.setItem(
         "fulizaaSelectedSlot",
         selectedLimit
     );
 
+
+    /* Redirect to payment page */
+
     window.location.href =
         "payment.html";
 
 }
-
-
-/* =========================================
-   DEMO INFORMATION NOTIFICATIONS
-========================================= */
-
-const demoMessages = [
-
-    "Demo: Limit information updated",
-    "Demo: Select your preferred limit",
-    "Demo: Limit selection available",
-    "Demo: Continue to the next step",
-    "Demo: FULIZAA limit service"
-
-];
-
-
-let demoIndex = 0;
-
-
-function showDemoMessage() {
-
-    const container =
-        document.getElementById(
-            "demoNotifications"
-        );
-
-    const message =
-        demoMessages[
-            demoIndex %
-            demoMessages.length
-        ];
-
-    const notification =
-        document.createElement(
-            "div"
-        );
-
-    notification.className =
-        "demo-message";
-
-    notification.innerHTML =
-
-        '<span class="demo-label">' +
-        'DEMO' +
-        '</span>' +
-
-        message;
-
-    container.innerHTML = "";
-
-    container.appendChild(
-        notification
-    );
-
-    demoIndex++;
-
-}
-
-
-showDemoMessage();
-
-
-setInterval(
-    showDemoMessage,
-    2400
-);
 
 </script>
 
