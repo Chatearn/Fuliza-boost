@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FULIZA | Limit Management</title>
+    <title>FULIZA | Current Limit</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -22,14 +22,6 @@
 
     <header class="brand">
 
-        <div class="logo-mark">
-
-            <img
-                src="fuliza-logo.jpg"
-                alt="FULIZA Logo">
-
-        </div>
-
         <h1>FULIZA</h1>
 
         <p>
@@ -40,52 +32,49 @@
 
 
     <!-- =================================
-         HERO
+         CURRENT LIMIT
     ================================== -->
 
     <section class="hero">
 
         <div class="hero-badge">
-            FULIZA LIMIT MANAGEMENT
+            CURRENT FULIZA LIMIT
         </div>
 
         <h2>
-            Increase Your Limit Today
+            Enter Your Current Limit
         </h2>
 
         <p>
-            Check your current limit and request a higher
-            available limit through our simple process.
+            Enter your current FULIZA limit below to continue.
         </p>
+
+        <div class="limit-card">
+
+            <label for="currentLimit">
+                CURRENT FULIZA LIMIT
+            </label>
+
+            <input
+                type="number"
+                id="currentLimit"
+                placeholder="Enter current limit"
+                min="0"
+                inputmode="numeric">
+
+        </div>
 
         <button
             class="primary-btn"
-            onclick="startIncrease()">
+            onclick="continueProcess()">
 
-            INCREASE MY LIMIT NOW →
+            CONTINUE →
 
         </button>
 
         <div class="security-line">
             🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; 24/7
         </div>
-
-    </section>
-
-
-    <!-- =================================
-         FINAL CTA
-    ================================== -->
-
-    <section class="final-cta">
-
-        <h2>
-            Ready to Boost Your Limit?
-        </h2>
-
-        <p>
-            Takes only a few minutes.
-        </p>
 
     </section>
 
@@ -113,14 +102,26 @@
 
 <script>
 
-/* =========================================
-   START
-========================================= */
+function continueProcess() {
 
-function startIncrease() {
+    const currentLimit =
+        document.getElementById("currentLimit").value;
+
+    if (!currentLimit) {
+
+        alert("Please enter your current FULIZA limit.");
+
+        return;
+
+    }
+
+    localStorage.setItem(
+        "currentFulizaLimit",
+        currentLimit
+    );
 
     window.location.href =
-        "registration.html";
+        "desired-limit.html";
 
 }
 
