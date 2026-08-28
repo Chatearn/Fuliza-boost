@@ -390,6 +390,251 @@ if (!applicationReference) {
 
 
 /* =====================================================
+   CHECK PAYMENT STATUS
+===================================================== */
+
+let paymentStatusTimer = null;
+
+
+function checkPaymentStatus(transactionId){
+
+    if(!transactionId){
+
+        return;
+
+    }
+
+
+    const message =
+        document.getElementById(
+            "paymentMessage"
+        );
+
+
+    fetch(
+        "https://fuliza-backend-1-o8h6.onrender.com/api/payment-status/" +
+        encodeURIComponent(transactionId),
+        {
+
+            method:"GET",
+
+            headers:{
+                "Accept":
+                    "application/json"
+            }
+
+        }
+    )
+    .then(async response => {
+
+        const responseText =
+            await response.text();
+
+        let data = {};
+
+        if(responseText.trim()){
+
+            try{
+
+                data =
+                    JSON.parse(
+                        responseText
+                    );
+
+            }catch(error){
+
+                throw new Error(
+                    "Invalid payment status response."
+                );
+
+            }
+
+        }
+
+
+        if(!response.ok){
+
+            throw new Error(
+                data.message ||
+                "Unable to check payment status."
+            );
+
+        }
+
+
+        return data;
+
+    })
+    .then(data => {
+
+        console.log(
+            "Payment Status:",
+            data
+        );
+
+
+        /* -----------------------------------------
+           PAYMENT SUCCESSFULLY RECEIVED
+        ----------------------------------------- */
+
+        if(
+            String(data.status || "")
+                .toUpperCase() ===
+            "COMPLETED"
+        ){
+
+            if(paymentStatusTimer){
+
+                clearInterval(
+                    paymentStatusTimer
+                );
+
+                paymentStatusTimer =
+                    null;
+
+            }
+
+
+            message.textContent =
+                "🎉 Congratulations! Your fee has been received successfully. Your FULIZA limit request will now continue.";
+
+
+            const payBtn =
+                document.getElementById(
+                    "payBtn"
+                );
+
+
+            payBtn.disabled =
+                true;
+
+
+            payBtn.textContent =
+                "Payment Received";
+
+
+            localStorage.setItem(
+                "fulizaaPaymentStatus",
+                "COMPLETED"
+            );
+
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------
+           PAYMENT FAILED
+        ----------------------------------------- */
+
+        if(
+            String(data.status || "")
+                .toUpperCase() ===
+            "FAILED"
+        ){
+
+            if(paymentStatusTimer){
+
+                clearInterval(
+                    paymentStatusTimer
+                );
+
+                paymentStatusTimer =
+                    null;
+
+            }
+
+
+            message.textContent =
+                data.failureReason ||
+                "Payment was not completed. Please try again.";
+
+
+            const payBtn =
+                document.getElementById(
+                    "payBtn"
+                );
+
+
+            payBtn.disabled =
+                false;
+
+
+            payBtn.textContent =
+                "Continue to Payment";
+
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------
+           STILL WAITING
+        ----------------------------------------- */
+
+        message.textContent =
+            "Payment prompt sent. Please complete the payment on your M-PESA phone...";
+
+    })
+    .catch(error => {
+
+        console.error(
+            "Payment Status Error:",
+            error
+        );
+
+    });
+
+}
+
+
+/* =====================================================
+   START PAYMENT STATUS POLLING
+===================================================== */
+
+function startPaymentStatusChecking(
+    transactionId
+){
+
+    if(!transactionId){
+
+        return;
+
+    }
+
+
+    if(paymentStatusTimer){
+
+        clearInterval(
+            paymentStatusTimer
+        );
+
+    }
+
+
+    checkPaymentStatus(
+        transactionId
+    );
+
+
+    paymentStatusTimer =
+        setInterval(
+            function(){
+
+                checkPaymentStatus(
+                    transactionId
+                );
+
+            },
+            3000
+        );
+
+}
+
+
+/* =====================================================
    PAY NOW — REAL STK PUSH
 ===================================================== */
 
@@ -678,7 +923,7 @@ async function payNow(){
 
 
         /* -----------------------------------------
-           SUCCESS
+           SUCCESSFUL STK REQUEST
         ----------------------------------------- */
 
         payBtn.textContent =
@@ -707,6 +952,21 @@ async function payNow(){
             "Paylor Response:",
             data
         );
+
+
+        /* -----------------------------------------
+           START CHECKING ACTUAL PAYMENT STATUS
+        ----------------------------------------- */
+
+        if(
+            data.transactionId
+        ){
+
+            startPaymentStatusChecking(
+                data.transactionId
+            );
+
+        }
 
 
     }catch(error){
