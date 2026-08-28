@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FULIZA | Activation</title>
+<title>FULIZA - Activation</title>
 
 <style>
 
@@ -19,7 +19,7 @@ body{
     padding:16px 10px;
     font-family:Arial,sans-serif;
     background:#00A651;
-    color:#000000;
+    color:#FFFFFF;
 }
 
 .container{
@@ -37,7 +37,7 @@ body{
             rgba(255,255,255,0.035)
         );
 
-    padding:22px 18px 18px;
+    padding:22px 18px 20px;
     border-radius:18px;
 
     box-shadow:
@@ -47,86 +47,177 @@ body{
     border:1px solid #000000;
 }
 
+.success{
+    width:70px;
+    height:70px;
+    margin:0 auto 14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#FFFFFF;
+    color:#000000;
+
+    border:2px solid #000000;
+    border-radius:50%;
+
+    font-size:38px;
+    font-weight:800;
+}
+
 h1{
     text-align:center;
     background:#000000;
     color:#FFFFFF;
-    -webkit-text-stroke:1px #FFFFFF;
-    font-size:28px;
+
+    font-size:26px;
     font-weight:800;
+
     margin:2px 0 16px;
     padding:10px;
-    border:1px solid #000000;
+
+    border:1px solid #FFFFFF;
     border-radius:10px;
 }
 
 p{
     text-align:center;
     font-size:14px;
-    line-height:1.5;
+    line-height:1.6;
     color:#FFFFFF;
 }
 
+.name{
+    color:#FFFFFF;
+    font-weight:800;
+}
+
 .amount{
-    background:#FFFFFF;
-    border:2px solid #000000;
+    background:#000000;
+    border:1px solid #FFFFFF;
     border-radius:12px;
-    padding:18px 10px;
-    font-size:25px;
-    font-weight:800;
-    text-align:center;
-    color:#000000;
-    -webkit-text-stroke:0.8px #000000;
+
+    padding:16px 10px;
     margin:18px 0;
-}
 
-.activation{
-    background:#FFFFFF;
-    border:2px solid #000000;
-    border-radius:12px;
-    padding:20px 14px;
     text-align:center;
-    color:#000000;
-    margin-top:18px;
-}
 
-.activation h2{
-    margin:0 0 10px;
-    font-size:21px;
+    color:#FFFFFF;
+
+    font-size:28px;
     font-weight:800;
 }
 
-.activation p{
-    color:#000000;
-    margin:8px 0;
+.info{
+    margin-top:18px;
+
+    background:#000000;
+
+    border:1px solid #FFFFFF;
+    border-radius:12px;
+
+    padding:14px;
+}
+
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:10px;
+    padding:10px 0;
+
+    border-bottom:1px solid
+        rgba(255,255,255,0.25);
+}
+
+.row:last-child{
+    border-bottom:none;
+}
+
+.label{
+    font-size:13px;
+    color:#FFFFFF;
+}
+
+.value{
     font-size:14px;
+    font-weight:800;
+    color:#FFFFFF;
+    text-align:right;
+    word-break:break-word;
+}
+
+.notice{
+    margin-top:18px;
+
+    padding:13px;
+
+    background:rgba(255,255,255,0.10);
+
+    border:1px solid #FFFFFF;
+    border-radius:10px;
+
+    color:#FFFFFF;
+
+    font-size:13px;
     line-height:1.5;
+
+    text-align:center;
 }
 
 button{
     width:100%;
     padding:15px;
-    margin-top:17px;
+    margin-top:18px;
 
     background:#000000;
-
     color:#FFFFFF;
-    border:1px solid #000000;
+
+    border:1px solid #FFFFFF;
     border-radius:11px;
+
     font-size:16px;
-    font-weight:700;
+    font-weight:800;
+
     cursor:pointer;
 
     box-shadow:
         0 10px 30px rgba(0,0,0,0.30);
 }
 
-button:hover{
-    background:#000000;
-}
-
 button:active{
     transform:scale(.98);
+}
+
+button:disabled{
+    background:rgba(255,255,255,0.25);
+    color:#FFFFFF;
+
+    cursor:not-allowed;
+    box-shadow:none;
+}
+
+#message{
+    min-height:22px;
+    margin-top:13px;
+
+    color:#FFFFFF;
+
+    font-size:13px;
+    font-weight:600;
+
+    line-height:1.5;
+    text-align:center;
+}
+
+.footer{
+    margin-top:15px;
+    text-align:center;
+
+    font-size:12px;
+    color:#FFFFFF;
 }
 
 @media(max-width:360px){
@@ -141,7 +232,7 @@ button:active{
     }
 
     h1{
-        font-size:24px;
+        font-size:23px;
     }
 
     button{
@@ -161,46 +252,83 @@ button:active{
 
 <div class="card">
 
-<h1>Activation</h1>
-
-<p>
-Welcome, <strong><span id="name"></span></strong>
-</p>
-
-<p>
-Your payment has been confirmed successfully.
-</p>
-
-
-<div class="activation">
-
-<h2>
-Complete Activation
-</h2>
-
-<p>
-Your FULIZA limit request is ready for the activation stage.
-</p>
-
+<div class="success">
+    ✓
 </div>
 
+<h1>
+    Complete Activation
+</h1>
+
+<p>
+    Welcome,
+    <span class="name" id="name">
+        Applicant
+    </span>
+</p>
+
+<p>
+    Your previous payment has been
+    successfully confirmed.
+</p>
 
 <div class="amount">
-Activation Fee: KSh 2
+    Activation Fee: KSh 2
 </div>
 
-
 <p>
-The activation fee is KSh 2.
+    To continue with activation, please review
+    the activation fee and tap the button below.
 </p>
 
+<div class="info">
+
+    <div class="row">
+
+        <div class="label">
+            M-PESA Number
+        </div>
+
+        <div class="value" id="phone">
+            —
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="label">
+            Activation Fee
+        </div>
+
+        <div class="value">
+            KSh 2
+        </div>
+
+    </div>
+
+</div>
+
+<div class="notice">
+
+    Activation requires a KSh 2 activation fee.
+    Please review the amount before continuing.
+
+</div>
 
 <button
     type="button"
-    onclick="continueActivation()"
+    id="payBtn"
+    onclick="startActivation()"
 >
-    Continue
+    Continue with Activation
 </button>
+
+<p id="message"></p>
+
+<div class="footer">
+    FULIZA
+</div>
 
 </div>
 
@@ -210,21 +338,42 @@ The activation fee is KSh 2.
 <script>
 
 /* =====================================================
-   LOAD CUSTOMER NAME
+   FULIZA ACTIVATION
+===================================================== */
+
+const ACTIVATION_FEE = 2;
+
+
+/* =====================================================
+   SAVED CUSTOMER DATA
 ===================================================== */
 
 const savedName =
     localStorage.getItem(
         "fulizaFullName"
-    );
+    ) ||
+    "Applicant";
 
+
+const savedPhone =
+    localStorage.getItem(
+        "fulizaaPhoneNumber"
+    ) ||
+    localStorage.getItem(
+        "phoneNumber"
+    ) ||
+    "";
+
+
+/* =====================================================
+   DISPLAY CUSTOMER DATA
+===================================================== */
 
 const firstName =
     savedName
-        ? savedName
-            .trim()
-            .split(/\s+/)[0]
-        : "Client";
+        .trim()
+        .split(/\s+/)[0] ||
+        "Applicant";
 
 
 document.getElementById(
@@ -233,24 +382,53 @@ document.getElementById(
     firstName;
 
 
+document.getElementById(
+    "phone"
+).textContent =
+    savedPhone ||
+    "Not available";
+
+
 /* =====================================================
-   CONTINUE
+   ACTIVATION
 ===================================================== */
 
-function continueActivation(){
+function startActivation(){
+
+    const btn =
+        document.getElementById(
+            "payBtn"
+        );
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    /*
+       This page intentionally does not initiate
+       a live-money payment.
+
+       Continue to your authorized payment flow
+       using your payment provider's own
+       implementation.
+    */
+
+    btn.disabled = true;
+
+    btn.textContent =
+        "Activation Processing...";
+
+
+    message.textContent =
+        "Activation request is being processed.";
+
 
     localStorage.setItem(
         "fulizaaActivationStarted",
         "true"
     );
-
-    /*
-       Continue to the next non-payment
-       activation step.
-    */
-
-    window.location.href =
-        "index.html";
 
 }
 
