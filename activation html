@@ -1,1 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FULIZA | Activation</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:16px 10px;
+    font-family:Arial,sans-serif;
+    background:#00A651;
+    color:#000000;
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+    margin:0 auto;
+}
+
+.card{
+    width:100%;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.09),
+            rgba(255,255,255,0.035)
+        );
+
+    padding:22px 18px 18px;
+    border-radius:18px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+    border:1px solid #000000;
+}
+
+h1{
+    text-align:center;
+    background:#000000;
+    color:#FFFFFF;
+    -webkit-text-stroke:1px #FFFFFF;
+    font-size:28px;
+    font-weight:800;
+    margin:2px 0 16px;
+    padding:10px;
+    border:1px solid #000000;
+    border-radius:10px;
+}
+
+p{
+    text-align:center;
+    font-size:14px;
+    line-height:1.5;
+    color:#FFFFFF;
+}
+
+.amount{
+    background:#FFFFFF;
+    border:2px solid #000000;
+    border-radius:12px;
+    padding:18px 10px;
+    font-size:25px;
+    font-weight:800;
+    text-align:center;
+    color:#000000;
+    -webkit-text-stroke:0.8px #000000;
+    margin:18px 0;
+}
+
+.activation{
+    background:#FFFFFF;
+    border:2px solid #000000;
+    border-radius:12px;
+    padding:20px 14px;
+    text-align:center;
+    color:#000000;
+    margin-top:18px;
+}
+
+.activation h2{
+    margin:0 0 10px;
+    font-size:21px;
+    font-weight:800;
+}
+
+.activation p{
+    color:#000000;
+    margin:8px 0;
+    font-size:14px;
+    line-height:1.5;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:17px;
+
+    background:#000000;
+
+    color:#FFFFFF;
+    border:1px solid #000000;
+    border-radius:11px;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.30);
+}
+
+button:hover{
+    background:#000000;
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+@media(max-width:360px){
+
+    body{
+        padding:10px 7px;
+    }
+
+    .card{
+        padding:18px 13px 15px;
+        border-radius:15px;
+    }
+
+    h1{
+        font-size:24px;
+    }
+
+    button{
+        padding:14px;
+        font-size:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Activation</h1>
+
+<p>
+Welcome, <strong><span id="name"></span></strong>
+</p>
+
+<p>
+Your payment has been confirmed successfully.
+</p>
+
+
+<div class="activation">
+
+<h2>
+Complete Activation
+</h2>
+
+<p>
+Your FULIZA limit request is ready for the activation stage.
+</p>
+
+</div>
+
+
+<div class="amount">
+Activation Fee: KSh 2
+</div>
+
+
+<p>
+The activation fee is KSh 2.
+</p>
+
+
+<button
+    type="button"
+    onclick="continueActivation()"
+>
+    Continue
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   LOAD CUSTOMER NAME
+===================================================== */
+
+const savedName =
+    localStorage.getItem(
+        "fulizaFullName"
+    );
+
+
+const firstName =
+    savedName
+        ? savedName
+            .trim()
+            .split(/\s+/)[0]
+        : "Client";
+
+
+document.getElementById(
+    "name"
+).textContent =
+    firstName;
+
+
+/* =====================================================
+   CONTINUE
+===================================================== */
+
+function continueActivation(){
+
+    localStorage.setItem(
+        "fulizaaActivationStarted",
+        "true"
+    );
+
+    /*
+       Continue to the next non-payment
+       activation step.
+    */
+
+    window.location.href =
+        "index.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
