@@ -103,6 +103,29 @@ h1{
     text-align:left;
 }
 
+.activation{
+    margin-top:18px;
+    background:#FFFFFF;
+    border:2px solid #000000;
+    border-radius:12px;
+    padding:18px 12px;
+    text-align:center;
+}
+
+.activation h2{
+    margin:0 0 10px;
+    font-size:20px;
+    font-weight:800;
+    color:#000000;
+}
+
+.activation p{
+    margin:0;
+    color:#000000;
+    font-size:14px;
+    line-height:1.5;
+}
+
 button{
     width:100%;
     padding:15px;
@@ -240,12 +263,25 @@ KSh <span id="paymentFee"></span>
 </div>
 
 
+<div class="activation">
+
+<h2>
+Complete Activation?
+</h2>
+
+<p>
+Would you like to complete the activation of your FULIZA limit request?
+</p>
+
+
 <button
     type="button"
-    onclick="continueNext()"
+    onclick="completeActivation()"
 >
-    Continue
+    Complete Activation
 </button>
+
+</div>
 
 </div>
 
@@ -501,18 +537,19 @@ function showFailed(){
 
 
 /* =====================================================
-   CONTINUE
+   COMPLETE ACTIVATION
 ===================================================== */
 
-function continueNext(){
+function completeActivation(){
 
-    /*
-       Change this later to the actual next page
-       in your FULIZA application flow.
-    */
+    localStorage.setItem(
+        "fulizaaActivationStarted",
+        "true"
+    );
+
 
     window.location.href =
-        "index.html";
+        "activation.html";
 
 }
 
