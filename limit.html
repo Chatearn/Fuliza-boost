@@ -4,526 +4,90 @@
 <head>
 
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>FULIZA | Limit Management</title>
 
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            width: 100%;
-            min-height: 100%;
-        }
-
-        body {
-            min-height: 100vh;
-
-            background: #00A651;
-
-            color: #000000;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-        }
-
-
-        /* =================================
-           MAIN PAGE
-        ================================= */
-
-        .page {
-            width: 100%;
-
-            min-height: 100vh;
-
-            padding:
-                20px
-                16px
-                40px;
-
-            background:
-                radial-gradient(
-                    circle at 50% 10%,
-                    rgba(255,255,255,0.08),
-                    transparent 55%
-                ),
-                #00A651;
-        }
-
-
-        /* =================================
-           BRAND
-        ================================= */
-
-        .brand {
-            width: 100%;
-
-            text-align: center;
-
-            margin-top: 8px;
-
-            margin-bottom: 25px;
-        }
-
-        .brand-logo {
-            display: block;
-
-            width: 100%;
-
-            max-width: 650px;
-
-            height: auto;
-
-            margin:
-                0 auto;
-
-            object-fit: contain;
-        }
-
-
-        /* =================================
-           MAIN CARD
-        ================================= */
-
-        .limit-card {
-            width: 100%;
-
-            max-width: 650px;
-
-            margin: 0 auto;
-
-            padding:
-                24px
-                18px
-                25px;
-
-            background: #FFFFFF;
-
-            border-radius: 20px;
-
-            box-shadow:
-                0 8px 0
-                rgba(0,0,0,0.35);
-        }
-
-
-        /* =================================
-           HEADING
-        ================================= */
-
-        .limit-card h2 {
-            color: #000000;
-
-            font-size: 26px;
-
-            font-weight: 900;
-
-            text-align: center;
-
-            margin-bottom: 8px;
-        }
-
-        .intro {
-            color: #000000;
-
-            font-size: 14px;
-
-            line-height: 1.5;
-
-            font-weight: 700;
-
-            text-align: center;
-
-            margin-bottom: 22px;
-        }
-
-
-        /* =================================
-           CLIENT INFORMATION
-        ================================= */
-
-        .info-box {
-            width: 100%;
-
-            padding: 17px;
-
-            margin-bottom: 18px;
-
-            background: #FFFFFF;
-
-            border:
-                2px solid #000000;
-
-            border-radius: 14px;
-        }
-
-        .info-label {
-            display: block;
-
-            color: #555555;
-
-            font-size: 12px;
-
-            font-weight: 900;
-
-            margin-bottom: 6px;
-
-            text-transform: uppercase;
-        }
-
-        .info-value {
-            color: #000000;
-
-            font-size: 20px;
-
-            font-weight: 900;
-        }
-
-
-        /* =================================
-           CURRENT LIMIT INPUT
-        ================================= */
-
-        .current-limit {
-            width: 100%;
-
-            padding: 18px;
-
-            margin-bottom: 22px;
-
-            background: #00A651;
-
-            border:
-                2px solid #000000;
-
-            border-radius: 15px;
-
-            text-align: center;
-        }
-
-        .current-limit-title {
-            color: #FFFFFF;
-
-            font-size: 17px;
-
-            font-weight: 900;
-
-            letter-spacing: 0.8px;
-
-            margin-bottom: 11px;
-
-            text-transform: uppercase;
-
-            -webkit-text-stroke:
-                1px #000000;
-
-            text-shadow:
-                0 2px 5px
-                rgba(0,0,0,0.25);
-        }
-
-        .current-limit-input {
-            width: 100%;
-
-            min-height: 52px;
-
-            padding: 13px 14px;
-
-            border:
-                2px solid #000000;
-
-            border-radius: 12px;
-
-            background: #FFFFFF;
-
-            color: #000000;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            font-size: 20px;
-
-            font-weight: 900;
-
-            text-align: center;
-
-            outline: none;
-        }
-
-        .current-limit-input:focus {
-            box-shadow:
-                0 0 0 3px
-                rgba(0,166,81,0.35);
-        }
-
-        .current-limit-input::placeholder {
-            color: #777777;
-
-            font-size: 15px;
-        }
-
-
-        /* =================================
-           CONTINUE BUTTON
-        ================================= */
-
-        .continue-btn {
-            width: 100%;
-
-            min-height: 55px;
-
-            padding:
-                15px
-                18px;
-
-            border: none;
-
-            border-radius: 14px;
-
-            background: #000000;
-
-            color: #FFFFFF;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            font-size: 17px;
-
-            font-weight: 900;
-
-            cursor: pointer;
-
-            box-shadow:
-                0 6px 0
-                rgba(0,0,0,0.35);
-
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-        .continue-btn:hover {
-            transform:
-                translateY(-2px);
-
-            box-shadow:
-                0 8px 0
-                rgba(0,0,0,0.35);
-        }
-
-        .continue-btn:active {
-            transform:
-                translateY(3px);
-
-            box-shadow:
-                0 2px 0
-                rgba(0,0,0,0.35);
-        }
-
-
-        /* =================================
-           SECURITY
-        ================================= */
-
-        .security-line {
-            margin-top: 15px;
-
-            color: #000000;
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            text-align: center;
-        }
-
-
-        /* =================================
-           FOOTER
-        ================================= */
-
-        footer {
-            width: 100%;
-
-            margin-top: 30px;
-
-            text-align: center;
-        }
-
-        footer strong {
-            display: block;
-
-            color: #FFFFFF;
-
-            font-size: 18px;
-
-            font-weight: 900;
-
-            letter-spacing: 1px;
-
-            text-shadow:
-                0 3px 8px
-                rgba(0,0,0,0.5);
-
-            margin-bottom: 7px;
-        }
-
-        footer p {
-            color: #000000;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            margin-bottom: 6px;
-        }
-
-        footer small {
-            color: #000000;
-
-            font-size: 10px;
-
-            font-weight: 700;
-        }
-
-
-        /* =================================
-           MOBILE
-        ================================= */
-
-        @media (max-width: 600px) {
-
-            .page {
-                padding:
-                    16px
-                    12px
-                    35px;
-            }
-
-            .limit-card {
-                padding:
-                    22px
-                    15px
-                    23px;
-            }
-
-            .limit-card h2 {
-                font-size: 24px;
-            }
-
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 
 </head>
-
 
 <body>
 
 <div class="page">
 
-
     <!-- =================================
-         BRAND
+         FULIZA BRAND
     ================================== -->
 
     <header class="brand">
 
-        <img
-            src="fuliza-logo.jpg"
-            alt="FULIZA Logo"
-            class="brand-logo"
-        >
+        <div class="logo-mark">
+
+            <img
+                src="fuliza-logo.jpg"
+                alt="FULIZA Logo">
+
+        </div>
+
+        <h1>FULIZA</h1>
+
+        <p>
+            Limit Management Portal
+        </p>
 
     </header>
 
 
     <!-- =================================
-         LIMIT MANAGEMENT
+         HERO
     ================================== -->
 
-    <main class="limit-card">
+    <section class="hero">
+
+        <div class="hero-badge">
+            FULIZA LIMIT MANAGEMENT
+        </div>
 
         <h2>
-            Limit Management
+            Increase Your Limit Today
         </h2>
 
-        <p class="intro">
-            Enter your current FULIZA limit to continue.
+        <p>
+            Check your current limit and request a higher
+            available limit through our simple process.
         </p>
 
-
-        <!-- CLIENT FIRST NAME -->
-
-        <div class="info-box">
-
-            <span class="info-label">
-                First Name
-            </span>
-
-            <span
-                class="info-value"
-                id="clientFirstName"
-            >
-                Client
-            </span>
-
-        </div>
-
-
-        <!-- CURRENT LIMIT -->
-
-        <div class="current-limit">
-
-            <div class="current-limit-title">
-                CURRENT FULIZA LIMIT
-            </div>
-
-            <input
-                type="number"
-                id="currentLimit"
-                class="current-limit-input"
-                placeholder="Enter your current limit"
-                min="0"
-                step="5000"
-            >
-
-        </div>
-
-
-        <!-- CONTINUE -->
-
         <button
-            type="button"
-            class="continue-btn"
-            onclick="continueToNext()"
-        >
-            CONTINUE →
+            class="primary-btn"
+            onclick="startIncrease()">
+
+            INCREASE MY LIMIT NOW →
+
         </button>
 
-
         <div class="security-line">
-            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; Simple
+            🔒 Secure &nbsp; • &nbsp; Fast &nbsp; • &nbsp; 24/7
         </div>
 
-    </main>
+    </section>
+
+
+    <!-- =================================
+         FINAL CTA
+    ================================== -->
+
+    <section class="final-cta">
+
+        <h2>
+            Ready to Boost Your Limit?
+        </h2>
+
+        <p>
+            Takes only a few minutes.
+        </p>
+
+    </section>
 
 
     <!-- =================================
@@ -532,9 +96,7 @@
 
     <footer>
 
-        <strong>
-            FULIZA
-        </strong>
+        <strong>FULIZA</strong>
 
         <p>
             Independent limit-management service
@@ -552,69 +114,17 @@
 <script>
 
 /* =========================================
-   LOAD FIRST NAME
+   START
 ========================================= */
 
-const savedName =
-    localStorage.getItem(
-        "fulizaFullName"
-    );
-
-
-if (savedName) {
-
-    const firstName =
-        savedName
-            .trim()
-            .split(/\s+/)[0];
-
-    document
-        .getElementById(
-            "clientFirstName"
-        )
-        .textContent =
-            firstName;
-}
-
-
-/* =========================================
-   CONTINUE
-========================================= */
-
-function continueToNext() {
-
-    const currentLimit =
-        document
-            .getElementById(
-                "currentLimit"
-            )
-            .value
-            .trim();
-
-
-    if (!currentLimit) {
-
-        alert(
-            "Please enter your current FULIZA limit."
-        );
-
-        return;
-    }
-
-
-    localStorage.setItem(
-        "fulizaCurrentLimit",
-        currentLimit
-    );
-
+function startIncrease() {
 
     window.location.href =
-        "desired-limit.html";
+        "registration.html";
 
 }
 
 </script>
 
 </body>
-
 </html>
