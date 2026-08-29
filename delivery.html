@@ -1,1 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FULIZA | Delivery</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    padding:16px 10px;
+    font-family:Arial,sans-serif;
+    background:#00A651;
+    color:#FFFFFF;
+}
+
+.container{
+    width:100%;
+    max-width:430px;
+    margin:0 auto;
+}
+
+.card{
+    width:100%;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.09),
+            rgba(255,255,255,0.035)
+        );
+
+    padding:22px 18px 20px;
+    border-radius:18px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+    border:1px solid #000000;
+}
+
+.success{
+    width:70px;
+    height:70px;
+    margin:0 auto 14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#FFFFFF;
+    color:#000000;
+
+    border:2px solid #000000;
+    border-radius:50%;
+
+    font-size:38px;
+    font-weight:800;
+}
+
+h1{
+    text-align:center;
+    background:#000000;
+    color:#FFFFFF;
+
+    font-size:26px;
+    font-weight:800;
+
+    margin:2px 0 16px;
+    padding:10px;
+
+    border:1px solid #FFFFFF;
+    border-radius:10px;
+}
+
+p{
+    text-align:center;
+    font-size:14px;
+    line-height:1.6;
+    color:#FFFFFF;
+}
+
+.amount{
+    background:#FFFFFF;
+    border:2px solid #000000;
+    border-radius:12px;
+
+    padding:16px 10px;
+    margin:18px 0;
+
+    text-align:center;
+
+    color:#000000;
+
+    font-size:25px;
+    font-weight:800;
+}
+
+.notice{
+    margin-top:18px;
+
+    padding:13px;
+
+    background:rgba(255,255,255,0.10);
+
+    border:1px solid #FFFFFF;
+    border-radius:10px;
+
+    color:#FFFFFF;
+
+    font-size:14px;
+    line-height:1.6;
+
+    text-align:center;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin-top:18px;
+
+    background:#000000;
+    color:#FFFFFF;
+
+    border:1px solid #FFFFFF;
+    border-radius:11px;
+
+    font-size:16px;
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.30);
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+#message{
+    min-height:22px;
+    margin-top:13px;
+
+    color:#FFFFFF;
+
+    font-size:14px;
+    font-weight:700;
+
+    line-height:1.5;
+    text-align:center;
+}
+
+.footer{
+    margin-top:15px;
+    text-align:center;
+
+    font-size:12px;
+    color:#FFFFFF;
+}
+
+@media(max-width:360px){
+
+    body{
+        padding:10px 7px;
+    }
+
+    .card{
+        padding:18px 13px 15px;
+        border-radius:15px;
+    }
+
+    h1{
+        font-size:23px;
+    }
+
+    button{
+        padding:14px;
+        font-size:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="success">
+✓
+</div>
+
+<h1>
+Delivery
+</h1>
+
+<p>
+Congratulations! 🎉
+</p>
+
+<p>
+Your activation has been successfully received and confirmed.
+</p>
+
+<div class="amount">
+Delivery Fee: KSh 3
+</div>
+
+<div class="notice">
+
+Would you like to continue and pay the KSh 3 delivery fee?
+
+</div>
+
+<button
+    type="button"
+    id="continueBtn"
+    onclick="continueDelivery()"
+>
+    Continue
+</button>
+
+<p id="message"></p>
+
+<div class="footer">
+FULIZA
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =====================================================
+   DELIVERY CONTINUE
+===================================================== */
+
+function continueDelivery(){
+
+    document.getElementById(
+        "message"
+    ).textContent =
+        "Continuing to the delivery payment page...";
+
+
+    window.location.href =
+        "delivery-payment.html";
+
+}
+
+</script>
+
+</body>
+
+</html>
