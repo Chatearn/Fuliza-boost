@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,8 +48,6 @@ body{
     border:1px solid #000000;
 }
 
-/* PAYMENT HEADING */
-
 h1{
     text-align:center;
     background:#000000;
@@ -80,6 +79,18 @@ p{
     color:#000000;
     -webkit-text-stroke:0.8px #000000;
     margin:18px 0;
+}
+
+.notice{
+    background:#FFFFFF;
+    color:#000000;
+    border:1px solid #000000;
+    border-radius:10px;
+    padding:12px;
+    font-size:12px;
+    line-height:1.5;
+    text-align:center;
+    margin:15px 0;
 }
 
 label{
@@ -116,16 +127,13 @@ button{
     width:100%;
     padding:15px;
     margin-top:17px;
-
     background:#000000;
-
     color:#FFFFFF;
     border:1px solid #000000;
     border-radius:11px;
     font-size:16px;
     font-weight:700;
     cursor:pointer;
-
     box-shadow:
         0 10px 30px rgba(0,0,0,0.30);
 }
@@ -189,23 +197,27 @@ button:disabled{
 <h1>Payment</h1>
 
 <p>
-Welcome, <strong><span id="name"></span></strong>
+Congratulations, <strong><span id="name"></span>!</strong>
 </p>
 
 <p>
-Complete the payment below to continue with your FULIZA limit request.
+Congratulations! You have selected your desired service package.
 </p>
 
-
 <div class="amount" id="selectedAmount">
-Selected Limit: KSh 0
+Selected Package: KSh 0
 </div>
-
 
 <div class="amount" id="feeAmount">
-Payment Fee: KSh 0
+Processing Fee: KSh 0
 </div>
 
+<div class="notice">
+This is an independent service offered by this business and is not an
+official Safaricom service. Payment does not guarantee an increase
+or change to your official Safaricom Fuliza limit.
+An M-PESA payment request will only be sent if you choose to continue.
+</div>
 
 <label>
 Full Name
@@ -216,7 +228,6 @@ Full Name
     id="fullName"
     readonly
 >
-
 
 <label>
 M-PESA Phone Number
@@ -229,7 +240,6 @@ M-PESA Phone Number
     autocomplete="tel"
 >
 
-
 <button
     type="button"
     id="payBtn"
@@ -238,18 +248,16 @@ M-PESA Phone Number
     Continue to Payment
 </button>
 
-
 <p id="paymentMessage"></p>
 
 </div>
 
 </div>
 
-
 <script>
 
 /* =====================================================
-   FULIZA SELECTED LIMIT
+   SELECTED PACKAGE
 ===================================================== */
 
 const selectedLimit =
@@ -259,71 +267,62 @@ const selectedLimit =
 
 
 /* =====================================================
-   LIMIT + FEE MAPPING
+   PACKAGE + FEE MAPPING
 ===================================================== */
 
 const fees = {
 
-    "10000": 320,
-
-    "20000": 420,
-
-    "30000": 520,
-
-    "40000": 620,
-
-    "50000": 720,
-
-    "60000": 820,
-
-    "70000": 920,
-
+    "5000": 200,
+    "10000": 300,
+    "20000": 400,
+    "30000": 500,
+    "40000": 600,
+    "50000": 700,
+    "60000": 800,
+    "70000": 900,
     "80000": 950,
-
-    "90000": 1020,
-
+    "90000": 1000,
     "100000": 1050
 
 };
-
-
-/* =====================================================
-   VALIDATE SELECTED LIMIT
-===================================================== */
 
 const paymentFee =
     fees[selectedLimit];
 
 
-if (
+/* =====================================================
+   VALIDATE SELECTED PACKAGE
+===================================================== */
+
+const payBtn =
+    document.getElementById("payBtn");
+
+const message =
+    document.getElementById("paymentMessage");
+
+if(
     !selectedLimit ||
     paymentFee === undefined
-) {
+){
 
-    document.getElementById(
-        "paymentMessage"
-    ).textContent =
-        "No valid limit was selected.";
+    message.textContent =
+        "No valid package was selected.";
 
-} else {
+    payBtn.disabled = true;
+
+}else{
 
     document.getElementById(
         "selectedAmount"
     ).textContent =
-        "Selected Limit: KSh " +
-        Number(
-            selectedLimit
-        ).toLocaleString();
-
+        "Selected Package: KSh " +
+        Number(selectedLimit).toLocaleString();
 
     document.getElementById(
         "feeAmount"
     ).textContent =
-        "Payment Fee: KSh " +
-        Number(
-            paymentFee
-        ).toLocaleString();
-
+        "Processing Fee: KSh " +
+        Number(paymentFee).toLocaleString();
 
     localStorage.setItem(
         "fulizaaPaymentFee",
@@ -334,7 +333,7 @@ if (
 
 
 /* =====================================================
-   LOAD NAME
+   LOAD CUSTOMER NAME
 ===================================================== */
 
 const savedName =
@@ -342,25 +341,18 @@ const savedName =
         "fulizaFullName"
     );
 
-
 const firstName =
     savedName
-        ? savedName
-            .trim()
-            .split(/\s+/)[0]
+        ? savedName.trim().split(/\s+/)[0]
         : "Client";
-
 
 document.getElementById(
     "name"
-).textContent =
-    firstName;
-
+).textContent = firstName;
 
 document.getElementById(
     "fullName"
-).value =
-    savedName || "";
+).value = savedName || "";
 
 
 /* =====================================================
@@ -372,14 +364,11 @@ let applicationReference =
         "fulizaaApplicationReference"
     );
 
-
-if (!applicationReference) {
+if(!applicationReference){
 
     applicationReference =
         "FUL-" +
-        Date.now()
-            .toString(36)
-            .toUpperCase();
+        Date.now().toString(36).toUpperCase();
 
     localStorage.setItem(
         "fulizaaApplicationReference",
@@ -395,36 +384,20 @@ if (!applicationReference) {
 
 let paymentStatusTimer = null;
 
-
 function checkPaymentStatus(transactionId){
 
     if(!transactionId){
-
         return;
-
     }
-
-
-    const message =
-        document.getElementById(
-            "paymentMessage"
-        );
-
 
     fetch(
         "https://fuliza-backend-1-o8h6.onrender.com/api/payment-status/" +
-        encodeURIComponent(
-            transactionId
-        ),
+        encodeURIComponent(transactionId),
         {
-
             method:"GET",
-
             headers:{
-                "Accept":
-                    "application/json"
+                "Accept":"application/json"
             }
-
         }
     )
     .then(async response => {
@@ -438,10 +411,7 @@ function checkPaymentStatus(transactionId){
 
             try{
 
-                data =
-                    JSON.parse(
-                        responseText
-                    );
+                data = JSON.parse(responseText);
 
             }catch(error){
 
@@ -453,7 +423,6 @@ function checkPaymentStatus(transactionId){
 
         }
 
-
         if(!response.ok){
 
             throw new Error(
@@ -463,112 +432,64 @@ function checkPaymentStatus(transactionId){
 
         }
 
-
         return data;
 
     })
     .then(data => {
 
-        console.log(
-            "Payment Status:",
-            data
-        );
-
-
-        /* -----------------------------------------
-           PAYMENT SUCCESSFULLY RECEIVED
-        ----------------------------------------- */
+        console.log("Payment Status:",data);
 
         if(
-            String(data.status || "")
-                .toUpperCase() ===
-            "COMPLETED"
+            String(data.status || "").toUpperCase()
+            === "COMPLETED"
         ){
 
             if(paymentStatusTimer){
 
-                clearInterval(
-                    paymentStatusTimer
-                );
-
-                paymentStatusTimer =
-                    null;
+                clearInterval(paymentStatusTimer);
+                paymentStatusTimer = null;
 
             }
-
 
             localStorage.setItem(
                 "fulizaaPaymentStatus",
                 "COMPLETED"
             );
 
-
-            /*
-             * Redirect only after the backend
-             * confirms that the payment is COMPLETED.
-             */
-
             window.location.href =
                 "confirmation.html";
-
 
             return;
 
         }
 
-
-        /* -----------------------------------------
-           PAYMENT FAILED
-        ----------------------------------------- */
-
         if(
-            String(data.status || "")
-                .toUpperCase() ===
-            "FAILED"
+            String(data.status || "").toUpperCase()
+            === "FAILED"
         ){
 
             if(paymentStatusTimer){
 
-                clearInterval(
-                    paymentStatusTimer
-                );
-
-                paymentStatusTimer =
-                    null;
+                clearInterval(paymentStatusTimer);
+                paymentStatusTimer = null;
 
             }
-
 
             message.textContent =
                 data.failureReason ||
                 "Payment was not completed. Please try again.";
 
-
-            const payBtn =
-                document.getElementById(
-                    "payBtn"
-                );
-
-
-            payBtn.disabled =
-                false;
-
+            payBtn.disabled = false;
 
             payBtn.textContent =
                 "Continue to Payment";
-
 
             return;
 
         }
 
-
-        /* -----------------------------------------
-           STILL WAITING
-        ----------------------------------------- */
-
         message.textContent =
-            "Payment prompt sent. Please complete the payment on your M-PESA phone...";
+            "Payment prompt sent. Please complete the payment on your M-PESA phone.";
 
     })
     .catch(error => {
@@ -584,45 +505,29 @@ function checkPaymentStatus(transactionId){
 
 
 /* =====================================================
-   START PAYMENT STATUS POLLING
+   START PAYMENT STATUS CHECKING
 ===================================================== */
 
-function startPaymentStatusChecking(
-    transactionId
-){
+function startPaymentStatusChecking(transactionId){
 
     if(!transactionId){
-
         return;
-
     }
-
 
     if(paymentStatusTimer){
 
-        clearInterval(
-            paymentStatusTimer
-        );
+        clearInterval(paymentStatusTimer);
 
     }
 
-
-    checkPaymentStatus(
-        transactionId
-    );
-
+    checkPaymentStatus(transactionId);
 
     paymentStatusTimer =
-        setInterval(
-            function(){
+        setInterval(function(){
 
-                checkPaymentStatus(
-                    transactionId
-                );
+            checkPaymentStatus(transactionId);
 
-            },
-            3000
-        );
+        },3000);
 
 }
 
@@ -633,25 +538,10 @@ function startPaymentStatusChecking(
 
 async function payNow(){
 
-    const message =
-        document.getElementById(
-            "paymentMessage"
-        );
-
-    const payBtn =
-        document.getElementById(
-            "payBtn"
-        );
-
     const phoneInput =
-        document.getElementById(
-            "phone"
-        );
+        document.getElementById("phone");
 
-
-    /* -----------------------------------------
-       VALIDATE LIMIT
-    ----------------------------------------- */
+    /* VALIDATE PACKAGE */
 
     if(
         !selectedLimit ||
@@ -659,20 +549,16 @@ async function payNow(){
     ){
 
         message.textContent =
-            "Please select a valid limit first.";
+            "Please select a valid package first.";
 
         return;
 
     }
 
-
-    /* -----------------------------------------
-       PHONE
-    ----------------------------------------- */
+    /* VALIDATE PHONE */
 
     const phone =
         phoneInput.value.trim();
-
 
     if(!phone){
 
@@ -685,22 +571,15 @@ async function payNow(){
 
     }
 
-
-    /* -----------------------------------------
-       BASIC KENYAN PHONE VALIDATION
-    ----------------------------------------- */
-
     const cleanPhone =
         phone
             .replace(/\s+/g,"")
             .replace(/-/g,"");
 
-
     const validPhone =
         /^(07|01)\d{8}$/.test(cleanPhone) ||
         /^\+254\d{9}$/.test(cleanPhone) ||
         /^254\d{9}$/.test(cleanPhone);
-
 
     if(!validPhone){
 
@@ -713,92 +592,63 @@ async function payNow(){
 
     }
 
+    /* CONVERT PHONE TO 254 FORMAT */
 
-    /* -----------------------------------------
-       CONVERT TO 254XXXXXXXXX
-    ----------------------------------------- */
+    let stkPhone = cleanPhone;
 
-    let stkPhone =
-        cleanPhone;
-
-
-    if(
-        /^(07|01)\d{8}$/.test(stkPhone)
-    ){
+    if(/^(07|01)\d{8}$/.test(stkPhone)){
 
         stkPhone =
-            "254" +
-            stkPhone.substring(1);
+            "254" + stkPhone.substring(1);
 
     }
 
-
-    if(
-        stkPhone.startsWith("+")
-    ){
+    if(stkPhone.startsWith("+")){
 
         stkPhone =
             stkPhone.substring(1);
 
     }
 
-
-    /* -----------------------------------------
-       SAVE LOCAL DATA
-    ----------------------------------------- */
+    /* SAVE LOCAL DATA */
 
     localStorage.setItem(
         "fulizaaPhoneNumber",
         stkPhone
     );
 
-
     localStorage.setItem(
         "fulizaaPaymentAmount",
         paymentFee
     );
-
 
     localStorage.setItem(
         "fulizaaSelectedLimit",
         selectedLimit
     );
 
-
-    /* -----------------------------------------
-       CREATE PAYMENT REFERENCE
-    ----------------------------------------- */
+    /* CREATE PAYMENT REFERENCE */
 
     const paymentReference =
         "PAY-" +
-        Date.now()
-            .toString(36)
-            .toUpperCase();
-
+        Date.now().toString(36).toUpperCase();
 
     localStorage.setItem(
         "fulizaaPaymentReference",
         paymentReference
     );
 
-
-    /* -----------------------------------------
-       DISABLE BUTTON
-    ----------------------------------------- */
+    /* DISABLE BUTTON */
 
     payBtn.disabled = true;
 
     payBtn.textContent =
         "Sending STK Push...";
 
-
     message.textContent =
         "Please wait. Sending payment prompt to your M-PESA phone...";
 
-
-    /* -----------------------------------------
-       SEND TO LIVE RENDER BACKEND
-    ----------------------------------------- */
+    /* SEND TO EXISTING BACKEND */
 
     try{
 
@@ -806,44 +656,30 @@ async function payNow(){
             await fetch(
                 "https://fuliza-backend-1-o8h6.onrender.com/api/stk-push",
                 {
-
                     method:"POST",
 
                     headers:{
-                        "Content-Type":
-                            "application/json"
+                        "Content-Type":"application/json"
                     },
 
                     body:JSON.stringify({
 
-                        phone:
-                            stkPhone,
+                        phone:stkPhone,
 
-                        amount:
-                            Number(
-                                paymentFee
-                            ),
+                        amount:Number(paymentFee),
 
-                        selectedLimit:
-                            Number(
-                                selectedLimit
-                            ),
+                        selectedLimit:Number(selectedLimit),
 
-                        fullName:
-                            savedName || "",
+                        fullName:savedName || "",
 
-                        reference:
-                            paymentReference
+                        reference:paymentReference
 
                     })
 
                 }
             );
 
-
-        /* -----------------------------------------
-           SAFELY READ SERVER RESPONSE
-        ----------------------------------------- */
+        /* READ SERVER RESPONSE */
 
         const responseText =
             await response.text();
@@ -854,10 +690,7 @@ async function payNow(){
 
             try{
 
-                data =
-                    JSON.parse(
-                        responseText
-                    );
+                data = JSON.parse(responseText);
 
             }catch(parseError){
 
@@ -869,31 +702,19 @@ async function payNow(){
 
         }
 
-
-        /* -----------------------------------------
-           SERVER ERROR
-        ----------------------------------------- */
-
         if(!response.ok){
 
             throw new Error(
-
                 data.message ||
                 data.error ||
                 "Unable to send STK Push."
-
             );
 
         }
 
+        /* SAVE SERVER REFERENCE */
 
-        /* -----------------------------------------
-           SAVE SERVER REFERENCE
-        ----------------------------------------- */
-
-        if(
-            data.transactionId
-        ){
+        if(data.transactionId){
 
             localStorage.setItem(
                 "fulizaaTransactionId",
@@ -902,10 +723,7 @@ async function payNow(){
 
         }
 
-
-        if(
-            data.reference
-        ){
+        if(data.reference){
 
             localStorage.setItem(
                 "fulizaaPaymentReference",
@@ -914,53 +732,39 @@ async function payNow(){
 
         }
 
-
-        /* -----------------------------------------
-           SUCCESSFUL STK REQUEST
-        ----------------------------------------- */
+        /* SUCCESSFUL STK REQUEST */
 
         payBtn.textContent =
             "STK Sent";
 
-
         message.textContent =
             data.message ||
             "STK Push sent successfully. Check your M-PESA phone and enter your PIN.";
-
 
         console.log(
             "Application Reference:",
             applicationReference
         );
 
-
         console.log(
             "Payment Reference:",
-            data.reference ||
-            paymentReference
+            data.reference || paymentReference
         );
-
 
         console.log(
             "Paylor Response:",
             data
         );
 
+        /* CHECK ACTUAL PAYMENT STATUS */
 
-        /* -----------------------------------------
-           START CHECKING ACTUAL PAYMENT STATUS
-        ----------------------------------------- */
-
-        if(
-            data.transactionId
-        ){
+        if(data.transactionId){
 
             startPaymentStatusChecking(
                 data.transactionId
             );
 
         }
-
 
     }catch(error){
 
@@ -969,15 +773,11 @@ async function payNow(){
             error
         );
 
-
         message.textContent =
             error.message ||
             "Payment request failed. Please try again.";
 
-
-        payBtn.disabled =
-            false;
-
+        payBtn.disabled = false;
 
         payBtn.textContent =
             "Continue to Payment";
@@ -989,5 +789,4 @@ async function payNow(){
 </script>
 
 </body>
-
 </html>
